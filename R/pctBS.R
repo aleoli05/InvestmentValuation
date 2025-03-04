@@ -7,6 +7,8 @@
 #' pctBS('BS')
 #' @export
 pctBS = function(BS){
+  require(writexl)
+  load('~/symbol.rda')
   #location of totals
   i = which(rownames(BS) == "Total Assets")   # for Assets
   j = which(rownames(BS) == "Total Liabilities") # for liabilities
@@ -56,7 +58,21 @@ pctBS = function(BS){
   start_row = k+1
   misc_rows = BS[start_row:nrow(BS),]
   # combine
-  rbind(total_assets, total_liab, total_eqt, misc_rows)
-  DT:: datatable(pct_bs, rownames=TRUE, extensions="Buttons", options = list(dom="Blfrtip",
+  pct_bs = rbind(total_assets, total_liab, total_eqt, misc_rows)
+  View(pct_bs)
+  save(pct_bs, file='~/pct_bs.rda')
+  pct_bs2=matrix(nrow=nrow(pct_bs), ncol=ncol(pct_bs)+1)
+  pct_bs2[,1]=rownames(pct_bs)
+  pct_bs2[,2:ncol(pct_bs2)]=as.matrix(pct_bs)
+  nomes = c('Account',colnames(pct_bs))
+  colnames(pct_bs2)=nomes
+    nome = paste('~/Percentage_',symbol,'_Balance_Sheet_Statment.xlsx', sep='')
+  write_xlsx(as.data.frame(pct_bs2), nome)
+  x =   DT:: datatable(pct_bs, rownames=TRUE, extensions="Buttons", options = list(dom="Blfrtip",
+                                                                                   buttons = c('csv', 'excel', 'pdf')))
+  htmlwidgets::saveWidget(x, "~/pct_bs.html")
+
+    DT:: datatable(pct_bs, rownames=TRUE, extensions="Buttons", options = list(dom="Blfrtip",
                                               buttons = c('csv', 'excel', 'pdf')))
+
 }

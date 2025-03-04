@@ -5,12 +5,17 @@
 \title{Fundamentals_analysis
 Return analysis from the Enterprise}
 \usage{
-Fundamentals_analysis()
+Fundamentals_analysis(sym, AQ)
+}
+\arguments{
+\item{sym}{Ticker}
+
+\item{AQ}{= Annual (A) or Quarterly (Q)?}
 }
 \description{
 Fundamentals_analysis
 Return analysis from the Enterprise
 }
 \examples{
-Fundamentals_analysis()
+Fundamentals_analysis('TSLA','A')
 }

@@ -19,5 +19,5 @@ table2plot
 Plot Quarterly Values from the Financial
 }
 \examples{
-table2plot('TSLA','Cash & Short Term Investments','BS')
+table2plot('TSLA','Cash & Short Term Investments',bs)
 }

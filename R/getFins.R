@@ -52,110 +52,39 @@ getFins <- function(symbol, AQ, FS){
   dfn= data.frame(apply(df, 2, function(x) as.numeric(gsub("\\,","", x))), row.names = rownames(df))
   colnames(dfn)= colnames(df)
   dfn = dfn[rowSums(is.na(dfn)) != ncol(dfn),]
+  dfn[is.na(dfn)] <- round(0, 2)
   # return data
   dfn
+  save(symbol, file='~/symbol.rda')
+  save(dfn, file='~/dfn.rda')
+  dfn2=matrix(nrow=nrow(dfn), ncol=ncol(dfn)+1)
+  dfn2[,1]=rownames(dfn)
+  dfn2[,2:ncol(dfn2)]=as.matrix(dfn)
+  nomes = c('Account',colnames(dfn))
+  colnames(dfn2)=nomes
+  if (FS=='I'){
+  tipo = paste('_Income_Statment')
+  is = dfn
+  nome='is'
+  save(nome, file='~/nome.rda')
+  save(is, file='~/is.rda')
+  }
+  if (FS=='C'){
+  tipo = paste('_Cash_Flow_Statment')
+  cf = dfn
+  nome='cf'
+  save(nome, file='~/nome.rda')
+  save(cf, file='~/cf.rda')
+  }
+  if (FS=='B'){
+  tipo = paste('_Balance_Sheet_statment')
+  bs = dfn
+  nome='bs'
+  save(nome, file='~/nome.rda')
+  save(bs, file='~/bs.rda')
+  }
+
+  nome2=paste("~/",symbol,tipo,".xlsx",sep='')
+  write_xlsx(as.data.frame(dfn2), nome2)
   View(dfn)
 }
-################################################################################
-# Plot Quarterly Values from the Financial
-################################################################################
-# ticker = 'TSLA'
-# WHAT = 'Cash & Short Term Investments'
-
-# @param ticker = ticker symbol
-# @param WHAT = One of the row names from the financial table ex. 'Cash & Short Term Investments'
-# @param FROM = data generate with getFins Command
-
-table2plot = function(ticker, WHAT, FROM){
-  # locate row
-  dta <- subset(FROM, row.names(FROM)==WHAT)
-  # reverse order (oldest to newest)
-  dta <- rev(dta)
-  # transpose
-  dta = as.data.frame(t(dta))
-  # as data.frame
-  dta$date=row.names(dta)
-  # data.frame
-  dta = data.frame(date=format(as.Date(dta$date,"%m/%d/%Y"), "%b %d '%y"), value=dta[,1])
-  # add Period to period growth
-  dta$pct_change = ROC(dta$value, type = 'discrete') # pct = percentage
-  dta$pct_change[is.na(dta$pct_change)]<-0
-  # add YoY Growth
-  dta$yoy_change = ROC(dta$value, n=4, type = 'discrete') # yoy = Year-on-year
-  dta$yoy_change[is.na(dta$yoy_change)]<-0
-  # plot using highcharter
-  dta%>%
-    hchart(
-      'column', hcaes(x='date',y='value'), name='value',
-      stacking='normal' #, tooltip = list(pointFormat = "<b>{series.name}: {point.y: , f}")
-    ) %>%
-    hc_colorAxis(minColor='aquamarine',maxColor='darkgreen') %>%
-    hc_title(text=paste0('$',ticker), align='center') %>%
-    hc_subtitle(text=paste0(WHAT)) %>%
-    hc_yAxis_multiples(list(title=list(text='value'), opposite = FALSE),
-                       list(showLastLabel = FALSE, opposite = TRUE, title=list(text='% Change'),
-                            min=-500, max=500)) %>%
-    hc_add_series(round(dta$yoy_change*100,2), yAxis=1, name="YoY % Change",
-                  tooltip = list(pointFormat = "<b>{series.name}: {point.y:,.2f}%")) %>%
-    hc_add_series(round(dta$pct_change*100,2), yAxis=1, name="QoQ % Change",
-                  tooltip = list(pointFormat = "<b>{series.name}: {point.y:,.2f}%"))
-  # QoQ = Quarter-on-quarter
-}
-##################################################################################
-# Convert Financial Tables to Percentages
-##################################################################################
-# pecentage balance sheet
-#@param BS = balance sheet from FinViz
-pctBS = function(BS){
-  #location of totals
-  i = which(rownames(BS) == "Total Assets")   # for Assets
-  j = which(rownames(BS) == "Total Liabilities") # for liabilities
-  k = which(rownames(BS) == "Total Equity")  # for stockholder´s equity
-  # for assets
-  total_assets = do.call(rbind, lapply(as.list(1:i), function(ii){
-   # convert row to percentage
-    this_row <- t(scales::percent(as.numeric(BS[ii,]/BS[i,]), accuracy = 0.01))
-   # convert to date frame
-    this_row <- data.frame(this_row, row.names = rownames(BS)[ii])
-   # add the column names
-    colnames(this_row)= colnames(BS)
-   # eliminate NA
-    this_row[is.na(this_row)] <- scales::percent(0, accuracy = 0.01)
-   # return formatted table
-    this_row
-  }))
-  # for liabilities
-  start_row = i+1
-  total_liab = do.call(rbind, lapply(as.list(start_row:j), function(ii){
-    # convert row to percentage
-    this_row <- t(scales::percent(as.numeric(BS[ii,]/BS[j,]), accuracy = 0.01))
-    # convert to data frame
-    this_row <- data.frame(this_row, row.names = rownames(BS)[ii])
-    # add the column names
-    colnames(this_row)=colnames(BS)
-    # eliminate NA
-    this_row[is.na(this_row)] <- scales::percent(0, accuracy = 0.01)
-    # return formatted table
-    this_row
-  }))
-  # for stockholders equity
-  start_row = j+1
-  total_eqt = do.call(rbind, lapply(as.list(start_row:k), function(ii){
-    # convert row to percentage
-    this_row <- t(scales::percent(as.numeric(BS[ii,]/BS[k,]), accuracy = 0.01))
-    # convert to data frame
-    this_row <- data.frame(this_row, row.names = rownames(BS)[ii])
-    # add the column names
-    colnames(this_row) = colnames(BS)
-    # eliminate NA
-    this_row[is.na(this_row)] <- scales::percent(0, accuracy = 0.01)
-    # return formatted table
-    this_row
-  }))
-  # capture missing rows
-  start_row = k+1
-  misc_rows = BS[start_row:nrow(BS),]
-  # combine
-  rbind(total_assets, total_liab, total_eqt, misc_rows)
-}
-
