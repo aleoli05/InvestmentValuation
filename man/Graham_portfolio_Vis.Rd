@@ -3,8 +3,7 @@
 \name{Graham_Portfolio_Vis}
 \alias{Graham_Portfolio_Vis}
 \title{Graham_Portfolio_Vis
-Return with FinVis data from eight date of financial statements
-Graham_Portfolio - Return Graham portfolio from FinVis data
+Return Graham portfolio from FinVis data
 Attend the restriction give for Graham in the Intelligent Investor}
 \usage{
 Graham_Portfolio_Vis(
@@ -51,13 +50,12 @@ Graham_Portfolio_Vis(
 
 \item{Exclude_ticket}{Deletes any ticket from the ticket list that you want to remove for some reason}
 
-\item{Ticker}{to import and analyzes the financial parameters
+\item{Ticker}{to import and analyzes the financial parameters.
 For all SP500 use 'Current_SP500_Tickers'}
 }
 \description{
 Graham_Portfolio_Vis
-Return with FinVis data from eight date of financial statements
-Graham_Portfolio - Return Graham portfolio from FinVis data
+Return Graham portfolio from FinVis data
 Attend the restriction give for Graham in the Intelligent Investor
 }
 \examples{
