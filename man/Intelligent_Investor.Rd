@@ -2,13 +2,72 @@
 % Please edit documentation in R/Intelligent_Investor.R
 \name{Intelligent_Investor}
 \alias{Intelligent_Investor}
-\title{Intelligent_Investor}
+\title{Intelligent_Investor
+#' Return Graham portfolio from FinVis data
+Attend the restriction give for Graham in the Intelligent Investor}
 \usage{
-Intelligent_Investor(Tickers)
+Intelligent_Investor(
+  Tickers,
+  AQ = "A",
+  Size = 2000,
+  PE_Ratio = 15,
+  PB_Ratio = 1.5,
+  GI_min = 0,
+  GI_max = 21.5,
+  CR = 2,
+  EPS = 0,
+  Break = 15,
+  Plot_IS = "Total Revenue",
+  Plot_CF = "Cash Dividends Paid",
+  Plot_BS = "Total Liabilities",
+  Exclude_ticket = ""
+)
 }
 \arguments{
-\item{Tickers}{xxxxx}
+\item{Tickers}{to import and analyzes the financial parameters.
+For all SP500 use 'Current_SP500_Tickers'}
+
+\item{AQ}{Annual Statements (A) or Quarterly Statements (Q)}
+
+\item{Size}{Minimum Total Assets in Millions}
+
+\item{PE_Ratio}{Maximum Price/Earnings Ratio}
+
+\item{PB_Ratio}{Maximum Price to Book Ratio}
+
+\item{GI_min}{Graham indicator minimum}
+
+\item{GI_max}{Graham indicator maximum}
+
+\item{CR}{Minimum Current Ratio}
+
+\item{EPS}{Earning per Share Minimum}
+
+\item{Break}{Maximum number of stocks in the portfolio}
+
+\item{Plot_IS}{Chart of Income Sheet account selected}
+
+\item{Plot_CF}{Chart of Cash Flow account selected}
+
+\item{Plot_BS}{Char of Balance Sheet accoun selected}
+
+\item{Exclude_ticket}{Deletes any ticket from the ticket list that you want to remove for some reason}
 }
 \description{
 Intelligent_Investor
+#' Return Graham portfolio from FinVis data
+Attend the restriction give for Graham in the Intelligent Investor
+}
+\examples{
+Tickers = 'Current_SP500_Tickers'
+AQ = 'A'
+Size = 2000
+PE_Ratio = 15
+PB_Ratio = 1.5
+GI_min = 0
+GI_max = 21.5
+EPS = 0
+Exclude_ticket=c('ETR','LEN','MMM','XEL','HWM', 'WFC')
+Graham_Portfolio_Vis(Tickers,AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5, GI_min=0, GI_max=21.5, CR=2, EPS=0, Break=15)
+
 }
