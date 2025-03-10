@@ -2,7 +2,7 @@
 
 export(Fundamentals_analysis)
 export(Graham_Portfolio)
-export(Graham_Portfolio_Vis)
+export(Intelligent_Investor)
 export(getFins)
 export(pctBS)
 export(table2plot)
