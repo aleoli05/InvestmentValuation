@@ -16,6 +16,7 @@
 #'@export
 getFins <- function(symbol, AQ, FS){
   require('httr');require('highcharter');require('quantmod');require('scales');require('DT')
+  require('writexl')
       # get URL from Network
   URL = paste0('https://finviz.com/api/statement.ashx?t=',symbol,"&so=F&s=",FS,AQ)
   headers =c(

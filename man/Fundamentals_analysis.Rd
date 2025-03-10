@@ -5,17 +5,29 @@
 \title{Fundamentals_analysis
 Return analysis from the Enterprise}
 \usage{
-Fundamentals_analysis(sym, AQ)
+Fundamentals_analysis(
+  sym,
+  AQ,
+  Plot_IS = "Total Revenue",
+  Plot_CF = "Cash Dividends Paid",
+  Plot_BS = "Total Liabilities"
+)
 }
 \arguments{
 \item{sym}{Ticker}
 
 \item{AQ}{= Annual (A) or Quarterly (Q)?}
+
+\item{Plot_IS}{Chart of Income Sheet account selected}
+
+\item{Plot_CF}{Chart of Cash Flow account selected}
+
+\item{Plot_BS}{Char of Balance Sheet accoun selected}
 }
 \description{
 Fundamentals_analysis
 Return analysis from the Enterprise
 }
 \examples{
-Fundamentals_analysis('TSLA','A')
+Fundamentals_analysis('TSLA','A',Plot_IS='Total Revenue',Plot_CF='Cash Dividends Paid', Plot_BS='Total Liabilities')
 }

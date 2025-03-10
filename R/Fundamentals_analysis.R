@@ -2,10 +2,15 @@
 #' Return analysis from the Enterprise
 #' @param sym Ticker
 #' @param AQ = Annual (A) or Quarterly (Q)?
+#' @param Plot_IS Chart of Income Sheet account selected
+#' @param Plot_CF Chart of Cash Flow account selected
+#' @param Plot_BS Char of Balance Sheet accoun selected
 #' @examples
-#' Fundamentals_analysis('TSLA','A')
+#' Fundamentals_analysis('TSLA','A',Plot_IS='Total Revenue',Plot_CF='Cash Dividends Paid', Plot_BS='Total Liabilities')
 #' @export
-Fundamentals_analysis <- function(sym,AQ){
+Fundamentals_analysis <- function(sym,AQ,Plot_IS='Total Revenue',
+                                  Plot_CF='Cash Dividends Paid',
+                                  Plot_BS='Total Liabilities'){
   require(writexl)
 ### Get Financial Statments for Analytics
 #title: "FinViz Financials"
@@ -19,27 +24,33 @@ Fundamentals_analysis <- function(sym,AQ){
 
 #################################
 # get income statment
-getFins(symbol = sym, AQ = AQ, FS = 'I')
-load('~/is.rda')
-## PlotTrends
-# IS: plot Total Revenue
-table2plot(ticker = sym, WHAT = 'Total Revenue', FROM = is)
+if (Plot_IS!=''){
+  getFins(symbol = sym, AQ = AQ, FS = 'I')
+  load('~/is.rda')
+  ## PlotTrends
+  # IS: plot Total Revenue
+  table2plot(ticker = sym, WHAT = Plot_IS, FROM = is)
+}
 #################################
 
 
 #get cash flow statment
-getFins(symbol = sym, AQ = AQ, FS = 'C')
-load('~/cf.rda')
-# CF: plot Total Income
-table2plot(ticker = sym, WHAT = 'Net Income', FROM = cf)
+if (Plot_CF!=''){
+  getFins(symbol = sym, AQ = AQ, FS = 'C')
+  load('~/cf.rda')
+  # CF: plot Total Income
+  table2plot(ticker = sym, WHAT = Plot_CF, FROM = cf)
+}
 #################################
 
 
 # get balance sheet
-getFins(symbol = sym, AQ = AQ, FS = 'B')
-load('~/bs.rda')
-# BS: plot Total Liabilities
-table2plot(ticker = sym, WHAT = 'Total Liabilities', FROM = bs)
+if (Plot_BS!=''){
+  getFins(symbol = sym, AQ = AQ, FS = 'B')
+  load('~/bs.rda')
+  # BS: plot Total Liabilities
+  table2plot(ticker = sym, WHAT = Plot_BS, FROM = bs)
+}
 #################################
 
 
