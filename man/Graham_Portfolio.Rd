@@ -2,7 +2,8 @@
 % Please edit documentation in R/Graham_Portfolio.R
 \name{Graham_Portfolio}
 \alias{Graham_Portfolio}
-\title{Graham_Portfolio - Return Graham portfolio from Yahoo data
+\title{Graham_Portfolio
+Return Graham portfolio from Yahoo data
 Attend the restriction give for Graham in the Intelligent Investor}
 \usage{
 Graham_Portfolio(Symbols)
@@ -12,7 +13,8 @@ Graham_Portfolio(Symbols)
 For all SP500 use 'Current_SP500_Tickers'}
 }
 \description{
-Graham_Portfolio - Return Graham portfolio from Yahoo data
+Graham_Portfolio
+Return Graham portfolio from Yahoo data
 Attend the restriction give for Graham in the Intelligent Investor
 }
 \examples{

@@ -2,7 +2,8 @@
 % Please edit documentation in R/Graham_Portfolio_FinVis.R
 \name{Graham_portfolio_Vis}
 \alias{Graham_portfolio_Vis}
-\title{Graham_Portfolio - Return Graham portfolio from FinVis data
+\title{Return with FinVis data from eight date of financial statements
+Graham_Portfolio - Return Graham portfolio from FinVis data
 Attend the restriction give for Graham in the Intelligent Investor}
 \usage{
 Graham_portfolio_Vis(
@@ -53,6 +54,7 @@ Graham_portfolio_Vis(
 For all SP500 use 'Current_SP500_Tickers'}
 }
 \description{
+Return with FinVis data from eight date of financial statements
 Graham_Portfolio - Return Graham portfolio from FinVis data
 Attend the restriction give for Graham in the Intelligent Investor
 }
