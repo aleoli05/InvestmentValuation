@@ -68,7 +68,12 @@ getFins <- function(symbol, AQ, FS){
   Suprime = c('1','2','3','4','5','6','7','8','9')
   for (h in 1:length(Suprime)){
     y=Suprime[h]
-    Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+    for (y in 1:length(Nomes)){
+      a=str_ends(h,Nomes[y])
+      if (a==TRUE){
+        Nomes[y]=str_sub(Nomes[y],end=-2)
+      }
+    }
   }
   rownames(dfn)=Nomes
 

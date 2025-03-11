@@ -97,7 +97,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   #######################################################################
   # Import the statements for all companies required
   Graham_matrix = matrix(nrow=7,ncol=length((Tick)))
-  nomes_linhas=c('Size_Total_Assets', 'Current_ratio', 'EPS_Basic',
+  nomes_linhas=c('Size_Total_Assets', 'Current_ratio', 'EPS_Diluted',
                  'Dividends_Yield', 'PE_Ratio', 'Price_to_Book',
                  'Graham_Indicator')
   rownames(Graham_matrix)=nomes_linhas
@@ -132,9 +132,21 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Suprime = c('1','2','3','4','5','6','7','8','9')
     for (h in 1:length(Suprime)){
       y=Suprime[h]
-      Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
-      Nomes2 = gsub(pattern=y, replacement="",x=Nomes2, perl=TRUE)
-      Nomes3 = gsub(pattern=y, replacement="",x=Nomes3, perl=TRUE)
+      for (y in 1:length(Nomes)){
+        a=str_ends(h,Nomes[y])
+        if (a==TRUE){
+          Nomes[y]=str_sub(Nomes[y],end=-2)
+        }
+        if (a==TRUE){
+          Nomes2[y]=str_sub(Nomes2[y],end=-2)
+        }
+        if (a==TRUE){
+          Nomes3[y]=str_sub(Nomes3[y],end=-2)
+        }
+        #Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+        #Nomes2 = gsub(pattern=y, replacement="",x=Nomes2, perl=TRUE)
+        #Nomes3 = gsub(pattern=y, replacement="",x=Nomes3, perl=TRUE)
+      }
     }
     rownames(bs)=Nomes
     rownames(cf)=Nomes2
@@ -161,9 +173,15 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
 
       # Filter 4: Dividend record in all years
+      ### Dividends determination
+        z=as.numeric(any(c('EPS (Diluted)') %in% bs))
+            if (z==1){
+            Dividends = is[which(rownames(is)=='EPS (Diluted)')]
+            } else{
+            Dividends = is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
+            }
       lista_matrizes[[j]][4,i]=round(cf[which(rownames(cf)=='Cash Dividends Paid'),j+1]/
-                                       (is[which(rownames(is)=='Shares Outstanding'),j+1]*
-                                          is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]), 2)
+                                       (is[which(rownames(is)=='Shares Outstanding'),j+1])*Dividends, 2)
 
       # Filter 5: P/E ratio < 15
       lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),j+1]
@@ -203,7 +221,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Graham_filter2=Graham_filter1[Graham_filter1$Current_ratio >= CR,]
 
     ### Filter 3: Earning Stability > 0
-    Graham_filter3=Graham_filter2[Graham_filter2$EPS_Basic >= EPS,]
+    Graham_filter3=Graham_filter2[Graham_filter2$EPS_Diluted >= EPS,]
 
     ### Filter 4: P/E ratio <=15
     Graham_filter4=Graham_filter3[Graham_filter3$PE_Ratio <= PE,]
