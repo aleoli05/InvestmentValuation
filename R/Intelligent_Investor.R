@@ -125,30 +125,37 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     load ('~/bs.rda')
     load ('~/cf.rda')
     load ('~/is.rda')
-
+    ###### Corrections in data
+    Nomes=rownames(bs)
+    Nomes2=rownames(cf)
+    Nomes3=rownames(is)
+    Suprime = c('1','2','3','4','5','6','7','8','9')
+    for (h in 1:length(Suprime)){
+      y=Suprime[h]
+      Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+      Nomes2 = gsub(pattern=y, replacement="",x=Nomes2, perl=TRUE)
+      Nomes3 = gsub(pattern=y, replacement="",x=Nomes3, perl=TRUE)
+    }
+    rownames(bs)=Nomes
+    rownames(cf)=Nomes2
+    rownames(is)=Nomes3
     ###############################################
     ## j = Create a matrix for each year or quarter
     for (j in 1:7){
 
       # Filter 1: Adequate_Size > 2 billions
       lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j]
+
+
       # Filter 2: Current_ratio >2
-        ###### Corrections in data
-          Nomes=rownames(bs)
-          Suprime = c('1','2','3','4','5','6','7','8','9')
-          for (h in 1:length(Suprime)){
-            y=Suprime[h]
-            Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
-          }
-           rownames(bs)=Nomes
-        ###### Corrections in data
-            x=as.numeric(any(c('Current_Assets') %in% bs))
-                  if(x==1){
+         ###### Corrections in data
+          x=as.numeric(any(c('Current_Assets') %in% bs))
+          if(x==1){
             lista_matrizes[[j]][2,i] = bs[which(rownames(bs)=='Current Ratio'),j]
-            }else{
-              lista_matrizes[[j]][2,i] = bs[1,j]+bs[2,j]
-              Excluidos=append(Excluidos,Tick[i])
-                  }
+          }else{
+            lista_matrizes[[j]][2,i] = bs[1,j]+bs[2,j]
+            Excluidos=append(Excluidos,Tick[i])
+          }
 
       # Filter 3: Earning stability in then years >0
       lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Diluted)'),j+1]
