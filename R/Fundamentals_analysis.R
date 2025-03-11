@@ -56,6 +56,21 @@ Fundamentals_analysis <- function(sym,AQ,Plot_IS='Total Revenue',
 
 ## Balance Sheet as Percentage
 # convert balance sheet to percentage
+  ###### Corrections in data
+  Nomes=rownames(bs)
+  Nomes2=rownames(cf)
+  Nomes3=rownames(is)
+  Suprime = c('1','2','3','4','5','6','7','8','9')
+  for (h in 1:length(Suprime)){
+    y=Suprime[h]
+    Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+    Nomes2 = gsub(pattern=y, replacement="",x=Nomes2, perl=TRUE)
+    Nomes3 = gsub(pattern=y, replacement="",x=Nomes3, perl=TRUE)
+  }
+  rownames(bs)=Nomes
+  rownames(cf)=Nomes2
+  rownames(is)=Nomes3
+
 pctBS(BS=bs)
 
 }

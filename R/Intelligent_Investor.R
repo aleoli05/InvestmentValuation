@@ -97,7 +97,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   #######################################################################
   # Import the statements for all companies required
   Graham_matrix = matrix(nrow=7,ncol=length((Tick)))
-  nomes_linhas=c('Size_Total_Assets', 'Current_ratio', 'EPS_Diluted',
+  nomes_linhas=c('Size_Total_Assets', 'Current_ratio', 'EPS_Basic',
                  'Dividends_Yield', 'PE_Ratio', 'Price_to_Book',
                  'Graham_Indicator')
   rownames(Graham_matrix)=nomes_linhas
@@ -158,7 +158,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
           }
 
       # Filter 3: Earning stability in then years >0
-      lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Diluted)'),j+1]
+      lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
 
       # Filter 4: Dividend record in all years
       lista_matrizes[[j]][4,i]=round(cf[which(rownames(cf)=='Cash Dividends Paid'),j+1]/
@@ -203,7 +203,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Graham_filter2=Graham_filter1[Graham_filter1$Current_ratio >= CR,]
 
     ### Filter 3: Earning Stability > 0
-    Graham_filter3=Graham_filter2[Graham_filter2$EPS_Diluted >= EPS,]
+    Graham_filter3=Graham_filter2[Graham_filter2$EPS_Basic >= EPS,]
 
     ### Filter 4: P/E ratio <=15
     Graham_filter4=Graham_filter3[Graham_filter3$PE_Ratio <= PE,]

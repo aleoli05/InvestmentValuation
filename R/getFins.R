@@ -63,6 +63,16 @@ getFins <- function(symbol, AQ, FS){
   dfn2[,2:ncol(dfn2)]=as.matrix(dfn)
   nomes = c('Account',colnames(dfn))
   colnames(dfn2)=nomes
+  ###### Corrections in data
+  Nomes=rownames(dfn)
+  Suprime = c('1','2','3','4','5','6','7','8','9')
+  for (h in 1:length(Suprime)){
+    y=Suprime[h]
+    Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+  }
+  rownames(dfn)=Nomes
+
+
   if (FS=='I'){
   tipo = paste('_Income_Statment')
   is = dfn
