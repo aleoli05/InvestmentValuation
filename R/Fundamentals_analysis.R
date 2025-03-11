@@ -24,33 +24,33 @@ Fundamentals_analysis <- function(sym,AQ,Plot_IS='Total Revenue',
 
 #################################
 # get income statment
-if (Plot_IS!=''){
   getFins(symbol = sym, AQ = AQ, FS = 'I')
   load('~/is.rda')
   ## PlotTrends
   # IS: plot Total Revenue
-  table2plot(ticker = sym, WHAT = Plot_IS, FROM = is)
-}
+  if (Plot_IS!=''){
+    table2plot(ticker = sym, WHAT = Plot_IS, FROM = is)
+  }
 #################################
 
 
 #get cash flow statment
-if (Plot_CF!=''){
   getFins(symbol = sym, AQ = AQ, FS = 'C')
   load('~/cf.rda')
   # CF: plot Total Income
-  table2plot(ticker = sym, WHAT = Plot_CF, FROM = cf)
-}
+  if (Plot_CF!=''){
+    table2plot(ticker = sym, WHAT = Plot_CF, FROM = cf)
+  }
 #################################
 
 
 # get balance sheet
-if (Plot_BS!=''){
   getFins(symbol = sym, AQ = AQ, FS = 'B')
   load('~/bs.rda')
   # BS: plot Total Liabilities
-  table2plot(ticker = sym, WHAT = Plot_BS, FROM = bs)
-}
+  if (Plot_BS!=''){
+    table2plot(ticker = sym, WHAT = Plot_BS, FROM = bs)
+  }
 #################################
 
 

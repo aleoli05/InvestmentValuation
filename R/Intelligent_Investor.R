@@ -110,7 +110,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     colnames(lista_matrizes[[k]])=Tick
   }
 
-
+  Excluidos=c()
   for (i in 1:length((Tick))){
     sym=Tick[i]
     Number= which(Tick==sym)
@@ -133,7 +133,22 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       # Filter 1: Adequate_Size > 2 billions
       lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j]
       # Filter 2: Current_ratio >2
-      lista_matrizes[[j]][2,i] = bs[which(rownames(bs)=='Current Ratio'),j]
+        ###### Corrections in data
+          Nomes=rownames(bs)
+          Suprime = c('1','2','3','4','5','6','7','8','9')
+          for (h in 1:length(Suprime)){
+            y=Suprime[h]
+            Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
+          }
+           rownames(bs)=Nomes
+        ###### Corrections in data
+            x=as.numeric(any(c('Current_Assets') %in% bs))
+                  if(x==1){
+            lista_matrizes[[j]][2,i] = bs[which(rownames(bs)=='Current Ratio'),j]
+            }else{
+              lista_matrizes[[j]][2,i] = bs[1,j]+bs[2,j]
+              Excluidos=append(Excluidos,Tick[i])
+                  }
 
       # Filter 3: Earning stability in then years >0
       lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Diluted)'),j+1]
@@ -166,7 +181,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       write_xlsx(as.data.frame(lista_matrizes), date_matrix2)
     } # End for j
   } # End for i
-
+  save(Excluidos,file='~/Excluidos.rda')
 
   Portfolio_Results = matrix(ncol=7,nrow=Break)
   colnames(Results)=colnames(bs[1:7])

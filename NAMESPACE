@@ -2,6 +2,7 @@
 
 export(Fundamentals_analysis)
 export(Graham_Portfolio)
+export(Install_Package_Require)
 export(Intelligent_Investor)
 export(getFins)
 export(pctBS)
