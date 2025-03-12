@@ -125,32 +125,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     load ('~/bs.rda')
     load ('~/cf.rda')
     load ('~/is.rda')
-    ###### Corrections in data
-    Nomes=rownames(bs)
-    Nomes2=rownames(cf)
-    Nomes3=rownames(is)
-    Suprime = c('1','2','3','4','5','6','7','8','9')
-    for (h in 1:length(Suprime)){
-      y=Suprime[h]
-      for (y in 1:length(Nomes)){
-        a=str_ends(h,Nomes[y])
-        if (a==TRUE){
-          Nomes[y]=str_sub(Nomes[y],end=-2)
-        }
-        if (a==TRUE){
-          Nomes2[y]=str_sub(Nomes2[y],end=-2)
-        }
-        if (a==TRUE){
-          Nomes3[y]=str_sub(Nomes3[y],end=-2)
-        }
-        #Nomes = gsub(pattern=y, replacement="",x=Nomes, perl=TRUE)
-        #Nomes2 = gsub(pattern=y, replacement="",x=Nomes2, perl=TRUE)
-        #Nomes3 = gsub(pattern=y, replacement="",x=Nomes3, perl=TRUE)
-      }
-    }
-    rownames(bs)=Nomes
-    rownames(cf)=Nomes2
-    rownames(is)=Nomes3
+
     ###############################################
     ## j = Create a matrix for each year or quarter
     for (j in 1:7){
