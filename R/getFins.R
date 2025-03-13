@@ -18,6 +18,7 @@ getFins <- function(symbol, AQ, FS){
   require('httr');require('highcharter');require('quantmod');require('scales');require('DT')
   require('writexl')
   require('stringr')
+  options(warn=-1)
       # get URL from Network
   URL = paste0('https://finviz.com/api/statement.ashx?t=',symbol,"&so=F&s=",FS,AQ)
   headers =c(
@@ -49,9 +50,10 @@ getFins <- function(symbol, AQ, FS){
   # return as table
   tbl=unlist(res$data)
   # extract names for rows
-  rName = gsub('1','',unique(names(tbl)[seq(1,length(tbl),9)]))
+  Number_Cols=length((tbl))/length(res$data)
+  rName = gsub('1','',unique(names(tbl)[seq(1,length(tbl),Number_Cols)]))
   # we can use matrix & assign the number of cols
-  df=matrix(tbl, ncol=9, byrow=TRUE)
+  df=matrix(tbl, ncol=Number_Cols, byrow=TRUE)
   # add row names
   df=data.frame(df,row.names=rName)
   # re-assign column names
