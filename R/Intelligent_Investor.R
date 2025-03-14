@@ -129,18 +129,18 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     ###############################################
     ## j = Create a matrix for each year or quarter
     for (j in 1:7){
-
+      if(ncol(bs)>=j){
       # Filter 1: Adequate_Size > 2 billions
       lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j]
 
 
       # Filter 2: Current_ratio >2
          ###### Corrections in data
-          x=as.numeric(any(c('Current_Assets') %in% bs))
+          x=as.numeric(any(c('Current Ratio') %in% bs))
           if(x==1){
             lista_matrizes[[j]][2,i] = bs[which(rownames(bs)=='Current Ratio'),j]
           }else{
-            lista_matrizes[[j]][2,i] = bs[1,j]+bs[2,j]
+            lista_matrizes[[j]][2,i] = (bs[1,j]+bs[2,j])/bs[which(rownames(bs)=='Total Liabilities'),j]
             Excluidos=append(Excluidos,Tick[i])
           }
 
@@ -155,7 +155,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
             } else{
             Dividends = is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
             }
-      lista_matrizes[[j]][4,i]=round(cf[which(rownames(cf)=='Cash Dividends Paid'),j+1]/
+      lista_matrizes[[j]][4,i]=round(abs(cf[which(rownames(cf)=='Cash Dividends Paid'),j+1])/
                                        (is[which(rownames(is)=='Shares Outstanding'),j+1])*Dividends, 2)
 
       # Filter 5: P/E ratio < 15
@@ -172,19 +172,28 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
 
 
       # Filter 9: Select stocks with good S&P rating ranking
-
+      } else{
+        lista_matrizes[[j]][1,i] = 0
+        lista_matrizes[[j]][2,i] = 0
+        lista_matrizes[[j]][3,i] = 0
+        lista_matrizes[[j]][4,i] = 0
+        lista_matrizes[[j]][5,i] = 0
+        lista_matrizes[[j]][6,i] = 0
+        lista_matrizes[[j]][7,i] = 0
+      }
 
       ### Need save Graham matrix for each year or quarterly
-      date_matrix = paste('~/lista_matriz.rda', sep='')
-      date_matrix2 = paste('~/lista_matriz.xlsx', sep='')
-      save(Graham_matrix, file=date_matrix)
+      date_matrix = paste('~/lista_matrizes.rda', sep='')
+      date_matrix2 = paste('~/lista_matrizes.xlsx', sep='')
+      save(lista_matrizes, file=date_matrix)
       write_xlsx(as.data.frame(lista_matrizes), date_matrix2)
     } # End for j
   } # End for i
   save(Excluidos,file='~/Excluidos.rda')
 
-  Portfolio_Results = matrix(ncol=7,nrow=Break)
+  Results = matrix(ncol=7,nrow=Break)
   colnames(Results)=colnames(bs[1:7])
+
 
   for (j in 1:7){
     Graham_filter0= data.frame(t(do.call(rbind,lista_matrizes[j])))
@@ -209,7 +218,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
 
     ### Filter 7: Max Dividend
     Graham_filter7 = arrange(as.data.frame(Graham_filter6), desc(Graham_filter6[,4]))
-
+    Graham_filter7 = na.omit(Graham_filter7)
 
     ### Filter 8: Break - Maximum number of stocks
     Graham_filter8 = Graham_filter7[1:Break,]
@@ -236,6 +245,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   } # End Filters
 
   Graham_Portfolio=Results
+  print(Graham_Portfolio)
 
   save(Graham_Portfolio,file='~/Graham_Portfolio.rda')
 
