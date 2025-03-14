@@ -27,7 +27,7 @@
 #' GI_min = 0
 #' GI_max = 21.5
 #' EPS = 0
-#' Exclude_ticket=c('ETR','LEN','MMM','XEL','HWM', 'WFC')
+#' Exclude_ticket = c('AZO','GL','TPL')
 #' Intelligent_Investor(Tickers,AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5, GI_min=0, GI_max=21.5, CR=2, EPS=0, Break=15)
 #'
 #' @export
@@ -208,10 +208,10 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Graham_filter3=Graham_filter2[Graham_filter2$EPS_Diluted >= EPS,]
 
     ### Filter 4: P/E ratio <=15
-    Graham_filter4=Graham_filter3[Graham_filter3$PE_Ratio <= PE,]
+    Graham_filter4=Graham_filter3[Graham_filter3$PE_Ratio <= PE_Ratio,]
 
     ### Filter 5: Market to Book < 1.5
-    Graham_filter5=Graham_filter4[Graham_filter4$Price_to_Book <= PB,]
+    Graham_filter5=Graham_filter4[Graham_filter4$Price_to_Book <= PB_Ratio,]
 
     ### Filter 6: 0 <= Graham Indicator <= 21.5
     Graham_filter6=Graham_filter5[Graham_filter5$Graham_Indicator >= GI_min & Graham_filter5$Graham_Indicator <= GI_max,]

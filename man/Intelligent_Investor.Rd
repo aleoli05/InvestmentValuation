@@ -67,7 +67,7 @@ PB_Ratio = 1.5
 GI_min = 0
 GI_max = 21.5
 EPS = 0
-Exclude_ticket=c('ETR','LEN','MMM','XEL','HWM', 'WFC')
+Exclude_ticket = c('AZO','GL','TPL')
 Intelligent_Investor(Tickers,AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5, GI_min=0, GI_max=21.5, CR=2, EPS=0, Break=15)
 
 }
