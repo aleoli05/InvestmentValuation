@@ -9,9 +9,17 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: This package create traditional portfolio investments.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
+Imports: quantmod, PerformanceAnalytics, magrittr, fBasics, tidyverse, stringr,
+    dplyr, neuralnet, zoo, forecast, timetk, moments, data.table, ggplot2, rvest,
+    caret, readxl, writexl, portfolio.optimization, PortfolioAnalytics, ROI, 
+    fPortfolio, timeSeries, gridExtra, cowplot, portfolioBacktest, CVXR, MFDFA,
+    DEoptim, cvar, rusquant,  httr, highcharter, scales, DT
+Collation: Please cite as: OLIVEIRA, A. S. Investment Valuation Package for R. https://github.com/aleoli05/InvestmentValuation 
+
+
+
