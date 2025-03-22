@@ -5,10 +5,17 @@
 \title{Gen_Portfolios_Inv Generate investment portfolios specified
 Generate portfolios selected, how Sharpe, Markowitz, ANNt, Magic Formula, Intelligent Investor}
 \usage{
-Gen_Portfolios_Inv()
+Gen_Portfolios_Inv(
+  Portfolios,
+  N_Assets,
+  Initial_Date_Testing,
+  Final_Date_Testing,
+  Rf,
+  type_ANNt
+)
 }
 \arguments{
-\item{Portfolios}{Specified portfolios generated}
+\item{Portfolios}{Specified portfolios generated: "Magic_Formula" or "Intelligent_Investor"}
 
 \item{N_Assets}{limit of asset numbers in the portfolio}
 
@@ -33,6 +40,7 @@ Gen_Portfolios_Inv Generate investment portfolios specified
 Generate portfolios selected, how Sharpe, Markowitz, ANNt, Magic Formula, Intelligent Investor
 }
 \examples{
+Portfolios <- c('Magic_Formula', 'Intelligent_Investor')
 N_Assets <- 3
 Initial_Date_Testing <- c('2023-01-03')
 Final_Date_Testing <- c('')
