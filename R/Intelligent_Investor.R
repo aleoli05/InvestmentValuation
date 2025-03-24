@@ -217,7 +217,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Graham_filter6=Graham_filter5[Graham_filter5$Graham_Indicator >= GI_min & Graham_filter5$Graham_Indicator <= GI_max,]
 
     ### Filter 7: Max Dividend
-    Graham_filter7 = arrange(as.data.frame(Graham_filter6), desc(Graham_filter6[,4]))
+    Graham_filter7 = dplyr::arrange(as.data.frame(Graham_filter6), desc(Graham_filter6[,4]))
     Graham_filter7 = na.omit(Graham_filter7)
 
     ### Filter 8: Break - Maximum number of stocks

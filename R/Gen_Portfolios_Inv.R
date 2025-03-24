@@ -23,7 +23,7 @@
 #' Rf <- 0
 #' type_ANNt <- 'T8'
 #' # Generate assets portfolio (maximum N assets specified)
-#' Gen_portfolios(3,'2023-01-03','',0,'T8')
+#' Gen_Portfolios_Inv(c('Magic_Formula', 'Intelligent_Investor'),20,'2023-01-03','',0,'T8')
 #' @export
 Gen_Portfolios_Inv <-function(Portfolios, N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf, type_ANNt){
 
@@ -901,8 +901,9 @@ ___________________________________________________________________
     load('~/Magic_Portfolio.rda')
     Magic_Portfolio_Select = Magic_Portfolio[1:N_Assets,]
   }else{
-    Graham_Portfolio_Select = NULL
+    Magic_Portfolio_Select = NULL
   }
+    #A1 = as.Date(Initial_Date_Testing)-5
     A1 = as.Date(Initial_Date_Testing)-5
     Ano = format(as.Date(A1), "%Y")
     k=(which(grepl(Ano,colnames(Magic_Portfolio_Select))))
@@ -1002,7 +1003,8 @@ ___________________________________________________________________
     Graham_Portfolio_Select = NULL
   }
 
-    A1 = as.Date(Initial_Date_Testing)-5
+    #A1 = as.Date(Initial_Date_Testing)-5
+    A1 = as.Date(Initial_Date_Testing)
     Ano = format(as.Date(A1), "%Y")
     k=(which(grepl(Ano,colnames(Graham_Portfolio_Select))))
     Graham_P = Graham_Portfolio_Select[,k]
@@ -1164,17 +1166,17 @@ ___________________________________________________________________
       (as.matrix(Ret_Medio_RNA_T_Mkv[i,])+1)-1
     Comparativo[i,9] = (as.matrix(Comparativo[i-1,9])+1)*
       (as.matrix(RetornoMedioMaxIS_RNAt[i,])+1)-1
-    Comparativo[i,10] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,10] = (as.matrix(Comparativo[i-1,10])+1)*
       (as.matrix(Ret_Medio_Magic_EQ[i,])+1)-1
-    Comparativo[i,11] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,11] = (as.matrix(Comparativo[i-1,11])+1)*
       (as.matrix(Ret_Medio_Magic_MKW[i,])+1)-1
-    Comparativo[i,12] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,12] = (as.matrix(Comparativo[i-1,12])+1)*
       (as.matrix(Ret_Medio_Magic_MaxIS[i,])+1)-1
-    Comparativo[i,13] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,13] = (as.matrix(Comparativo[i-1,13])+1)*
       (as.matrix(Ret_Medio_Graham_EQ[i,])+1)-1
-    Comparativo[i,14] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,14] = (as.matrix(Comparativo[i-1,14])+1)*
       (as.matrix(Ret_Medio_Graham_MKW[i,])+1)-1
-    Comparativo[i,15] = (as.matrix(Comparativo[i-1,9])+1)*
+    Comparativo[i,15] = (as.matrix(Comparativo[i-1,15])+1)*
       (as.matrix(Ret_Medio_Graham_MaxIS[i,])+1)-1
   }
 
@@ -1237,30 +1239,42 @@ ___________________________________________________________________
     Weights_All[17,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
   }
   if(w1==1){
-  Weights_All [18,1] <- 'Magic_MKW'
+    Weights_All [18,1] <- 'Magic_EQ'
+    for(k in (1:ncol(Pesos_Magic_Eq2))){
+      Weights_All[18,k+1]=data.frame(colnames(Pesos_Magic_Eq2))[k,]
+      Weights_All[19,k+1]=round(data.frame(Pesos_Magic_Eq2)[k],2)
+    }
+  Weights_All [20,1] <- 'Magic_MKW'
   for(k in (1:ncol(Pesos_Magic_MKW2))){
-    Weights_All[18,k+1]=data.frame(colnames(Pesos_Magic_MKW2))[k,]
-    Weights_All[19,k+1]=round(data.frame(Pesos_Magic_MKW2)[k],2)
+    Weights_All[20,k+1]=data.frame(colnames(Pesos_Magic_MKW2))[k,]
+    Weights_All[21,k+1]=round(data.frame(Pesos_Magic_MKW2)[k],2)
   }
-  Weights_All [20,1] <- 'Magic_SHARPE'
+  Weights_All [22,1] <- 'Magic_SHARPE'
   for(k in (1:ncol(Weight_Magic_Sharpe))){
-    Weights_All[20,k+1]=data.frame(colnames(Weight_Magic_Sharpe))[k,]
-    Weights_All[21,k+1]=round(data.frame(Weight_Magic_Sharpe)[k],2)
+    Weights_All[22,k+1]=data.frame(colnames(Weight_Magic_Sharpe))[k,]
+    Weights_All[23,k+1]=round(data.frame(Weight_Magic_Sharpe)[k],2)
   }
   }
   if(w2==1){
-  Weights_All [22,1] <- 'Graham_MKW'
-  for(k in (1:ncol(Pesos_Graham_MKW2))){
-    Weights_All[22,k+1]=data.frame(colnames(Pesos_Graham_MKW2))[k,]
-    Weights_All[23,k+1]=round(data.frame(Pesos_Graham_MKW2)[k],2)
-  }
-  Weights_All [24,1] <- 'Graham_SHARPE'
-  for(k in (1:ncol(Weight_Graham_Sharpe))){
-    Weights_All[24,k+1]=data.frame(colnames(Weight_Graham_Sharpe))[k,]
-    Weights_All[25,k+1]=round(data.frame(Weight_Graham_Sharpe)[k],2)
-  }
+  Weights_All [24,1] <- 'Graham_EQ'
+  for(k in (1:ncol(Pesos_Graham_Eq2))){
+    Weights_All[24,k+1]=data.frame(colnames(Pesos_Graham_Eq2))[k,]
+    Weights_All[25,k+1]=round(data.frame(Pesos_Graham_Eq2)[k],2)
+    }
+    Weights_All [26,1] <- 'Graham_MKW'
+    for(k in (1:ncol(Pesos_Graham_MKW2))){
+      Weights_All[26,k+1]=data.frame(colnames(Pesos_Graham_MKW2))[k,]
+      Weights_All[27,k+1]=round(data.frame(Pesos_Graham_MKW2)[k],2)
+    }
+    Weights_All [28,1] <- 'Graham_SHARPE'
+    for(k in (1:ncol(Weight_Graham_Sharpe))){
+      Weights_All[28,k+1]=data.frame(colnames(Weight_Graham_Sharpe))[k,]
+      Weights_All[29,k+1]=round(data.frame(Weight_Graham_Sharpe)[k],2)
+    }
   }
   Rf=Rf*100
+  save(w1,file='~/w1.rda')
+  save(w2,file='~/w2.rda')
   save(mean_sharpe,file="~/mean_sharpe.rda")
   save(sd_sharpe,file="~/sd_sharpe.rda")
   save(weight_test,file="~/weight_test.rda")
@@ -1286,10 +1300,10 @@ ___________________________________________________________________
   save(Weight_Sharpe_MF,file='~/Weight_Sharpe_MF.rda')
   save(Weight_ANNt_Sharpe,file='~/Weight_ANNt_Sharpe.rda')
   save(Pesos_Magic_Eq2,file='~/Pesos_Magic_Eq2.rda')
-  save(Pesos_Magic_MKW2,file='~/Pesos_Magic_Mkv2.rda')
+  save(Pesos_Magic_MKW2,file='~/Pesos_Magic_MKW2.rda')
   save(Weight_Magic_Sharpe,file='~/Weight_Magic_Sharpe.rda')
   save(Pesos_Graham_Eq2,file='~/Pesos_Graham_Eq2.rda')
-  save(Pesos_Graham_MKW2,file='~/Pesos_Graham_Mkv2.rda')
+  save(Pesos_Graham_MKW2,file='~/Pesos_Graham_MKW2.rda')
   save(Weight_Graham_Sharpe,file='~/Weight_Graham_Sharpe.rda')
 
   save(sd_MKW, file='~/sd_MKW.rda')

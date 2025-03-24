@@ -47,7 +47,7 @@ Final_Date_Testing <- c('')
 Rf <- 0
 type_ANNt <- 'T8'
 # Generate assets portfolio (maximum N assets specified)
-Gen_portfolios(3,'2023-01-03','',0,'T8')
+Gen_Portfolios_Inv(c('Magic_Formula', 'Intelligent_Investor'),20,'2023-01-03','',0,'T8')
 }
 \author{
 Alexandre Silva de Oliveira
