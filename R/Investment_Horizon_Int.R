@@ -144,7 +144,7 @@ if (Import =='No'){
                        GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS, Break=Break,
                        Plot_IS=Plot_IS,
                        Plot_CF=Plot_CF,
-                       Plot_BS=Plot_BS)
+                       Plot_BS=Plot_BS,Exclude_ticket = Exclude_ticket )
   Magic_Formula(Tickers=Tickers,AQ=AQ,Break=Break,
                 Plot_IS='', Plot_BS='',Plot_CF='',Exclude_ticket = Exclude_ticket )
 
