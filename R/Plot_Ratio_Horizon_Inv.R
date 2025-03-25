@@ -126,7 +126,7 @@ Plot_Annualized_Returns_Horizon <-function(){
        ylim = c(min(Comparativo_RETORNOS_Horizon_Anual), max(Comparativo_RETORNOS_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -178,7 +178,7 @@ Plot_Annualized_Returns_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -241,7 +241,7 @@ Plot_Annualized_Returns_Horizon <-function(){
        ylim = c(min(Comparativo_RETORNOS_Horizon_Anual), max(Comparativo_RETORNOS_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -293,7 +293,7 @@ Plot_Annualized_Returns_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -395,7 +395,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
        ylim = c(min(Comparativo_Volatility_Horizon_Anual), max(Comparativo_Volatility_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -448,7 +448,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -511,7 +511,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
        ylim = c(min(Comparativo_Volatility_Horizon_Anual), max(Comparativo_Volatility_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -563,7 +563,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -665,7 +665,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
        ylim = c(min(Comparativo_Sharpe_Horizon_Anual), max(Comparativo_Sharpe_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -717,7 +717,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -780,7 +780,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
        ylim = c(min(Comparativo_Sharpe_Horizon_Anual), max(Comparativo_Sharpe_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -832,7 +832,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -934,7 +934,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
        ylim = c(min(Comparativo_Alpha_Horizon_Anual), max(Comparativo_Alpha_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -986,7 +986,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1049,7 +1049,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
        ylim = c(min(Comparativo_Alpha_Horizon_Anual), max(Comparativo_Alpha_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -1101,7 +1101,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1203,7 +1203,7 @@ Plot_Annualized_Beta_Horizon <-function(){
        ylim = c(min(Comparativo_Beta_Horizon_Anual), max(Comparativo_Beta_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -1255,7 +1255,7 @@ Plot_Annualized_Beta_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1318,7 +1318,7 @@ Plot_Annualized_Beta_Horizon <-function(){
        ylim = c(min(Comparativo_Beta_Horizon_Anual), max(Comparativo_Beta_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -1370,7 +1370,7 @@ Plot_Annualized_Beta_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1472,7 +1472,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
        ylim = c(min(Comparativo_Sortino_Horizon_Anual), max(Comparativo_Sortino_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -1524,7 +1524,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1587,7 +1587,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
        ylim = c(min(Comparativo_Sortino_Horizon_Anual), max(Comparativo_Sortino_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -1639,7 +1639,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1741,7 +1741,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
        ylim = c(min(Comparativo_Treynor_Horizon_Anual), max(Comparativo_Treynor_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -1793,7 +1793,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -1856,7 +1856,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
        ylim = c(min(Comparativo_Treynor_Horizon_Anual), max(Comparativo_Treynor_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -1908,7 +1908,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2010,7 +2010,7 @@ Plot_Annualized_Var_Horizon <-function(){
        ylim = c(min(Comparativo_Var_Horizon_Anual), max(Comparativo_Var_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -2062,7 +2062,7 @@ Plot_Annualized_Var_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2125,7 +2125,7 @@ Plot_Annualized_Var_Horizon <-function(){
        ylim = c(min(Comparativo_Var_Horizon_Anual), max(Comparativo_Var_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -2177,7 +2177,7 @@ Plot_Annualized_Var_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2279,7 +2279,7 @@ Plot_Annualized_CVar_Horizon <-function(){
        ylim = c(min(Comparativo_CVar_Horizon_Anual), max(Comparativo_CVar_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -2331,7 +2331,7 @@ Plot_Annualized_CVar_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2394,7 +2394,7 @@ Plot_Annualized_CVar_Horizon <-function(){
        ylim = c(min(Comparativo_CVar_Horizon_Anual), max(Comparativo_CVar_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -2446,7 +2446,7 @@ Plot_Annualized_CVar_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2548,7 +2548,7 @@ Plot_Annualized_RCum_Horizon <-function(){
        ylim = c(min(Comparativo_RCum_Horizon_Anual), max(Comparativo_RCum_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -2600,7 +2600,7 @@ Plot_Annualized_RCum_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2663,7 +2663,7 @@ Plot_Annualized_RCum_Horizon <-function(){
        ylim = c(min(Comparativo_RCum_Horizon_Anual), max(Comparativo_RCum_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -2715,7 +2715,7 @@ Plot_Annualized_RCum_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2825,7 +2825,7 @@ Plot_Annualized_Rm_Horizon <-function(){
        ylim = c(min(Comparativo_Rm_Horizon_Anual), max(Comparativo_Rm_Horizon_Anual)))
   lines(s, col = c("brown"))
   lines(u, col = c("gray"))
-  lines(h, col = c("yellow"))
+  lines(h, col = c("pink"))
   lines(z, col = c("red"))
   lines(p, col = c("purple"))
   lines(w, col = c("blue"))
@@ -2877,7 +2877,7 @@ Plot_Annualized_Rm_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple","blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))
@@ -2940,7 +2940,7 @@ Plot_Annualized_Rm_Horizon <-function(){
        ylim = c(min(Comparativo_Rm_Horizon_Anual), max(Comparativo_Rm_Horizon_Anual)))
   lines(s, col = c("brown"), lwd=2)
   lines(u, col = c("gray"), lwd=2)
-  lines(h, col = c("yellow"), lwd=2)
+  lines(h, col = c("pink"), lwd=2)
   lines(z, col = c("red"), lwd=2)
   lines(p, col = c("purple"), lwd=2)
   lines(w, col = c("blue"), lwd=2)
@@ -2992,7 +2992,7 @@ Plot_Annualized_Rm_Horizon <-function(){
          #bty = "o",
          bty = "n",
          lwd = 3,
-         col = c("black", "brown", "gray", "yellow", "red",
+         col = c("black", "brown", "gray", "pink", "red",
                  "purple", "blue", "green", "darkgreen",
                  "darkblue", "darkred", "darkgray",
                  "yellow", "gold", "orange"))

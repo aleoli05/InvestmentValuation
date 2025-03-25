@@ -800,7 +800,7 @@ Corte= which(rownames(as.data.frame(Comparativo_RETORNOS_Horizon_Anual))==as.Dat
 Coparativo_Backup = Comparativo_RETORNOS_Horizon_Anual
 Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual[1:Corte,]
 
-
+load('~/RM.rda')
 
 png(file="~/Graphic_Annualized_Returns_Horizon.png", width=1920, height=1920, res=296, family = "A")
 par(#mfrow=c(2,2),
@@ -856,7 +856,7 @@ plot(Periodos, Retornos,
      ylim = c(min(Comparativo_RETORNOS_Horizon_Anual), max(Comparativo_RETORNOS_Horizon_Anual)))
 lines(s, col = c("brown"))
 lines(u, col = c("gray"))
-lines(h, col = c("yellow"))
+lines(h, col = c("pink"))
 lines(z, col = c("red"))
 lines(p, col = c("purple"))
 lines(w, col = c("blue"))
@@ -907,7 +907,7 @@ legend("topleft",
        #bty = "o",
        bty = "n",
        lwd = 3,
-       col = c("black", "brown", "gray", "yellow", "red",
+       col = c("black", "brown", "gray", "pink", "red",
                "purple","blue", "green", "darkgreen",
                "darkblue", "darkred", "darkgray",
                "yellow", "gold", "orange"))
@@ -970,7 +970,7 @@ plot(Periodos, Retornos,
      ylim = c(min(Comparativo_RETORNOS_Horizon_Anual), max(Comparativo_RETORNOS_Horizon_Anual)))
 lines(s, col = c("brown"), lwd=2)
 lines(u, col = c("gray"), lwd=2)
-lines(h, col = c("yellow"), lwd=2)
+lines(h, col = c("pink"), lwd=2)
 lines(z, col = c("red"), lwd=2)
 lines(p, col = c("purple"), lwd=2)
 lines(w, col = c("blue"), lwd=2)
@@ -1021,7 +1021,7 @@ legend("topleft",
        #bty = "o",
        bty = "n",
        lwd = 3,
-       col = c("black", "brown", "gray", "yellow", "red",
+       col = c("black", "brown", "gray", "pink", "red",
                "purple", "blue", "green", "darkgreen",
                "darkblue", "darkred", "darkgray",
                "yellow", "gold", "orange"))
