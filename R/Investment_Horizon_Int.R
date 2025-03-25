@@ -275,13 +275,13 @@ Weights_Magic_MKW_Horizon [2,1] <- 'Initial_Date_Testing'
 Weights_Magic_MKW_Horizon [2,2] <- 'Final_Date_Testing'
 Weights_Magic_MKW_Horizon [3,2] <- 'Days'
 
-Weights_Magic_SHARPE_Horizon <- matrix(ncol=60, nrow=(Frequency*2+1))
-Weights_Magic_SHARPE_Horizon <- as.data.frame((Weights_Magic_SHARPE_Horizon))
-Weights_Magic_SHARPE_Horizon [1,1] <- 'Magic_SHARPE PORTFOLIOS'
-Weights_Magic_SHARPE_Horizon [1,2] <- 'ASSETS'
-Weights_Magic_SHARPE_Horizon [2,1] <- 'Initial_Date_Testing'
-Weights_Magic_SHARPE_Horizon [2,2] <- 'Final_Date_Testing'
-Weights_Magic_SHARPE_Horizon [3,2] <- 'Days'
+Weights_Magic_Sharpe_Horizon <- matrix(ncol=60, nrow=(Frequency*2+1))
+Weights_Magic_Sharpe_Horizon <- as.data.frame((weights_Magic_Sharpe_Horizon))
+Weights_Magic_Sharpe_Horizon [1,1] <- 'Magic_SHARPE PORTFOLIOS'
+Weights_Magic_Sharpe_Horizon [1,2] <- 'ASSETS'
+Weights_Magic_Sharpe_Horizon [2,1] <- 'Initial_Date_Testing'
+Weights_Magic_Sharpe_Horizon [2,2] <- 'Final_Date_Testing'
+Weights_Magic_Sharpe_Horizon [3,2] <- 'Days'
 
 Weights_Graham_EQ_Horizon <- matrix(ncol=60, nrow=(Frequency*2+1))
 Weights_Graham_EQ_Horizon <- as.data.frame((Weights_Graham_EQ_Horizon))
@@ -299,13 +299,13 @@ Weights_Graham_MKW_Horizon [2,1] <- 'Initial_Date_Testing'
 Weights_Graham_MKW_Horizon [2,2] <- 'Final_Date_Testing'
 Weights_Graham_MKW_Horizon [3,2] <- 'Days'
 
-Weights_Graham_SHARPE_Horizon <- matrix(ncol=60, nrow=(Frequency*2+1))
-Weights_Graham_SHARPE_Horizon <- as.data.frame((Weights_Graham_SHARPE_Horizon))
-Weights_Graham_SHARPE_Horizon [1,1] <- 'Graham_SHARPE PORTFOLIOS'
-Weights_Graham_SHARPE_Horizon [1,2] <- 'ASSETS'
-Weights_Graham_SHARPE_Horizon [2,1] <- 'Initial_Date_Testing'
-Weights_Graham_SHARPE_Horizon [2,2] <- 'Final_Date_Testing'
-Weights_Graham_SHARPE_Horizon [3,2] <- 'Days'
+Weights_Graham_Sharpe_Horizon <- matrix(ncol=60, nrow=(Frequency*2+1))
+Weights_Graham_Sharpe_Horizon <- as.data.frame((weights_Graham_Sharpe_Horizon))
+Weights_Graham_Sharpe_Horizon [1,1] <- 'Graham_SHARPE PORTFOLIOS'
+Weights_Graham_Sharpe_Horizon [1,2] <- 'ASSETS'
+Weights_Graham_Sharpe_Horizon [2,1] <- 'Initial_Date_Testing'
+Weights_Graham_Sharpe_Horizon [2,2] <- 'Final_Date_Testing'
+Weights_Graham_Sharpe_Horizon [3,2] <- 'Days'
 ######################################
 for (i in (1:Frequency)){
   if (length(Specific_Dates)!=1){
@@ -751,31 +751,31 @@ nline = nrow(Comparativo_RETORNOS_Horizon_Anual)
 
 
 #########################
-Weights_Investment_Horizon(Portfolio='MF_EQ')
-Weights_Investment_Horizon(Portfolio='MF_MKW')
-Weights_Investment_Horizon(Portfolio='MKW')
-Weights_Investment_Horizon(Portfolio='ANNt_EQ')
-Weights_Investment_Horizon(Portfolio='ANNt_MKW')
-Weights_Investment_Horizon(Portfolio='MF_Sharpe')
-Weights_Investment_Horizon(Portfolio='ANNt_Sharpe')
-Weights_Investment_Horizon(Portfolio='Sharpe')
-Weights_Investment_Horizon(Portfolio='Magic_EQ')
-Weights_Investment_Horizon(Portfolio='Magic_MKW')
-Weights_Investment_Horizon(Portfolio='Magic_Sharpe')
-Weights_Investment_Horizon(Portfolio='Graham_EQ')
-Weights_Investment_Horizon(Portfolio='Graham_MKW')
-Weights_Investment_Horizon(Portfolio='Graham_Sharpe')
-Plot_Ratio_Horizon(Ratio="Annualized_Returns")
-Plot_Ratio_Horizon(Ratio="Annualized_Volatility")
-Plot_Ratio_Horizon(Ratio="Rm")
-Plot_Ratio_Horizon(Ratio="RCum")
-Plot_Ratio_Horizon(Ratio="CVar")
-Plot_Ratio_Horizon(Ratio="Var")
-Plot_Ratio_Horizon(Ratio="Beta")
-Plot_Ratio_Horizon(Ratio="Alpha")
-Plot_Ratio_Horizon(Ratio="Sharpe")
-Plot_Ratio_Horizon(Ratio="Sortino")
-Plot_Ratio_Horizon(Ratio="Treynor")
+Weights_Investment_Horizon_Inv(Portfolio='MF_EQ')
+Weights_Investment_Horizon_Inv(Portfolio='MF_MKW')
+Weights_Investment_Horizon_Inv(Portfolio='MKW')
+Weights_Investment_Horizon_Inv(Portfolio='ANNt_EQ')
+Weights_Investment_Horizon_Inv(Portfolio='ANNt_MKW')
+Weights_Investment_Horizon_Inv(Portfolio='MF_Sharpe')
+Weights_Investment_Horizon_Inv(Portfolio='ANNt_Sharpe')
+Weights_Investment_Horizon_Inv(Portfolio='Sharpe')
+Weights_Investment_Horizon_Inv(Portfolio='Magic_EQ')
+Weights_Investment_Horizon_Inv(Portfolio='Magic_MKW')
+Weights_Investment_Horizon_Inv(Portfolio='Magic_Sharpe')
+Weights_Investment_Horizon_Inv(Portfolio='Graham_EQ')
+Weights_Investment_Horizon_Inv(Portfolio='Graham_MKW')
+Weights_Investment_Horizon_Inv(Portfolio='Graham_Sharpe')
+Plot_Ratio_Horizon_Inv(Ratio="Annualized_Returns")
+Plot_Ratio_Horizon_Inv(Ratio="Annualized_Volatility")
+Plot_Ratio_Horizon_Inv(Ratio="Rm")
+Plot_Ratio_Horizon_Inv(Ratio="RCum")
+Plot_Ratio_Horizon_Inv(Ratio="CVar")
+Plot_Ratio_Horizon_Inv(Ratio="Var")
+Plot_Ratio_Horizon_Inv(Ratio="Beta")
+Plot_Ratio_Horizon_Inv(Ratio="Alpha")
+Plot_Ratio_Horizon_Inv(Ratio="Sharpe")
+Plot_Ratio_Horizon_Inv(Ratio="Sortino")
+Plot_Ratio_Horizon_Inv(Ratio="Treynor")
 
 
 #########################

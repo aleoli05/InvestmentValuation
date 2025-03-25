@@ -100,7 +100,7 @@ Weights_Investment_Horizon_Inv <-function(Portfolio='Sharpe'){
   Histograma = as.data.frame(na.omit(Histograma))
   #View(Histograma)
   Tabela = table(Histograma[,1])
-  Medias=Histograma %>% group_by(V1) %>% summarise(mean(as.numeric(V2)))
+  Medias=Histograma %>% dplyr::group_by(V1) %>% dplyr::summarise(V2=mean(as.numeric(V2)))
   #View(Medias)
   Tab_Freq = cbind(Tabela,Medias)
   Nomes = c('Asset','Frequency','Mean Weight')
