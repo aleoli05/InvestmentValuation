@@ -904,8 +904,12 @@ ___________________________________________________________________
     Magic_Portfolio_Select = NULL
   }
     #A1 = as.Date(Initial_Date_Testing)-5
-    A1 = as.Date(Initial_Date_Testing)-5
+    A1 = as.Date(Initial_Date_Testing)
     Ano = format(as.Date(A1), "%Y")
+    if(AQ=='Q'){
+     Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
+      Ano=paste(Ano,'Q', Mes, sep='')
+    }
     k=(which(grepl(Ano,colnames(Magic_Portfolio_Select))))
     Magic_P = Magic_Portfolio_Select[,k]
 
@@ -1006,6 +1010,10 @@ ___________________________________________________________________
     #A1 = as.Date(Initial_Date_Testing)-5
     A1 = as.Date(Initial_Date_Testing)
     Ano = format(as.Date(A1), "%Y")
+    if(AQ=='Q'){
+      Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
+      Ano=paste(Ano,'Q', Mes, sep='')
+    }
     k=(which(grepl(Ano,colnames(Graham_Portfolio_Select))))
     Graham_P = Graham_Portfolio_Select[,k]
 

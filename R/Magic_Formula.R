@@ -103,7 +103,7 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
     mensagem = paste(sym, ' -> Number:',Number,' of ', Comprimento, ' stocks', sep='')
     print('************************************')
     print(mensagem)
-    Fundamentals_analysis(sym=sym,AQ='A', Plot_IS=Plot_IS,
+    Fundamentals_analysis(sym=sym,AQ=AQ, Plot_IS=Plot_IS,
                           Plot_CF=Plot_CF,
                           Plot_BS=Plot_BS)
 

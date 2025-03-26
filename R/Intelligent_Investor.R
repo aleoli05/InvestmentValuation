@@ -118,7 +118,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     mensagem = paste(sym, ' -> Number:',Number,' of ', Comprimento, ' stocks', sep='')
     print('************************************')
     print(mensagem)
-    Fundamentals_analysis(sym=sym,AQ='A', Plot_IS=Plot_IS,
+    Fundamentals_analysis(sym=sym,AQ=AQ, Plot_IS=Plot_IS,
                           Plot_CF=Plot_CF,
                           Plot_BS=Plot_BS)
 
