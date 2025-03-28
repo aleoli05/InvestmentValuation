@@ -65,6 +65,7 @@ Gen_Portfolios_Inv <-function(Portfolios, N_Assets, Initial_Date_Testing, Final_
   library(IntroCompFinR)
 
   #load('~/Rf.rda')
+  load('~/AQ.rda')
 
   if(type_ANNt=='T1'){
     load('~/T1.rda')

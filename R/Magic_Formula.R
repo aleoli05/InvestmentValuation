@@ -223,6 +223,7 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
   } # End Filters
   save(Magic, file='~/Magic.rda')
   save(Results, file='~/Results.rda')
+  save(AQ, file='~/AQ.rda')
   Magic_Portfolio=Results
   print("************************************")
   print("This is the Magic Portfolio for each period:")

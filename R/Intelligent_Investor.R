@@ -243,7 +243,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
 
 
   } # End Filters
-
+  save(AQ, file='~/AQ.rda')
   Graham_Portfolio=Results
   print(Graham_Portfolio)
 
