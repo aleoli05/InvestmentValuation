@@ -6,5 +6,6 @@ Install_Package_Require <-function(){
   install.packages('highcharter')
   install.packages('webshot')
   install.packages('scales')
+  install.packages('IntroCompFinR')
   webshot::install_phantomjs()
 }

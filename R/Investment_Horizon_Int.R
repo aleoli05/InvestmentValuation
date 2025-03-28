@@ -139,6 +139,7 @@ if (Import =='No'){
   }
   load('~/scenario.set.rda')
   scenario_ajustado=scenario.set
+  save(scenario_ajustado,file='~/scenario_ajustado.rda')
 
   Intelligent_Investor(Tickers=Tickers, AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                        GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS, Break=Break,

@@ -895,7 +895,7 @@ ___________________________________________________________________
   #############################################################################
   ################################################################################
   ### Incorporate Portfolios
-  w1 = as.numeric(any('Magic_Formula') %in% Portfolio_Results)
+  w1 = as.numeric(any('Magic_Formula') %in% Portfolios)
   if (w1==1){
     n_assets = N_Assets
     load('~/Magic_Portfolio.rda')
@@ -998,7 +998,7 @@ ___________________________________________________________________
   Ret_Medio_Magic_MaxIS=c(rep(0,nrow(PosCovidSP500)))
 }
 
-  w2 = as.numeric(any('Inteligent_Investor') %in% Portfolio_Results)
+  w2 = as.numeric(any('Intelligent_Investor') %in% Portfolios)
   if (w2==1){
     load('~/Graham_Portfolio.rda')
     #Graham_Portfolio_EQ = Graham_Portfolio[1:N_Assets,]
