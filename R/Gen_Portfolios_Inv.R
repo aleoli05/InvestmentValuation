@@ -995,8 +995,10 @@ ___________________________________________________________________
 }else{
   Pesos_Magic_MKW2=NULL
   weight_test_Magic=NULL
-  Ret_Medio_Magic_MKW=c(rep(0,nrow(PosCovidSP500)))
-  Ret_Medio_Magic_MaxIS=c(rep(0,nrow(PosCovidSP500)))
+  Ret_Medio_Magic_MKW=matrix(c(rep(0,nrow(PosCovidSP500))), nrow=nrow(PosCovidSP500),
+                             ncol=1, dimnames=list(rownames(Ret_Medio_Magic_EQ)))
+  Ret_Medio_Magic_MaxIS=matrix(c(rep(0,nrow(PosCovidSP500))), nrow=nrow(PosCovidSP500),
+                               ncol=1, dimnames=list(rownames(Ret_Medio_Magic_EQ)))
 }
 
   w2 = as.numeric(any(Portfolios=='Intelligent_Investor'))
@@ -1101,8 +1103,10 @@ ___________________________________________________________________
     }else{
       Pesos_Graham_MKW2=NULL
       weight_test_Graham=NULL
-      Ret_Medio_Graham_MKW=c(rep(0,nrow(PosCovidSP500)))
-      Ret_Medio_Graham_MaxIS=c(rep(0,nrow(PosCovidSP500)))
+      Ret_Medio_Graham_MKW=matrix(c(rep(0,nrow(PosCovidSP500))), nrow=nrow(PosCovidSP500),
+                                  ncol=1, dimnames=list(rownames(Ret_Medio_Graham_EQ)))
+      Ret_Medio_Graham_MaxIS=matrix(c(rep(0,nrow(PosCovidSP500))), nrow=nrow(PosCovidSP500),
+                                    ncol=1, dimnames=list(rownames(Ret_Medio_Graham_EQ)))
     }
   ################################################################################
   # Geração da Matriz de comparação dos Retornos
