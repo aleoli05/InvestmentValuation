@@ -37,6 +37,7 @@
 #' @param Plot_IS Chart of Income Sheet account selected
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
+#' @param Download Download data bases: 'Yes' or 'No'
 #'
 #' @examples
 #' Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
@@ -91,6 +92,7 @@
 #' Plot_IS='',
 #' Plot_BS= '',
 #' Plot_CF='')
+#' Download = 'Yes'
 
 #' @export
 Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training,
@@ -101,7 +103,7 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
                                 AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                 GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                 Plot_CF='Cash Dividends Paid',
-                                Plot_BS='Total Liabilities'){
+                                Plot_BS='Total Liabilities', Download='Yes'){
   ydev=dev.list()
   Break = N_Assets
   save(AQ, file='~/AQ.rda')
@@ -127,6 +129,7 @@ RM_Nome_Backup=RM
 save(RM_Nome_Backup,file='~/RM_Nome_Backup.rda')
 library(ANNt)
 #load('~/Horizon.rda')
+if (Download == 'Yes'){
 if (Import =='No'){
   if (Base=='yahoo'){
     Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily', Exclude_ticket = Exclude)
@@ -150,6 +153,8 @@ if (Import =='No'){
                 Plot_IS='', Plot_BS='',Plot_CF='',Exclude_ticket = Exclude )
 
 
+}}else{
+  load('~/scenario.set.rda')
 }
 
 if(Import=='No'){
