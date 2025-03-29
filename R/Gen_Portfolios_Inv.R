@@ -914,6 +914,7 @@ ___________________________________________________________________
     k=(which(grepl(Ano,colnames(Magic_Portfolio_Select))))
     Magic_P = Magic_Portfolio_Select[,k]
 
+
     CarteiraComparativa_Magic = Magic_P[1:n_assets]
     C_Magic_comparativa = as.data.frame(scenario.set) %>%
       dplyr::select(which((colnames(scenario.set) %in% CarteiraComparativa_Magic)))
@@ -931,10 +932,11 @@ ___________________________________________________________________
             Pesos_Magic_Eq2<- round(t(matrix(Pesos_Magic_Eq1[,2])),4)
             colnames(Pesos_Magic_Eq2) <- Pesos_Magic_Eq1[,1]
             rownames(Pesos_Magic_Eq2)<-'Weight'
+  if (w1==1){
             print(paste('[8] Weights of the Magic_EQ Portfolio:'))
             print(Pesos_Magic_Eq2)
 
-    if (w1==1){
+
     # Carteira Magic com pesos de Markovitz
     pesos_MKW_Magic <- round(tseries::portfolio.optim(
       as.matrix(C_Magic_comparativa))$pw, 4)
@@ -1038,10 +1040,11 @@ ___________________________________________________________________
     Pesos_Graham_Eq2<- round(t(matrix(Pesos_Graham_Eq1[,2])),4)
     colnames(Pesos_Graham_Eq2) <- Pesos_Graham_Eq1[,1]
     rownames(Pesos_Graham_Eq2)<-'Weight'
+if(w2==1){
     print(paste('[11] Weights of the Graham_EQ Portfolio:'))
     print(Pesos_Graham_Eq2)
 
-    if(w2==1){
+
     # Carteira Graham com pesos de Markovitz
     pesos_MKW_Graham <- round(tseries::portfolio.optim(
       as.matrix(C_Graham_comparativa))$pw, 4)
@@ -1107,7 +1110,8 @@ ___________________________________________________________________
                                   ncol=1, dimnames=list(rownames(Ret_Medio_Graham_EQ)))
       Ret_Medio_Graham_MaxIS=matrix(c(rep(0,nrow(PosCovidSP500))), nrow=nrow(PosCovidSP500),
                                     ncol=1, dimnames=list(rownames(Ret_Medio_Graham_EQ)))
-    }
+
+      }
   ################################################################################
   # Geração da Matriz de comparação dos Retornos
   RM <- colnames(scenario.set[1])
