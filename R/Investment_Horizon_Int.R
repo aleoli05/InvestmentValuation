@@ -155,6 +155,7 @@ if (Import =='No'){
 
 }}else{
   load('~/scenario.set.rda')
+  load('~/scenario_ajustado.rda')
 }
 
 if(Import=='No'){
