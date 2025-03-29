@@ -70,7 +70,7 @@ Weights_Investment_Horizon_Inv <-function(Portfolio='Sharpe'){
     hist=Weights_Magic_Sharpe_Horizon
     View(Weights_Magic_Sharpe_Horizon)
   }
-  if(Portfolio=='Magic_EQ'){
+  if(Portfolio=='Graham_EQ'){
     load('~/Weights_Graham_EQ_Horizon.rda')
     hist=Weights_Graham_EQ_Horizon
     View(Weights_Graham_EQ_Horizon)
