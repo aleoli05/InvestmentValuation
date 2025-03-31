@@ -103,7 +103,13 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   rownames(Graham_matrix)=nomes_linhas
   colnames(Graham_matrix)=Tick
 
-  lista_matrizes <- lapply(1:7, function(x) matrix(nrow=7,ncol=length((Tick))))
+  if(AQ=='A'){
+    N_Col=9
+  }
+  if(AQ=='Q'){
+    N_Col=12
+  }
+  lista_matrizes <- lapply(1:N_Col, function(x) matrix(nrow=7,ncol=length((Tick))))
 
   for (k in 1:7){
     rownames(lista_matrizes[[k]])=nomes_linhas
@@ -128,7 +134,14 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
 
     ###############################################
     ## j = Create a matrix for each year or quarter
-    for (j in 1:7){
+    t= ncol(bs)
+    Col_C=0
+    if(AQ=='A'){
+      Col_C=1
+      t=t-1
+    }
+    for (j in 1:t){
+      Col_Correct=j+Col_C
       if(ncol(bs)>=j){
       # Filter 1: Adequate_Size > 2 billions
       lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j]
@@ -145,7 +158,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
           }
 
       # Filter 3: Earning stability in then years >0
-      lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
+      lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),Col_Correct]
 
       # Filter 4: Dividend record in all years
       ### Dividends determination
@@ -153,19 +166,19 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
             if (z==1){
             Dividends = is[which(rownames(is)=='EPS (Diluted)')]
             } else{
-            Dividends = is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),j+1]
+            Dividends = is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),Col_Correct]
             }
-      lista_matrizes[[j]][4,i]=round(abs(cf[which(rownames(cf)=='Cash Dividends Paid'),j+1])/
-                                       (is[which(rownames(is)=='Shares Outstanding'),j+1])*Dividends, 2)
+      lista_matrizes[[j]][4,i]=round(abs(cf[which(rownames(cf)=='Cash Dividends Paid'),Col_Correct])/
+                                       (is[which(rownames(is)=='Shares Outstanding'),Col_Correct])*Dividends, 2)
 
       # Filter 5: P/E ratio < 15
-      lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),j+1]
+      lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]
 
       # Filter 6: Price to Book < 2.5
       lista_matrizes[[j]][6,i] = bs[which(rownames(bs)== 'Price to Book Ratio'),j]
 
       # Filter 7: Graham Indicator = (P/E) x (Price to Book) < 21.5
-      lista_matrizes[[j]][7,i] = round(is[which(rownames(is)== 'Price To Earnings Ratio'),j+1]/
+      lista_matrizes[[j]][7,i] = round(is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]/
                                          bs[which(rownames(bs)== 'Price to Book Ratio'),j], 2)
 
       # Filter 8: Cut 15 stocks

@@ -87,8 +87,13 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
                  'ROIC_MAGIC', 'EBIT_EV')
   rownames(Magic_matrix)=nomes_linhas
   colnames(Magic_matrix)=Tick
-
-  lista_Magic <- lapply(1:7, function(x) matrix(nrow=5,ncol=length((Tick))))
+  if(AQ=='A'){
+    N_Col=9
+  }
+  if(AQ=='Q'){
+    N_Col=12
+  }
+  lista_Magic <- lapply(1:N_Col, function(x) matrix(nrow=5,ncol=length((Tick))))
 
   for (k in 1:7){
     rownames(lista_Magic[[k]])=nomes_linhas
@@ -113,7 +118,21 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
 
     ###############################################
     ## j = Create a matrix for each year or quarter
-    for (j in 1:7){
+    t= ncol(bs)
+    Col_C=0
+    if(AQ=='A'){
+      Col_C=1
+      t=t-1
+    }
+
+    Operating_Income=as.numeric(which(grepl('Operating Income',rownames(is))))
+    if(length(Operating_Income)>1){
+      Operating_Income=Operating_Income[1]
+    }
+    x=as.numeric(any(rownames(is) =='Unusual Expense'))
+
+    for (j in 1:t){
+      Col_Correct=j+Col_C
       if(ncol(bs)>=j){
         # Filter 1: Tangible Assets
         lista_Magic[[j]][1,i] = bs[which(rownames(bs)=='Net Property, Plant & Equipment'),j]
@@ -122,13 +141,16 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
         # Filter 2: EBIT
         ###### Corrections in data
 
-        Operating_Income=as.numeric(which(grepl('Operating Income',rownames(is))))
-        x=as.numeric(any(rownames(is) =='Unusual Expense'))
+        #Operating_Income=as.numeric(which(grepl('Operating Income',rownames(is))))
+        #if(lenght(Operating_Income)>1){
+        #  Operating_Income=Operating_Income[1]
+        #}
+        #x=as.numeric(any(rownames(is) =='Unusual Expense'))
         if(x==1){
-          lista_Magic[[j]][2,i] = is[Operating_Income,j]-
-                                     is[which(rownames(is)=='Unusual Expense'),j]
+          lista_Magic[[j]][2,i] = is[Operating_Income,Col_Correct]-
+                                     is[which(rownames(is)=='Unusual Expense'),Col_Correct]
         }else{
-          lista_Magic[[j]][2,i] = is[Operating_Income,j]
+          lista_Magic[[j]][2,i] = is[Operating_Income,Col_Correct]
           Excluidos=append(Excluidos,Tick[i]) # Armazena ativos sem despesas não operacionais
         }
 
@@ -138,7 +160,7 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
         lista_Magic[[j]][3,i]=bs[which(rownames(bs)=='Total Assets'),j]*
                                  bs[which(rownames(bs)=='Price to Book Ratio'),j]+
                                  bs[which(rownames(bs)=='Total Debt'),j]-
-                                 cf[which(rownames(cf)=='Free Cash Flow'),j+1]
+                                 cf[which(rownames(cf)=='Free Cash Flow'),Col_Correct]
         }else{
           k=as.numeric(any(grepl('Debt',rownames(bs))))
           if(k==1){
@@ -151,7 +173,7 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
           }
           lista_Magic[[j]][3,i]=bs[which(rownames(bs)=='Total Assets'),j]*
                                 debt-
-                                cf[which(rownames(cf)=='Free Cash Flow'),j+1]
+                                cf[which(rownames(cf)=='Free Cash Flow'),Col_Correct]
 
         }
         # Filter 4: ROIC_Magic = EBIT/Tangible Assets
