@@ -908,8 +908,13 @@ ___________________________________________________________________
     A1 = as.Date(Initial_Date_Testing)
     Ano = format(as.Date(A1), "%Y")
     if(AQ=='Q'){
-     Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
-      Ano=paste(Ano,'Q', Mes, sep='')
+        A1 = as.Date(Initial_Date_Testing)-5
+        Ano = format(as.Date(A1), "%Y")
+        Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
+        if(Mes==0){
+          Mes=1
+        }
+        Ano=paste(Ano,'Q', Mes, sep='')
     }
     k=(which(grepl(Ano,colnames(Magic_Portfolio_Select))))
     Magic_P = Magic_Portfolio_Select[,k]

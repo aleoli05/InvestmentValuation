@@ -80,22 +80,21 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
     Tick=Tick[-Exclude]
   }
   ###############
+  getFins(Tick[1],AQ,'B')
+  Comparacao_Colunas = colnames(dfn)
   #######################################################################
   # Import the statements for all companies required
   Magic_matrix = matrix(nrow=5,ncol=length((Tick)))
   nomes_linhas=c('Tangible_Assets', 'EBIT', 'EV',
                  'ROIC_MAGIC', 'EBIT_EV')
   rownames(Magic_matrix)=nomes_linhas
-  colnames(Magic_matrix)=Tick
-  if(AQ=='A'){
-    N_Col=9
-  }
-  if(AQ=='Q'){
-    N_Col=12
-  }
+    colnames(Magic_matrix)=Tick
+
+  N_Col=length(Comparacao_Colunas)
+
   lista_Magic <- lapply(1:N_Col, function(x) matrix(nrow=5,ncol=length((Tick))))
 
-  for (k in 1:7){
+  for (k in 1:N_Col){
     rownames(lista_Magic[[k]])=nomes_linhas
     colnames(lista_Magic[[k]])=Tick
   }
@@ -131,7 +130,9 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
     }
     x=as.numeric(any(rownames(is) =='Unusual Expense'))
 
+
     for (j in 1:t){
+      if(Comparacao_Colunas==colnames(bs)){
       Col_Correct=j+Col_C
       if(ncol(bs)>=j){
         # Filter 1: Tangible Assets
@@ -197,21 +198,92 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
       date_matrix2 = paste('~/lista_Magic.xlsx', sep='')
       save(lista_Magic, file=date_matrix)
       write_xlsx(as.data.frame(lista_Magic), date_matrix2)
+      }else{
+        Col_Correct=j+1+Col_C
+        if(ncol(bs)>j){
+          # Filter 1: Tangible Assets
+          lista_Magic[[j]][1,i] = bs[which(rownames(bs)=='Net Property, Plant & Equipment'),j+1]
+
+
+          # Filter 2: EBIT
+          ###### Corrections in data
+
+          #Operating_Income=as.numeric(which(grepl('Operating Income',rownames(is))))
+          #if(lenght(Operating_Income)>1){
+          #  Operating_Income=Operating_Income[1]
+          #}
+          #x=as.numeric(any(rownames(is) =='Unusual Expense'))
+          if(x==1){
+            lista_Magic[[j]][2,i] = is[Operating_Income,Col_Correct]-
+              is[which(rownames(is)=='Unusual Expense'),Col_Correct]
+          }else{
+            lista_Magic[[j]][2,i] = is[Operating_Income,Col_Correct]
+            Excluidos=append(Excluidos,Tick[i]) # Armazena ativos sem despesas não operacionais
+          }
+
+          # Filter 3: Enterprise Value
+          w=as.numeric(any(c('Total Debt') %in% is))
+          if(w==1){
+            lista_Magic[[j]][3,i]=bs[which(rownames(bs)=='Total Assets'),j+1]*
+              bs[which(rownames(bs)=='Price to Book Ratio'),j+1]+
+              bs[which(rownames(bs)=='Total Debt'),j+1]-
+              cf[which(rownames(cf)=='Free Cash Flow'),Col_Correct]
+          }else{
+            k=as.numeric(any(grepl('Debt',rownames(bs))))
+            if(k==1){
+              h = which(grepl('Debt',rownames(bs)))
+              debt=0
+              for (q in (1:length(h))){
+                debt=debt+bs[q,j+1]
+              }}else{
+                debt=0
+              }
+            lista_Magic[[j]][3,i]=bs[which(rownames(bs)=='Total Assets'),j+1]*
+              debt-
+              cf[which(rownames(cf)=='Free Cash Flow'),Col_Correct]
+
+          }
+          # Filter 4: ROIC_Magic = EBIT/Tangible Assets
+          lista_Magic[[j]][4,i]=lista_Magic[[j]][2,i]/
+            lista_Magic[[j]][1,i]
+
+          # Filter 5: Company Income = EBIT/
+          lista_Magic[[j]][5,i]= (lista_Magic[[j]][2,i]/
+                                    lista_Magic[[j]][3,i])
+
+        } else{
+          lista_Magic[[j]][1,i] = 0
+          lista_Magic[[j]][2,i] = 0
+          lista_Magic[[j]][3,i] = 0
+          lista_Magic[[j]][4,i] = 0
+          lista_Magic[[j]][5,i] = 0
+        }
+
+        ### Need save Magic matrix for each year or quarterly
+        date_matrix = paste('~/lista_Magic.rda', sep='')
+        date_matrix2 = paste('~/lista_Magic.xlsx', sep='')
+        save(lista_Magic, file=date_matrix)
+        write_xlsx(as.data.frame(lista_Magic), date_matrix2)
+
+      } # End for Comparação_nomes colunas
+
     } # End for j
+
   } # End for i
+
   save(Excluidos,file='~/Excluidos.rda')
 
-  Results = matrix(ncol=7,nrow=Break)
-  colnames(Results)=colnames(bs[1:7])
+  Results = matrix(ncol=t,nrow=Break)
+  colnames(Results)=colnames(bs[1:t])
 ################## Magic Resuls
-  Magic <- lapply(1:7, function(x) matrix(ncol=4,nrow=length((Tick))))
+  Magic <- lapply(1:t, function(x) matrix(ncol=4,nrow=length((Tick))))
 
-  for (k in 1:7){
+  for (k in 1:t){
     Magic[[k]][,1]=Tick
     colnames(Magic[[k]])=c('Ticker','Ranking_EBIT/Tangible_Assets','Ranking_EBIT/EV','Ranking_Magic')
   }
 
-  for (j in 1:7){
+  for (j in 1:t){
     Magic[[j]][,2]=order(lista_Magic[[j]][4,])
 
     ### Filter 1: Market Capitalization >= 2 Billions

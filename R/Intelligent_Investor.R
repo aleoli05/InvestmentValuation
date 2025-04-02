@@ -94,8 +94,10 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
     Tick=Tick[-Exclude]
   }
   ###############
+  getFins(Tick[1],AQ,'B')
+  Comparacao_Colunas = colnames(dfn)
   #######################################################################
-  # Import the statements for all companies required
+    # Import the statements for all companies required
   Graham_matrix = matrix(nrow=7,ncol=length((Tick)))
   nomes_linhas=c('Size_Total_Assets', 'Current_ratio', 'EPS_Diluted',
                  'Dividends_Yield', 'PE_Ratio', 'Price_to_Book',
@@ -103,15 +105,11 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   rownames(Graham_matrix)=nomes_linhas
   colnames(Graham_matrix)=Tick
 
-  if(AQ=='A'){
-    N_Col=9
-  }
-  if(AQ=='Q'){
-    N_Col=12
-  }
+  N_Col=length(Comparacao_Colunas)
+
   lista_matrizes <- lapply(1:N_Col, function(x) matrix(nrow=7,ncol=length((Tick))))
 
-  for (k in 1:7){
+  for (k in 1:N_Col){
     rownames(lista_matrizes[[k]])=nomes_linhas
     colnames(lista_matrizes[[k]])=Tick
   }
@@ -141,7 +139,8 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       t=t-1
     }
     for (j in 1:t){
-      Col_Correct=j+Col_C
+      if(Comparacao_Colunas==colnames(bs)){
+        Col_Correct=j+Col_C
       if(ncol(bs)>=j){
       # Filter 1: Adequate_Size > 2 billions
       lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j]
@@ -200,15 +199,77 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       date_matrix2 = paste('~/lista_matrizes.xlsx', sep='')
       save(lista_matrizes, file=date_matrix)
       write_xlsx(as.data.frame(lista_matrizes), date_matrix2)
+
+      }else{
+        Col_Correct=j+1+Col_C
+        if(ncol(bs)>j){
+          # Filter 1: Adequate_Size > 2 billions
+          lista_matrizes[[j]][1,i] = bs[which(rownames(bs)=='Total Assets'),j+1]
+
+
+          # Filter 2: Current_ratio >2
+          ###### Corrections in data
+          x=as.numeric(any(c('Current Ratio') %in% bs))
+          if(x==1){
+            lista_matrizes[[j]][2,i] = bs[which(rownames(bs)=='Current Ratio'),j+1]
+          }else{
+            lista_matrizes[[j]][2,i] = (bs[1,j]+bs[2,j])/bs[which(rownames(bs)=='Total Liabilities'),j+1]
+            Excluidos=append(Excluidos,Tick[i])
+          }
+
+          # Filter 3: Earning stability in then years >0
+          lista_matrizes[[j]][3,i]=is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),Col_Correct]
+
+          # Filter 4: Dividend record in all years
+          ### Dividends determination
+          z=as.numeric(any(c('EPS (Diluted)') %in% bs))
+          if (z==1){
+            Dividends = is[which(rownames(is)=='EPS (Diluted)')]
+          } else{
+            Dividends = is[which(rownames(is)=='EPS (Basic, Before Extraordinaries)'),Col_Correct]
+          }
+          lista_matrizes[[j]][4,i]=round(abs(cf[which(rownames(cf)=='Cash Dividends Paid'),Col_Correct])/
+                                           (is[which(rownames(is)=='Shares Outstanding'),Col_Correct])*Dividends, 2)
+
+          # Filter 5: P/E ratio < 15
+          lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]
+
+          # Filter 6: Price to Book < 2.5
+          lista_matrizes[[j]][6,i] = bs[which(rownames(bs)== 'Price to Book Ratio'),j+1]
+
+          # Filter 7: Graham Indicator = (P/E) x (Price to Book) < 21.5
+          lista_matrizes[[j]][7,i] = round(is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]/
+                                             bs[which(rownames(bs)== 'Price to Book Ratio'),j+1], 2)
+
+          # Filter 8: Cut 15 stocks
+
+
+          # Filter 9: Select stocks with good S&P rating ranking
+        } else{
+          lista_matrizes[[j]][1,i] = 0
+          lista_matrizes[[j]][2,i] = 0
+          lista_matrizes[[j]][3,i] = 0
+          lista_matrizes[[j]][4,i] = 0
+          lista_matrizes[[j]][5,i] = 0
+          lista_matrizes[[j]][6,i] = 0
+          lista_matrizes[[j]][7,i] = 0
+        }
+
+        ### Need save Graham matrix for each year or quarterly
+        date_matrix = paste('~/lista_matrizes.rda', sep='')
+        date_matrix2 = paste('~/lista_matrizes.xlsx', sep='')
+        save(lista_matrizes, file=date_matrix)
+        write_xlsx(as.data.frame(lista_matrizes), date_matrix2)
+      } # End for Comparação_nomes colunas
     } # End for j
   } # End for i
   save(Excluidos,file='~/Excluidos.rda')
 
-  Results = matrix(ncol=7,nrow=Break)
-  colnames(Results)=colnames(bs[1:7])
+  Results = matrix(ncol=t,nrow=Break)
+  colnames(Results)=colnames(bs[1:t])
 
 
-  for (j in 1:7){
+  for (j in 1:t){
     Graham_filter0= data.frame(t(do.call(rbind,lista_matrizes[j])))
 
     ### Filter 1: Market Capitalization >= 2 Billions
