@@ -81,6 +81,7 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
   }
   ###############
   getFins(Tick[1],AQ,'B')
+  load('~/dfn.rda')
   Comparacao_Colunas = colnames(dfn)
   #######################################################################
   # Import the statements for all companies required
@@ -132,7 +133,8 @@ Magic_Formula <- function(Tickers, AQ='A', Break=20,Plot_IS='Total Revenue',
 
 
     for (j in 1:t){
-      if(Comparacao_Colunas==colnames(bs)){
+      p = as.numeric(Comparacao_Colunas[1]==colnames(bs)[1])
+      if(p==1){
       Col_Correct=j+Col_C
       if(ncol(bs)>=j){
         # Filter 1: Tangible Assets

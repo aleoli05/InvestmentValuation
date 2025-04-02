@@ -95,6 +95,7 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   }
   ###############
   getFins(Tick[1],AQ,'B')
+  load('~/dfn.rda')
   Comparacao_Colunas = colnames(dfn)
   #######################################################################
     # Import the statements for all companies required
@@ -139,7 +140,8 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
       t=t-1
     }
     for (j in 1:t){
-      if(Comparacao_Colunas==colnames(bs)){
+      p = as.numeric(Comparacao_Colunas[1]==colnames(bs)[1])
+      if(p==1){
         Col_Correct=j+Col_C
       if(ncol(bs)>=j){
       # Filter 1: Adequate_Size > 2 billions
