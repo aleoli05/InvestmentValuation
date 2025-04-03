@@ -63,7 +63,7 @@ Gen_Portfolios_Inv <-function(Portfolios, N_Assets, Initial_Date_Testing, Final_
   library(MFDFA)
   library(DEoptim)
   library(IntroCompFinR)
-
+  options(warn=-1)
   #load('~/Rf.rda')
   load('~/AQ.rda')
 
