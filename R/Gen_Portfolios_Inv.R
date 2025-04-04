@@ -283,7 +283,7 @@ ___________________________________________________________________
 
   print("Lenght Data Verification Ok")
   print(paste('Initial Datas1Predict: ', Datas1Predict[1], sep=''))
-  print(paste('Test Period: ', Initia_Date_Testing, ' to ', Final_Date_Testing, sep=''))
+  print(paste('Test Period: ', Initial_Date_Testing, ' to ', Final_Date_Testing, sep=''))
   ###############################################################################
 
 
