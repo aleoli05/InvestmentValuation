@@ -78,6 +78,12 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
   }else{
     Datas1Predict = rownames(scenario.set)[(Initial_Date_Out):(which(rownames(scenario.set)==Final_Date_Out))]
   }
+
+
+  print(paste('Initial Datas1Predict: ', Datas1Predict[1], sep=''))
+  print(paste('Test Period: ', Initial_Date_Out, ' to ', Final_Date_Out, sep=''))
+
+
   save(Datas1Predict,file='~/Datas1Predict.rda')
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])
   colnames(PosCovidSP500)=colnames(scenario.set[1])
