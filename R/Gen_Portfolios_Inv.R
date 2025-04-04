@@ -14,6 +14,7 @@
 #' "T6"= NNet_t_Test;
 #' "T7"= MC_Signal_Test;
 #' "T8"= Type_ANNt: MC_t_Test
+#' @param Out "Yes" for test out of the sample; "No' for test in of the sample
 #' @author Alexandre Silva de Oliveira
 #' @examples
 #' Portfolios <- c('Magic_Formula', 'Intelligent_Investor')
@@ -25,7 +26,7 @@
 #' # Generate assets portfolio (maximum N assets specified)
 #' Gen_Portfolios_Inv(c('Magic_Formula', 'Intelligent_Investor'),20,'2023-01-03','',0,'T8')
 #' @export
-Gen_Portfolios_Inv <-function(Portfolios, N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf, type_ANNt){
+Gen_Portfolios_Inv <-function(Portfolios, N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf, type_ANNt, Out='No'){
 
   library(quantmod)
   library(PortfolioAnalytics)
@@ -906,11 +907,16 @@ ___________________________________________________________________
   }else{
     Magic_Portfolio_Select = NULL
   }
+
     #A1 = as.Date(Initial_Date_Testing)-5
-    A1 = as.Date(Initial_Date_Testing)
+    if (Out=='Yes'){
+      A1 = as.Date(Final_Date_Testing)
+    }else{
+      A1 = as.Date(Initial_Date_Testing)
+    }
     Ano = format(as.Date(A1), "%Y")
     if(AQ=='Q'){
-        A1 = as.Date(Initial_Date_Testing)-5
+        A1 = A1-5
         Ano = format(as.Date(A1), "%Y")
         Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
         if(Mes==0){
@@ -1021,10 +1027,14 @@ ___________________________________________________________________
   }
 
     #A1 = as.Date(Initial_Date_Testing)-5
-    A1 = as.Date(Initial_Date_Testing)
+    if (Out=='Yes'){
+      A1 = as.Date(Final_Date_Testing)
+    }else{
+      A1 = as.Date(Initial_Date_Testing)
+    }
     Ano = format(as.Date(A1), "%Y")
     if(AQ=='Q'){
-      A1 = as.Date(Initial_Date_Testing)-5
+      A1 = A1-5
       Ano = format(as.Date(A1), "%Y")
       Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
       Ano=paste(Ano,'Q', Mes, sep='')

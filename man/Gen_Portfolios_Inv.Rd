@@ -11,7 +11,8 @@ Gen_Portfolios_Inv(
   Initial_Date_Testing,
   Final_Date_Testing,
   Rf,
-  type_ANNt
+  type_ANNt,
+  Out = "No"
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ Gen_Portfolios_Inv(
 "T6"= NNet_t_Test;
 "T7"= MC_Signal_Test;
 "T8"= Type_ANNt: MC_t_Test}
+
+\item{Out}{"Yes" for test out of the sample; "No' for test in of the sample}
 }
 \description{
 Gen_Portfolios_Inv Generate investment portfolios specified
