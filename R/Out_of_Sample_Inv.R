@@ -255,7 +255,7 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
     dplyr::select(which((colnames(scenario.set) %in% Carteira_Magic_MKW)))
   C_Magic_MKW = C_Magic_MKW[Datas1Predict,]
   Ret_Medio_Magic_MKW = as.matrix(C_Magic_MKW)%*% Pesos_Magic_MKW2[1,]
-  print(paste('[9] weights of the Magic_MKW Portfolio:'))
+  print(paste('[10] weights of the Magic_MKW Portfolio:'))
   print(Pesos_Magic_MKW2)
 
   #####
@@ -269,7 +269,7 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
     dplyr::select(which((colnames(scenario.set) %in% Carteira_Magic_SHARPE)))
   C_Magic_SHARPE = C_Magic_SHARPE[Datas1Predict,]
   Ret_Medio_Magic_MaxIS= as.matrix(C_Magic_SHARPE)%*% Weight_Magic_Sharpe[1,]
-  print(paste('[9] weights of the Magic_SHARPE Portfolio:'))
+  print(paste('[11] weights of the Magic_SHARPE Portfolio:'))
   print(Weight_Magic_Sharpe)
 
   #####
@@ -283,7 +283,7 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
     dplyr::select(which((colnames(scenario.set) %in% Carteira_Graham_EQ)))
   C_Graham_EQ = C_Graham_EQ[Datas1Predict,]
   Ret_Medio_Graham_EQ = as.matrix(C_Graham_EQ)%*% Pesos_Graham_Eq2[1,]
-  print(paste('[9] weights of the Graham_EQ Portfolio:'))
+  print(paste('[12] weights of the Graham_EQ Portfolio:'))
   print(Pesos_Graham_Eq2)
 
   #####
@@ -297,7 +297,7 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
     dplyr::select(which((colnames(scenario.set) %in% Carteira_Graham_MKW)))
   C_Graham_MKW = C_Graham_MKW[Datas1Predict,]
   Ret_Medio_Graham_MKW = as.matrix(C_Graham_MKW)%*% Pesos_Graham_MKW2[1,]
-  print(paste('[9] weights of the Graham_MKW Portfolio:'))
+  print(paste('[13] weights of the Graham_MKW Portfolio:'))
   print(Pesos_Graham_MKW2)
 
   #####
@@ -311,7 +311,7 @@ Out_of_Sample_Inv <-function(Initial_Date_Out, Final_Date_Out){
     dplyr::select(which((colnames(scenario.set) %in% Carteira_Graham_SHARPE)))
   C_Graham_SHARPE = C_Graham_SHARPE[Datas1Predict,]
   Ret_Medio_Graham_MaxIS= as.matrix(C_Graham_SHARPE)%*% Weight_Graham_Sharpe[1,]
-  print(paste('[9] weights of the Graham_SHARPE Portfolio:'))
+  print(paste('[14] weights of the Graham_SHARPE Portfolio:'))
   print(Weight_Graham_Sharpe)
 
   #####
