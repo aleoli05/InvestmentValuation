@@ -452,6 +452,7 @@ scenario.set=Portfolio_with_RM_Original
 save(scenario.set, file="~/scenario.set.rda")
 
 Rf=Rf*100
+print(paste('Initial_Date: ', Initial_Date, sep=''))
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),N_Assets='n_Assets',Initial_Date_Testing=Initial_Date,Final_Date_Testing=Final_Date_Training,'x5', type_ANNt=Type_ANNt)
 Out_of_Sample_Inv(Initial_Date_Testing,'')
 Portfolio_Backtesting_Inv('','')
