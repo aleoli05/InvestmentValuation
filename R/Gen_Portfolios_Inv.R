@@ -282,6 +282,8 @@ ___________________________________________________________________
   #}
 
   print("Lenght Data Verification Ok")
+  print(paste('Initial Datas1Predict: ', Datas1Predict[1], sep=''))
+  print(paste('Test Period: ', Initia_Date_Testing, ' to ', Final_Date_Testing, sep=''))
   ###############################################################################
 
 
@@ -916,6 +918,7 @@ ___________________________________________________________________
         }
         Ano=paste(Ano,'Q', Mes, sep='')
     }
+    print(paste('Period: ', Ano, sep=''))
     k=(which(grepl(Ano,colnames(Magic_Portfolio_Select))))
     Magic_P = Magic_Portfolio_Select[,k]
 
@@ -1026,6 +1029,7 @@ ___________________________________________________________________
       Mes = round(as.numeric(format(as.Date(A1), "%m"))/3,0)
       Ano=paste(Ano,'Q', Mes, sep='')
     }
+    print(paste('Period: ', Ano, sep=''))
     k=(which(grepl(Ano,colnames(Graham_Portfolio_Select))))
     Graham_P = Graham_Portfolio_Select[,k]
 

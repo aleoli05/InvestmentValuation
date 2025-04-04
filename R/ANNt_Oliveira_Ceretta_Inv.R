@@ -123,7 +123,7 @@ Final_Date_Training <- Final_Date_Training
 ANNt_order ('', '', '', 'hidden', 'stepmax')
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date_Testing,'',Rf, Type_ANNt)
 Portfolio_Backtesting_Inv('','')
-Plot_Cumulative_Returns('')
+Plot_Cumulative_Returns_Inv('')
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()
 Sys.sleep((15))

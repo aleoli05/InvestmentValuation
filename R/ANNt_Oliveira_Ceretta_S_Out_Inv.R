@@ -455,7 +455,7 @@ Rf=Rf*100
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),N_Assets='n_Assets',Initial_Date_Testing=Initial_Date,Final_Date_Testing=Final_Date_Training,'x5', type_ANNt=Type_ANNt)
 Out_of_Sample_Inv(Initial_Date_Testing,'')
 Portfolio_Backtesting_Inv('','')
-Plot_Cumulative_Returns('')
+Plot_Cumulative_Returns_Inv('')
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()
 Sys.sleep((15))
