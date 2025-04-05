@@ -121,6 +121,7 @@ Plot_Annualized_Returns_Horizon <-function(){
     Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
   Analyzis=data.frame(Analyzis)
+  colnames(Analyzis)=cnames
   Nome_Compare=paste('~/Analyzis_Returns_Horizon_over_',Compare,'.rda',sep='')
   save(Analyzis, file=Nome_Compare)
   print(Analyzis)
@@ -421,7 +422,8 @@ Plot_Annualized_Volatility_Horizon <-function(){
   for(j in 1:(ncol(Base_Dif)+2)){
     Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
-  Analyzis=data.frame(Analyzis)
+   Analyzis=data.frame(Analyzis)
+   colnames(Analyzis)=cnames
   Nome_Compare=paste('~/Analyzis_Volatility_Horizon_over_',Compare,'.rda',sep='')
   save(Analyzis, file=Nome_Compare)
   print(Analyzis)
@@ -724,6 +726,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Sharpe_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -1025,6 +1028,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Alpha_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -1326,6 +1330,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Beta_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -1628,6 +1633,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Sortino_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -1930,6 +1936,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Treynor_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -2231,6 +2238,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Var_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -2532,6 +2540,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_CVar_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -2833,6 +2842,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_RCum_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
@@ -3142,6 +3152,7 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
 Analyzis=data.frame(Analyzis)
+colnames(Analyzis)=cnames
 Nome_Compare=paste('~/Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
 print(Analyzis)
