@@ -51,6 +51,11 @@ Plot_Ratio_Horizon_Inv <-function(Ratio="Annualized_Returns",Legend_position="to
 ################################################################################
 # Graphic Annualized Returns
   library(stringr)
+  if(Compare=='RM'){
+    load('~/RM.rda')
+    Compare=RM
+  }
+
 Plot_Annualized_Returns_Horizon <-function(){
   load('~/Comparativo_RETORNOS_Horizon_Anual.rda')
   load('~/N_Assets.rda')
@@ -103,7 +108,7 @@ Plot_Annualized_Returns_Horizon <-function(){
 
   for(i in 1:nrow(Base_Dif)){
     Vitories = 0
-    Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+    Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
     for(j in 1:ncol(Base_Dif)){
       if(Analyzis[i,j]>0){
         Vitories=Vitories+1
@@ -116,9 +121,9 @@ Plot_Annualized_Returns_Horizon <-function(){
     Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
   Analyzis=data.frame(Analyzis)
-  Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+  Nome_Compare=paste('~/Analyzis_Returns_Horizon_over_',Compare,'.rda',sep='')
   save(Analyzis, file=Nome_Compare)
-  Analyzis
+  print(Analyzis)
   #################################################################################
 
   png(file="~/Graphic_Annualized_Returns_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -404,7 +409,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
 
   for(i in 1:nrow(Base_Dif)){
     Vitories = 0
-    Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+    Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
     for(j in 1:ncol(Base_Dif)){
       if(Analyzis[i,j]>0){
         Vitories=Vitories+1
@@ -417,9 +422,9 @@ Plot_Annualized_Volatility_Horizon <-function(){
     Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
   Analyzis=data.frame(Analyzis)
-  Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+  Nome_Compare=paste('~/Analyzis_Volatility_Horizon_over_',Compare,'.rda',sep='')
   save(Analyzis, file=Nome_Compare)
-  Analyzis
+  print(Analyzis)
   #################################################################################
 
   png(file="~/Graphic_Annualized_Volatility_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -706,7 +711,7 @@ Compar = Comparativo_Sharpe_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -719,9 +724,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Sharpe_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Sharpe_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -1007,7 +1012,7 @@ Compar = Comparativo_Alpha_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -1020,9 +1025,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Alpha_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_Alpha_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -1308,7 +1313,7 @@ Compar = Comparativo_Beta_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -1321,9 +1326,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Beta_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_Beta_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -1610,7 +1615,7 @@ Compar = Comparativo_Sortino_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -1623,9 +1628,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Sortino_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_Sortino_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -1912,7 +1917,7 @@ Compar = Comparativo_Treynor_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -1925,9 +1930,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Treynor_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_Treynor_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -2213,7 +2218,7 @@ Compar = Comparativo_Var_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -2226,9 +2231,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Var_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_Var_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -2514,7 +2519,7 @@ Compar = Comparativo_CVar_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -2527,9 +2532,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_CVar_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_Annualized_CVar_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -2815,7 +2820,7 @@ Compar = Comparativo_RCum_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
     if(Analyzis[i,j]>0){
       Vitories=Vitories+1
@@ -2828,9 +2833,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_RCum_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
 
   png(file="~/Graphic_RCum_Horizon.png", width=1920, height=1920, res=296, family = "A")
@@ -3124,7 +3129,7 @@ Compar = Comparativo_Rm_Horizon_Anual[,n]
 
 for(i in 1:nrow(Base_Dif)){
   Vitories = 0
-  Analyzis[i,1:ncol(Base_Dif)]=Base_Dif[i,]-Compar
+  Analyzis[i,1:ncol(Base_Dif)]=round(Base_Dif[i,]-Compar,2)
   for(j in 1:ncol(Base_Dif)){
   if(Analyzis[i,j]>0){
   Vitories=Vitories+1
@@ -3137,9 +3142,9 @@ for(j in 1:(ncol(Base_Dif)+2)){
   Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
   }
 Analyzis=data.frame(Analyzis)
-Nome_Compare=paste('Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
+Nome_Compare=paste('~/Analyzis_Rm_Horizon_over_',Compare,'.rda',sep='')
 save(Analyzis, file=Nome_Compare)
-Analyzis
+print(Analyzis)
 #################################################################################
   png(file="~/Graphic_Rm_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
