@@ -6,10 +6,28 @@
 \usage{
 Plot_Ratio_Horizon_Inv(
   Ratio = "Annualized_Returns",
-  Legend_position = "topleft"
+  Legend_position = "topleft",
+  Compare = "RM"
 )
 }
 \arguments{
+\item{Compare}{with:
+RM - Return of Market proxy;
+MARKOWITZ;
+SHARPE;
+MF_EQ;
+MF_MKW;
+MF_SHARPE;
+ANNt-EQ;
+ANNt_MKW;
+ANNt_SHARPE;
+Magic_EQ;
+Magic_MKW;
+Magic_SHARPE;
+Graham_EQ;
+Graham_MKW;
+Graham_SHARPE.}
+
 \item{Ratio:}{Rm - Average_Return - Means of Returns from each portfolio;
 Annualized_Returns - This is the standard ratio;
 RCum - Cumulative_Returns;
