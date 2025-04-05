@@ -70,7 +70,7 @@ Plot_Annualized_Returns_Horizon <-function(){
   Coparativo_Backup = Comparativo_RETORNOS_Horizon_Anual
   Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual[1:Corte,]
 
-
+  View(Comparativo_RETORNOS_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Returns_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -339,7 +339,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
   Coparativo_Backup = Comparativo_Volatility_Horizon_Anual
   Comparativo_Volatility_Horizon_Anual=Comparativo_Volatility_Horizon_Anual[1:Corte,]
 
-
+  View(Comparativo_Volatility_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Volatility_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -609,7 +609,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
   Coparativo_Backup = Comparativo_Sharpe_Horizon_Anual
   Comparativo_Sharpe_Horizon_Anual=Comparativo_Sharpe_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Sharpe_Horizon_Anual)
 
   png(file="~/Graphic_Sharpe_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -878,7 +878,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
   Coparativo_Backup = Comparativo_Alpha_Horizon_Anual
   Comparativo_Alpha_Horizon_Anual=Comparativo_Alpha_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Alpha_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Alpha_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -1147,7 +1147,7 @@ Plot_Annualized_Beta_Horizon <-function(){
   Coparativo_Backup = Comparativo_Beta_Horizon_Anual
   Comparativo_Beta_Horizon_Anual=Comparativo_Beta_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Beta_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Beta_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -1416,7 +1416,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
   Coparativo_Backup = Comparativo_Sortino_Horizon_Anual
   Comparativo_Sortino_Horizon_Anual=Comparativo_Sortino_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Sortino_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Sortino_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -1685,7 +1685,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
   Coparativo_Backup = Comparativo_Treynor_Horizon_Anual
   Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Treynor_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Treynor_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -1954,7 +1954,7 @@ Plot_Annualized_Var_Horizon <-function(){
   Coparativo_Backup = Comparativo_Var_Horizon_Anual
   Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Var_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_Var_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -2223,7 +2223,7 @@ Plot_Annualized_CVar_Horizon <-function(){
   Coparativo_Backup = Comparativo_CVar_Horizon_Anual
   Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_CVar_Horizon_Anual)
 
   png(file="~/Graphic_Annualized_CVar_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -2492,7 +2492,7 @@ Plot_Annualized_RCum_Horizon <-function(){
   Coparativo_Backup = Comparativo_RCum_Horizon_Anual
   Comparativo_RCum_Horizon_Anual=Comparativo_RCum_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_RCum_Horizon_Anual)
 
   png(file="~/Graphic_RCum_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -2767,7 +2767,7 @@ Plot_Annualized_Rm_Horizon <-function(){
   Coparativo_Backup = Comparativo_Rm_Horizon_Anual
   Comparativo_Rm_Horizon_Anual=Comparativo_Rm_Horizon_Anual[1:Corte,]
 
-
+View(Comparativo_Rm_Horizon_Anual)
 
   png(file="~/Graphic_Rm_Horizon.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
