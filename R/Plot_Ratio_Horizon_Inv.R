@@ -401,7 +401,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
   nc = ncol(Base_Dif)+2
   nr = nrow(Base_Dif)+1
   Analyzis=matrix(nrow=nr,ncol=nc)
-  rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+  rownames(Analyzis)=c(rownames(Base_Dif),'Min_Volatility')
   cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
   colnames(Analyzis)=cnames
   n=which(rownames(Analyzis)==Compare)
@@ -420,7 +420,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
     Analyzis[i,j+2]=round(mean(Analyzis[i,1:ncol(Base_Dif)]),2)
   }
   for(j in 1:(ncol(Base_Dif)+2)){
-    Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
+    Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.min(Analyzis[,j])]
   }
    Analyzis=data.frame(Analyzis)
    colnames(Analyzis)=cnames
@@ -704,7 +704,7 @@ Base_Dif=t(Comparativo_Sharpe_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_Sharpe')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -1006,7 +1006,7 @@ Base_Dif=t(Comparativo_Alpha_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_Alpha')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -1308,7 +1308,7 @@ Base_Dif=t(Comparativo_Beta_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Min_Beta')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -1327,7 +1327,7 @@ for(i in 1:nrow(Base_Dif)){
   Analyzis[i,j+2]=round(mean(Analyzis[i,1:ncol(Base_Dif)]),2)
 }
 for(j in 1:(ncol(Base_Dif)+2)){
-  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
+  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.min(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
 colnames(Analyzis)=cnames
@@ -1611,7 +1611,7 @@ Base_Dif=t(Comparativo_Sortino_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_Sortino')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -1914,7 +1914,7 @@ Base_Dif=t(Comparativo_Treynor_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_Treynor')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -2216,7 +2216,7 @@ Base_Dif=t(Comparativo_Var_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Min_Var')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -2235,7 +2235,7 @@ for(i in 1:nrow(Base_Dif)){
   Analyzis[i,j+2]=round(mean(Analyzis[i,1:ncol(Base_Dif)]),2)
 }
 for(j in 1:(ncol(Base_Dif)+2)){
-  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
+  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.min(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
 colnames(Analyzis)=cnames
@@ -2518,7 +2518,7 @@ Base_Dif=t(Comparativo_CVar_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Min_CVar')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -2537,7 +2537,7 @@ for(i in 1:nrow(Base_Dif)){
   Analyzis[i,j+2]=round(mean(Analyzis[i,1:ncol(Base_Dif)]),2)
 }
 for(j in 1:(ncol(Base_Dif)+2)){
-  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.max(Analyzis[,j])]
+  Analyzis[nrow(Analyzis),j]=rownames(Analyzis)[which.min(Analyzis[,j])]
 }
 Analyzis=data.frame(Analyzis)
 colnames(Analyzis)=cnames
@@ -2820,7 +2820,7 @@ Base_Dif=t(Comparativo_RCum_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_RCum')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
@@ -3130,7 +3130,7 @@ Base_Dif=t(Comparativo_Rm_Horizon_Anual)
 nc = ncol(Base_Dif)+2
 nr = nrow(Base_Dif)+1
 Analyzis=matrix(nrow=nr,ncol=nc)
-rownames(Analyzis)=c(rownames(Base_Dif),'Max_Return')
+rownames(Analyzis)=c(rownames(Base_Dif),'Max_Rm')
 cnames=c(colnames(Base_Dif),'Vitories','Mean_Excedent')
 colnames(Analyzis)=cnames
 n=which(rownames(Analyzis)==Compare)
