@@ -15,6 +15,7 @@ Investment_Horizon_Int(
   Periodicity,
   Hidden,
   Stepmax,
+  Asymmetry = "Negative",
   Type_ANNt,
   N_Assets,
   Base = "yahoo",
@@ -98,6 +99,8 @@ or "No". "Yes" is the standard.}
 
 \item{Initial_Date_Training}{Training series start Date.}
 
+\item{Asymmetric}{"Negative" or "Positive". Shifts the probability of the return being greater than the proxy to the right or left, "Negative" or "Positive". Default is to the right, "Negative".}
+
 \item{Specifies_Date}{Specific dates for the end of training. Used to define
 the investment horizon of portfolios from specific dates.}
 }
@@ -141,6 +144,7 @@ Frequency = 2,
 Periodicity = c('daily'),
 Hidden = 5,
 Stepmax = 7500,
+Asymmetry='Negative',
 Type_ANNt = 'T8',
 N_Assets = 3,
 Base = 'yahoo',
@@ -156,6 +160,6 @@ CR=0,
 EPS=-300,
 Plot_IS='',
 Plot_BS= '',
-Plot_CF='')
-Download = 'Yes'
+Plot_CF='',
+Download = 'Yes')
 }

@@ -12,6 +12,7 @@
 #'@param Periodicity should be one of “daily”, “weekly”, “monthly”.
 #'@param Hidden Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons.
 #'@param Stepmax Number of replications per asset to train the ANN. For a good performance, use 7500.
+#'@param Asymmetric "Negative" or "Positive". Shifts the probability of the return being greater than the proxy to the right or left, "Negative" or "Positive". Default is to the right, "Negative".
 #'@param Type_ANNt Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test.
 #'@param N_Assets Limit of asset numbers in the portfolio.
 #'@param Base Database to use: "yahoo" or "Rus".
@@ -76,6 +77,7 @@
 #' Periodicity = c('daily'),
 #' Hidden = 5,
 #' Stepmax = 7500,
+#' Asymmetry='Negative',
 #' Type_ANNt = 'T8',
 #' N_Assets = 3,
 #' Base = 'yahoo',
@@ -91,13 +93,13 @@
 #' EPS=-300,
 #' Plot_IS='',
 #' Plot_BS= '',
-#' Plot_CF='')
-#' Download = 'Yes'
+#' Plot_CF='',
+#' Download = 'Yes')
 
 #' @export
 Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training,
                                 Final_Date, Frequency, Periodicity, Hidden,
-                                Stepmax, Type_ANNt, N_Assets,Base='yahoo', Fun='S_Out',
+                                Stepmax, Asymmetry='Negative',Type_ANNt, N_Assets,Base='yahoo', Fun='S_Out',
                                 Specific_Dates=Sys.Date(),
                                 Import='Yes',Exclude_ticket='',
                                 AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
@@ -360,7 +362,7 @@ for (i in (1:Frequency)){
 load('~/Tickers_1.rda')
 if(Fun=='S_Out'){
   ANNt_Oliveira_Ceretta_S_Out_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                              Final_Date, Periodicity, Hidden, Stepmax, Type_ANNt,
+                              Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
                               N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                               AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                               GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
@@ -408,7 +410,7 @@ if(Fun=='S_Out'){
 }
 if(Fun=='Out'){
   ANNt_Oliveira_Ceretta_Out_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                            Final_Date, Periodicity, Hidden, Stepmax, Type_ANNt,
+                            Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
                             N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                             AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                             GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
@@ -453,7 +455,7 @@ if(Fun=='Out'){
 }
 if(Fun=='S'){
   ANNt_Oliveira_Ceretta_S_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                          Final_Date, Periodicity, Hidden, Stepmax, Type_ANNt,
+                          Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
                           N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                           AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                           GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
@@ -468,7 +470,7 @@ if(Fun=='S'){
 }
 if(Fun=='Original'){
   ANNt_Oliveira_Ceretta_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                        Final_Date, Periodicity, Hidden, Stepmax, Type_ANNt,
+                        Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
                         N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                         AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                         GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,

@@ -15,6 +15,7 @@ ANNt_Oliveira_Ceretta_S_Inv(
   Periodicity,
   Hidden,
   Stepmax,
+  Asymmetry = "Negative",
   Type_ANNt,
   N_Assets,
   Base = "yahoo",
@@ -84,6 +85,8 @@ or "No". "Yes" is the standard.}
 \item{Plot_BS}{Char of Balance Sheet accoun selected}
 
 \item{Initial_Date_Training}{Training series start Date}
+
+\item{Asymmetric}{"Negative" or "Positive". Shifts the probability of the return being greater than the proxy to the right or left, "Negative" or "Positive". Default is to the right, "Negative".}
 }
 \description{
 Command that realize all operations of the package and save all in a specific past into user past
