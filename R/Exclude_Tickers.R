@@ -72,7 +72,7 @@ Exclude_Tickers <- function(Tickers, AQ='A', FS='C',Exclude_ticket=''){
   require('httr');require('highcharter');require('quantmod');require('scales');require('DT')
   require('writexl')
   require('stringr')
-  Exclusao_ausentes=c()
+  Exclude_Tickers_Missing=c()
 
   options(warn=-1)
 
