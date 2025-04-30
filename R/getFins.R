@@ -50,7 +50,7 @@ getFins <- function(symbol, AQ, FS){
   # return as table
   tbl=unlist(res$data)
   # extract names for rows
-  if(lenght(tbl)==0){
+  if(length(tbl)==0){
     print('The Cash Flow Statement has not been released')
     CFS = 'No'
     save(CFS,file='~/CFS.rda')
