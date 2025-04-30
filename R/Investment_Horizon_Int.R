@@ -146,7 +146,7 @@ if (Import =='No'){
   scenario_ajustado=scenario.set
   save(scenario_ajustado,file='~/scenario_ajustado.rda')
 
-  Exclude_Tickers(Tickers=Tikers, AQ=AQ, FS='C')
+  Exclude_Tickers(Tickers=Tickers, AQ=AQ, FS='C')
   load('~/Exclude_Tickers_Missing.rda')
 
   Intelligent_Investor(Tickers=Tickers, AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
