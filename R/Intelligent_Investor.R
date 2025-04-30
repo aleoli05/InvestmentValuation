@@ -95,6 +95,11 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
   }
   ###############
   getFins(Tick[1],AQ,'B')
+  load('~/CFS.rda')
+  Exclusao_ausentes = NULL
+  if(CFS=='No'){
+    Exclusao_ausentes=cbind(Exclusao_ausentes,CFS)
+  }
   load('~/dfn.rda')
   Comparacao_Colunas = colnames(dfn)
   #######################################################################
@@ -263,7 +268,8 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
         save(lista_matrizes, file=date_matrix)
         write_xlsx(as.data.frame(lista_matrizes), date_matrix2)
       } # End for Comparação_nomes colunas
-    } # End for j
+      } # End for j
+
   } # End for i
   save(Excluidos,file='~/Excluidos.rda')
 
@@ -325,4 +331,6 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
 
   save(Graham_Portfolio,file='~/Graham_Portfolio.rda')
 
-} # End function
+
+
+  } # End function

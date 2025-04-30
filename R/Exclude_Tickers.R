@@ -1,25 +1,85 @@
-#'getFins - Get Financials
-#'Income Statement, Cash Flow Statment, & Balance Sheet
-#set options
-#hcoptslang <- getOption('highcharter.lang')
-#hcoptslang$thousandsSep <-','
-#options(highcharter.lang = hcoptslang)
+#' Exclude_Tickers
+#' #' Exclud tickers that not have cash flow statment published in FinVis
 
-################################################################################
-#  Get Financial : Income Statement, Cash Flow Statment, & Balance Sheet
-################################################################################
-#' @param symbol = ticker symbol
-#' @param AQ = Annual (A) or Quarterly (Q)?
+#' @param Tickers to import and analyzes the financial parameters.
+#' For all SP500 use 'Current_SP500_Tickers'
+#' @param AQ Annual Statements (A) or Quarterly Statements (Q)
 #' @param FS = Financial Statement (FS): Income Statement (I), Balance Sheet (B), Cash Flow (C)
+#' @param Exclude_ticket Deletes any ticket from the ticket list that you want to remove for some reason
 #' @examples
-#' getFins('TSLA', 'A', 'B')
-#'@export
-getFins <- function(symbol, AQ, FS){
+#' Exclude_Tickers('Current_SP500_Tickers', 'Q', 'C')
+
+#' @export
+Exclude_Tickers <- function(Tickers, AQ='A', FS='C',Exclude_ticket=''){
+  library(quantmod)
+  library(plyr)
+  library(dplyr)
+  library(writexl)
+  library(stringr)
+  ###############################################################################
+  # Tickers to use
+  ###############################################################################
+  library(rvest)
+  Tickers_1 = Tickers
+  options(warn=-1)
+  # get the URL for the wikipedia page with all SP500 symbols
+  url <- "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+  # use that URL to scrape the SP500 table using rvest
+  tickers_ <- url %>%
+    # read the HTML from the webpage
+    read_html() %>%
+    # one way to get table
+    #html_nodes(xpath='//*[@id="mw-content-text"]/div/table[1]') %>%
+    # easier way to get table
+    html_nodes(xpath = '//*[@id="constituents"]') %>%
+    html_table()
+  #create a vector of tickers
+  sp500tickers <- tickers_[[1]]
+  sp500tickers = sp500tickers %>% mutate(Symbol =
+                                           case_when(Symbol == "BRK.B" ~ "BRK-B",
+                                                     Symbol == "BF.B" ~ "BF-B",
+                                                     TRUE ~ as.character(Symbol)))
+  Current_SP500<-sp500tickers$Symbol
+  #######
+
+  x=as.numeric(any(c('Current_SP500_Tickers') %in% Tickers_1))
+  if (x==1) {
+    y=which(Tickers_1 %in% c('Current_SP500_Tickers'))
+    Tickers_2=Tickers[-y]
+
+    z=as.numeric(any(Tickers_2 %in% Current_SP500))
+    if (z==1) {
+      h=which(Tickers_2 %in% Current_SP500)
+      Tickers_3=Tickers_2[-h]
+      Tick=c(Tickers_3,Current_SP500)
+    }
+
+    Tick=c(Tickers_2,Current_SP500)
+  } else {
+    Tick=Tickers_1
+
+  }
+  ###############Exclude_ticket
+  Exclude=NULL
+  for (i in 1:length(Exclude_ticket)) {
+    Exclude[i]<-which(Tick==Exclude_ticket[i])
+    #Exclude<-Tickers[!Exclude_ticket]
+  }
+  if(length(Exclude)!=0){
+    Tick=Tick[-Exclude]
+  }
+  ###############
   require('httr');require('highcharter');require('quantmod');require('scales');require('DT')
   require('writexl')
   require('stringr')
+  Exclusao_ausentes=c()
+
   options(warn=-1)
-      # get URL from Network
+
+
+  for (i in 1:length((Tick))){
+    symbol=Tick[i]
+  # get URL from Network
   URL = paste0('https://finviz.com/api/statement.ashx?t=',symbol,"&so=F&s=",FS,AQ)
   headers =c(
     'Host'='finviz.com',
@@ -42,7 +102,7 @@ getFins <- function(symbol, AQ, FS){
     'Sec-Fetch-Mode'= 'cors',
     'Sec-Fetch-Site'= 'same-origin',
     'Priority'='u=4'
-    )
+  )
   # submit a get request
   pg = httr::GET(url= URL, add_headers(headers))
   # extract page contents
@@ -50,78 +110,11 @@ getFins <- function(symbol, AQ, FS){
   # return as table
   tbl=unlist(res$data)
   # extract names for rows
-  if(lenght(tbl)==0){
-    print('The Cash Flow Statement has not been released')
-    CFS = 'No'
-    save(CFS,file='~/CFS.rda')
-  }else {
-  Number_Cols=length((tbl))/length(res$data)
-  rName = gsub('1','',unique(names(tbl)[seq(1,length(tbl),Number_Cols)]))
-  # we can use matrix & assign the number of cols
-  df=matrix(tbl, ncol=Number_Cols, byrow=TRUE)
-  # add row names
-  df=data.frame(df,row.names=rName)
-  # re-assign column names
-  colnames(df)=df[1,1:ncol(df)]
-  # remove first row
-  df=df[-1,]
-  # convert to numeric
-  dfn= data.frame(apply(df, 2, function(x) as.numeric(gsub("\\,","", x))), row.names = rownames(df))
-  colnames(dfn)= colnames(df)
-  dfn = dfn[rowSums(is.na(dfn)) != ncol(dfn),]
-  dfn[is.na(dfn)] <- round(0, 2)
-  # return data
-  dfn
-  save(symbol, file='~/symbol.rda')
-  save(dfn, file='~/dfn.rda')
-  dfn2=matrix(nrow=nrow(dfn), ncol=ncol(dfn)+1)
-  dfn2[,1]=rownames(dfn)
-  dfn2[,2:ncol(dfn2)]=as.matrix(dfn)
-  nomes = c('Account',colnames(dfn))
-  colnames(dfn2)=nomes
-  ###### Corrections in data
-  Nomes=rownames(dfn)
-  Suprime = c('1','2','3','4','5','6','7','8','9')
-  for (h in 1:length(Suprime)){
-    S=Suprime[h]
-    for (y in 1:length(Nomes)){
-      Davez = Nomes[y]
-      a=stringr::str_ends(Davez, S)
-      if (a==TRUE){
-        Nomes[y]=str_sub(Nomes[y],end=-2)
-      }
-    }
+  if(length(tbl)==0){
+    print(paste(i,': ',Tick[i],': The selected Financial Statement has not been released', sep=''))
+     Exclude_Tickers_Missing=append(Exclude_Tickers_Missing,Tick[i])
   }
-  rownames(dfn)=Nomes
-
-
-  if (FS=='I'){
-  tipo = paste('_Income_Statment')
-  is = dfn
-  nome='is'
-  save(nome, file='~/nome.rda')
-  save(is, file='~/is.rda')
   }
-  if (FS=='C'){
-  tipo = paste('_Cash_Flow_Statment')
-  cf = dfn
-  nome='cf'
-  save(nome, file='~/nome.rda')
-  save(cf, file='~/cf.rda')
-  }
-  if (FS=='B'){
-  tipo = paste('_Balance_Sheet_statment')
-  bs = dfn
-  nome='bs'
-  save(nome, file='~/nome.rda')
-  save(bs, file='~/bs.rda')
-  }
-
-  nome2=paste("~/",symbol,tipo,".xlsx",sep='')
-  write_xlsx(as.data.frame(dfn2), nome2)
-  View(dfn)
-  CFS = 'Yes'
-  save(CFS,file='~/CFS.rda')
-  }
-
+  save(Exclude_Tickers_Missing, file='~/Exclude_Tickers_Missing.rda')
+  print(Exclude_Tickers_Missing)
 }

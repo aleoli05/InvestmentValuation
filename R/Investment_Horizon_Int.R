@@ -146,13 +146,16 @@ if (Import =='No'){
   scenario_ajustado=scenario.set
   save(scenario_ajustado,file='~/scenario_ajustado.rda')
 
+  Exclude_Tickers(Tickers=Tikers, AQ=AQ, CF=CF)
+  load('~/Exclude_Tickers_Missing.rda')
+
   Intelligent_Investor(Tickers=Tickers, AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                        GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS, Break=Break,
                        Plot_IS=Plot_IS,
                        Plot_CF=Plot_CF,
-                       Plot_BS=Plot_BS,Exclude_ticket = Exclude )
+                       Plot_BS=Plot_BS,Exclude_ticket = Exclude_Tickers_Missing )
   Magic_Formula(Tickers=Tickers,AQ=AQ,Break=Break,
-                Plot_IS='', Plot_BS='',Plot_CF='',Exclude_ticket = Exclude )
+                Plot_IS='', Plot_BS='',Plot_CF='',Exclude_ticket = Exclude_Tickers_Missing )
 
 
 }}else{
