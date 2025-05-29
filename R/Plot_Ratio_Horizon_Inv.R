@@ -41,12 +41,13 @@
 #' Graham_EQ;
 #' Graham_MKW;
 #' Graham_SHARPE.
+#' @param Until_Date Period´s length to plot.
 #'@examples
 #' Plot_Ratio_Horizon_Inv(Ratio="Annualized_Returns")
 
 #'@export
 Plot_Ratio_Horizon_Inv <-function(Ratio="Annualized_Returns",Legend_position="topleft",
-                                  Compare="RM"){
+                                  Compare="RM", Until_Date=''){
 
 ################################################################################
 # Graphic Annualized Returns
@@ -71,7 +72,7 @@ Plot_Annualized_Returns_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_RETORNOS_Horizon_Anual)[nrow(Comparativo_RETORNOS_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_RETORNOS_Horizon_Anual)[nrow(Comparativo_RETORNOS_Horizon_Anual)]
   #Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_RETORNOS_Horizon_Anual)))
 
@@ -373,7 +374,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Volatility_Horizon_Anual)[nrow(Comparativo_Volatility_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Volatility_Horizon_Anual)[nrow(Comparativo_Volatility_Horizon_Anual)]
   #Comparativo_Volatility_Horizon_Anual=Comparativo_Volatility_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Volatility_Horizon_Anual)))
 
@@ -978,7 +979,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Alpha_Horizon_Anual)[nrow(Comparativo_Alpha_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Alpha_Horizon_Anual)[nrow(Comparativo_Alpha_Horizon_Anual)]
   #Comparativo_Alpha_Horizon_Anual=Comparativo_Alpha_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Alpha_Horizon_Anual)))
 
@@ -1280,7 +1281,7 @@ Plot_Annualized_Beta_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Beta_Horizon_Anual)[nrow(Comparativo_Beta_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Beta_Horizon_Anual)[nrow(Comparativo_Beta_Horizon_Anual)]
   #Comparativo_Beta_Horizon_Anual=Comparativo_Beta_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Beta_Horizon_Anual)))
 
@@ -1582,7 +1583,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Sortino_Horizon_Anual)[nrow(Comparativo_Sortino_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Sortino_Horizon_Anual)[nrow(Comparativo_Sortino_Horizon_Anual)]
   #Comparativo_Sortino_Horizon_Anual=Comparativo_Sortino_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Sortino_Horizon_Anual)))
 
@@ -1885,7 +1886,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Treynor_Horizon_Anual)[nrow(Comparativo_Treynor_Horizon_Anual)]
+  ##Until_Date=rownames(Comparativo_Treynor_Horizon_Anual)[nrow(Comparativo_Treynor_Horizon_Anual)]
   #Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Treynor_Horizon_Anual)))
 
@@ -2188,7 +2189,7 @@ Plot_Annualized_Var_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Var_Horizon_Anual)[nrow(Comparativo_Var_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Var_Horizon_Anual)[nrow(Comparativo_Var_Horizon_Anual)]
   #Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Var_Horizon_Anual)))
 
@@ -2490,7 +2491,7 @@ Plot_Annualized_CVar_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_CVar_Horizon_Anual)[nrow(Comparativo_CVar_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_CVar_Horizon_Anual)[nrow(Comparativo_CVar_Horizon_Anual)]
   #Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_CVar_Horizon_Anual)))
 
@@ -2792,7 +2793,7 @@ Plot_Annualized_RCum_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_RCum_Horizon_Anual)[nrow(Comparativo_RCum_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_RCum_Horizon_Anual)[nrow(Comparativo_RCum_Horizon_Anual)]
   #Comparativo_RCum_Horizon_Anual=Comparativo_RCum_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_RCum_Horizon_Anual)))
 
@@ -3100,7 +3101,7 @@ Plot_Annualized_Rm_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Rm_Horizon_Anual)[nrow(Comparativo_Rm_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Rm_Horizon_Anual)[nrow(Comparativo_Rm_Horizon_Anual)]
   #Comparativo_Rm_Horizon_Anual=Comparativo_Rm_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Rm_Horizon_Anual)))
 

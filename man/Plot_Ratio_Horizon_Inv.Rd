@@ -7,7 +7,8 @@
 Plot_Ratio_Horizon_Inv(
   Ratio = "Annualized_Returns",
   Legend_position = "topleft",
-  Compare = "RM"
+  Compare = "RM",
+  Until_Date = ""
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ Magic_SHARPE;
 Graham_EQ;
 Graham_MKW;
 Graham_SHARPE.}
+
+\item{Until_Date}{Period´s length to plot.}
 
 \item{Ratio:}{Rm - Average_Return - Means of Returns from each portfolio;
 Annualized_Returns - This is the standard ratio;
