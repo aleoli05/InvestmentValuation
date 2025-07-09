@@ -84,14 +84,14 @@ Plot_Annualized_Returns_Horizon <-function(){
   if(length(which(rownames(Comparativo_RETORNOS_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_RETORNOS_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_RETORNOS_Horizon_Anual))==as.Date(Until_Date))
-  Coparativo_Backup = Comparativo_RETORNOS_Horizon_Anual
-  Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual[1:Corte,]
+  Corte= which(rownames(as.data.frame(Comparativo_RETORNOS_Horizon_Anual))==(Until_Date))
+  Comparativo_Backup = Comparativo_RETORNOS_Horizon_Anual
+  Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual[Corte:nrow(Comparativo_RETORNOS_Horizon_Anual),]
 
   View(Comparativo_RETORNOS_Horizon_Anual)
   ######### Contador de Vitorias #################################################
@@ -386,14 +386,14 @@ Plot_Annualized_Volatility_Horizon <-function(){
   if(length(which(rownames(Comparativo_Volatility_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Volatility_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Volatility_Horizon_Anual))==as.Date(Until_Date))
-  Coparativo_Backup = Comparativo_Volatility_Horizon_Anual
-  Comparativo_Volatility_Horizon_Anual=Comparativo_Volatility_Horizon_Anual[1:Corte,]
+  Comparativo_Backup = Comparativo_Volatility_Horizon_Anual
+  Comparativo_Volatility_Horizon_Anual=Comparativo_Volatility_Horizon_Anual[Corte:nrow(Comparativo_Volatility_Horizon_Anual),]
 
   View(Comparativo_Volatility_Horizon_Anual)
   ######### Contador de Vitorias #################################################
@@ -689,14 +689,14 @@ Plot_Annualized_Sharpe_Horizon <-function(){
   if(length(which(rownames(Comparativo_Sharpe_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Sharpe_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Sharpe_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Sharpe_Horizon_Anual
-  Comparativo_Sharpe_Horizon_Anual=Comparativo_Sharpe_Horizon_Anual[1:Corte,]
+  Comparativo_Sharpe_Horizon_Anual=Comparativo_Sharpe_Horizon_Anual[Corte:nrow(Comparativo_Sharpe_Horizon_Anual),]
 
 View(Comparativo_Sharpe_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -991,14 +991,14 @@ Plot_Annualized_Alpha_Horizon <-function(){
   if(length(which(rownames(Comparativo_Alpha_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Alpha_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Alpha_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Alpha_Horizon_Anual
-  Comparativo_Alpha_Horizon_Anual=Comparativo_Alpha_Horizon_Anual[1:Corte,]
+  Comparativo_Alpha_Horizon_Anual=Comparativo_Alpha_Horizon_Anual[Corte:nrow(Comparativo_Alpha_Horizon_Anual),]
 
 View(Comparativo_Alpha_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -1293,14 +1293,14 @@ Plot_Annualized_Beta_Horizon <-function(){
   if(length(which(rownames(Comparativo_Beta_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Beta_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Beta_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Beta_Horizon_Anual
-  Comparativo_Beta_Horizon_Anual=Comparativo_Beta_Horizon_Anual[1:Corte,]
+  Comparativo_Beta_Horizon_Anual=Comparativo_Beta_Horizon_Anual[Corte:nrow(Comparativo_Beta_Horizon_Anual),]
 
 View(Comparativo_Beta_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -1595,14 +1595,14 @@ Plot_Annualized_Sortino_Horizon <-function(){
   if(length(which(rownames(Comparativo_Sortino_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Sortino_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Sortino_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Sortino_Horizon_Anual
-  Comparativo_Sortino_Horizon_Anual=Comparativo_Sortino_Horizon_Anual[1:Corte,]
+  Comparativo_Sortino_Horizon_Anual=Comparativo_Sortino_Horizon_Anual[Corte:nrow(Comparativo_Sortino_Horizon_Anual),]
 
 View(Comparativo_Sortino_Horizon_Anual)
 
@@ -1898,14 +1898,14 @@ Plot_Annualized_Treynor_Horizon <-function(){
   if(length(which(rownames(Comparativo_Treynor_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Treynor_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Treynor_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Treynor_Horizon_Anual
-  Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[1:Corte,]
+  Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[Corte:Comparativo_Treynor_Horizon_Anual,]
 
 View(Comparativo_Treynor_Horizon_Anual)
 
@@ -2201,14 +2201,14 @@ Plot_Annualized_Var_Horizon <-function(){
   if(length(which(rownames(Comparativo_Var_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Var_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Var_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Var_Horizon_Anual
-  Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual[1:Corte,]
+  Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual[Corte:nrow(Comparativo_Var_Horizon_Anual),]
 
 View(Comparativo_Var_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -2503,14 +2503,14 @@ Plot_Annualized_CVar_Horizon <-function(){
   if(length(which(rownames(Comparativo_CVar_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_CVar_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_CVar_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_CVar_Horizon_Anual
-  Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual[1:Corte,]
+  Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual[Corte:nrow(Comparativo_CVar_Horizon_Anual),]
 
 View(Comparativo_CVar_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -2805,14 +2805,14 @@ Plot_Annualized_RCum_Horizon <-function(){
   if(length(which(rownames(Comparativo_RCum_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_RCum_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_RCum_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_RCum_Horizon_Anual
-  Comparativo_RCum_Horizon_Anual=Comparativo_RCum_Horizon_Anual[1:Corte,]
+  Comparativo_RCum_Horizon_Anual=Comparativo_RCum_Horizon_Anual[Corte:nrow(Comparativo_RCum_Horizon_Anual),]
 
 View(Comparativo_RCum_Horizon_Anual)
 ######### Contador de Vitorias #################################################
@@ -3113,14 +3113,14 @@ Plot_Annualized_Rm_Horizon <-function(){
   if(length(which(rownames(Comparativo_Rm_Horizon_Anual)==Until_Date))==0){
     while(length(which(rownames(Comparativo_Rm_Horizon_Anual)==Until_Date))==0){
       dia=as.Date(Until_Date)
-      new_day=dia-1
+      new_day=dia+1
       Until_Date = as.character(new_day)
     }
   }
 
   Corte= which(rownames(as.data.frame(Comparativo_Rm_Horizon_Anual))==as.Date(Until_Date))
   Coparativo_Backup = Comparativo_Rm_Horizon_Anual
-  Comparativo_Rm_Horizon_Anual=Comparativo_Rm_Horizon_Anual[1:Corte,]
+  Comparativo_Rm_Horizon_Anual=Comparativo_Rm_Horizon_Anual[Corte:nrow(Comparativo_Rm_Horizon_Anual),]
 
 View(Comparativo_Rm_Horizon_Anual)
 
