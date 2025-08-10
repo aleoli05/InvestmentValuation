@@ -31,7 +31,8 @@ ANNt_Oliveira_Ceretta_S_Inv(
   EPS = 0,
   Plot_IS = "Total Revenue",
   Plot_CF = "Cash Dividends Paid",
-  Plot_BS = "Total Liabilities"
+  Plot_BS = "Total Liabilities",
+  Type_ANN = "ANNt"
 )
 }
 \arguments{
@@ -83,6 +84,8 @@ or "No". "Yes" is the standard.}
 \item{Plot_CF}{Chart of Cash Flow account selected}
 
 \item{Plot_BS}{Char of Balance Sheet accoun selected}
+
+\item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
 
 \item{Initial_Date_Training}{Training series start Date}
 

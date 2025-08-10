@@ -28,6 +28,7 @@
 #' @param Plot_IS Chart of Income Sheet account selected
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
+#' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -62,7 +63,8 @@ ANNt_Oliveira_Ceretta_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_Date_
                                   AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                   GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                   Plot_CF='Cash Dividends Paid',
-                                  Plot_BS='Total Liabilities'){
+                                  Plot_BS='Total Liabilities',
+                                  Type_ANN='ANNt'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
   Exclude=Exclude_ticket
@@ -121,7 +123,12 @@ if (Import =='Yes'){
 }
 
 Final_Date_Training <- Final_Date_Training
-ANNt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry)
+if(Type_ANN=='ANNt'){
+  ANNt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry)
+} else {
+  if(Type_ANN=='LSTMt'){
+    LSTMt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry,Plot='No')
+  }}
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date_Testing,'',Rf, Type_ANNt)
 Portfolio_Backtesting_Inv('','')
 Plot_Cumulative_Returns_Inv('')
