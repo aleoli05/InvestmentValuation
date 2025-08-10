@@ -39,6 +39,7 @@
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Download Download data bases: 'Yes' or 'No'
+#' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #'
 #' @examples
 #' Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
@@ -105,7 +106,8 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
                                 AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                 GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                 Plot_CF='Cash Dividends Paid',
-                                Plot_BS='Total Liabilities', Download='Yes'){
+                                Plot_BS='Total Liabilities', Download='Yes',
+                                Type_ANN='ANNt'){
   ydev=dev.list()
   Break = N_Assets
   save(AQ, file='~/AQ.rda')

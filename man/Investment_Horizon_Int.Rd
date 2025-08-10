@@ -34,7 +34,8 @@ Investment_Horizon_Int(
   Plot_IS = "Total Revenue",
   Plot_CF = "Cash Dividends Paid",
   Plot_BS = "Total Liabilities",
-  Download = "Yes"
+  Download = "Yes",
+  Type_ANN = "ANNt"
 )
 }
 \arguments{
@@ -96,6 +97,8 @@ or "No". "Yes" is the standard.}
 \item{Plot_BS}{Char of Balance Sheet accoun selected}
 
 \item{Download}{Download data bases: 'Yes' or 'No'}
+
+\item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
 
 \item{Initial_Date_Training}{Training series start Date.}
 
