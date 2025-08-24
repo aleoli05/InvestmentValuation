@@ -1,6 +1,6 @@
 Package: InvestmentValuation
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Investment Valuation of Corporate Assets
 Version: 0.1.0
 Authors@R: c(
     person(
