@@ -391,7 +391,7 @@ Plot_Annualized_Volatility_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Volatility_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Volatility_Horizon_Anual))==Until_Date)
   Comparativo_Backup = Comparativo_Volatility_Horizon_Anual
   Comparativo_Volatility_Horizon_Anual=Comparativo_Volatility_Horizon_Anual[Corte:nrow(Comparativo_Volatility_Horizon_Anual),]
 
@@ -694,7 +694,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Sharpe_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Sharpe_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Sharpe_Horizon_Anual
   Comparativo_Sharpe_Horizon_Anual=Comparativo_Sharpe_Horizon_Anual[Corte:nrow(Comparativo_Sharpe_Horizon_Anual),]
 
@@ -996,7 +996,7 @@ Plot_Annualized_Alpha_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Alpha_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Alpha_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Alpha_Horizon_Anual
   Comparativo_Alpha_Horizon_Anual=Comparativo_Alpha_Horizon_Anual[Corte:nrow(Comparativo_Alpha_Horizon_Anual),]
 
@@ -1298,7 +1298,7 @@ Plot_Annualized_Beta_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Beta_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Beta_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Beta_Horizon_Anual
   Comparativo_Beta_Horizon_Anual=Comparativo_Beta_Horizon_Anual[Corte:nrow(Comparativo_Beta_Horizon_Anual),]
 
@@ -1600,7 +1600,7 @@ Plot_Annualized_Sortino_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Sortino_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Sortino_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Sortino_Horizon_Anual
   Comparativo_Sortino_Horizon_Anual=Comparativo_Sortino_Horizon_Anual[Corte:nrow(Comparativo_Sortino_Horizon_Anual),]
 
@@ -1903,7 +1903,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Treynor_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Treynor_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Treynor_Horizon_Anual
   Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[Corte:Comparativo_Treynor_Horizon_Anual,]
 
@@ -2206,7 +2206,7 @@ Plot_Annualized_Var_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Var_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Var_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Var_Horizon_Anual
   Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual[Corte:nrow(Comparativo_Var_Horizon_Anual),]
 
@@ -2508,7 +2508,7 @@ Plot_Annualized_CVar_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_CVar_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_CVar_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_CVar_Horizon_Anual
   Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual[Corte:nrow(Comparativo_CVar_Horizon_Anual),]
 
@@ -2810,7 +2810,7 @@ Plot_Annualized_RCum_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_RCum_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_RCum_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_RCum_Horizon_Anual
   Comparativo_RCum_Horizon_Anual=Comparativo_RCum_Horizon_Anual[Corte:nrow(Comparativo_RCum_Horizon_Anual),]
 
@@ -3118,7 +3118,7 @@ Plot_Annualized_Rm_Horizon <-function(){
     }
   }
 
-  Corte= which(rownames(as.data.frame(Comparativo_Rm_Horizon_Anual))==as.Date(Until_Date))
+  Corte= which(rownames(as.data.frame(Comparativo_Rm_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Rm_Horizon_Anual
   Comparativo_Rm_Horizon_Anual=Comparativo_Rm_Horizon_Anual[Corte:nrow(Comparativo_Rm_Horizon_Anual),]
 
