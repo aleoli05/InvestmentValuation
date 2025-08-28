@@ -29,6 +29,7 @@
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
+#' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -64,7 +65,8 @@ ANNt_Oliveira_Ceretta_Out_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_D
                                       GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                       Plot_CF='Cash Dividends Paid',
                                       Plot_BS='Total Liabilities',
-                                      Type_ANN='ANNt'){
+                                      Type_ANN='ANNt',
+                                      Order='Yes'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
   Break= N_Assets
@@ -124,12 +126,13 @@ if (Import =='Yes'){
 }
 
 Final_Date_Training <- Final_Date_Training
+if(Order=='Yes'){
 if(Type_ANN=='ANNt'){
   ANNt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry,Plot='No')
-  }}
+  }}}
 print(paste('Initial_Date: ', Initial_Date, sep=''))
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date,Final_Date_Training,Rf, Type_ANNt, Out='Yes')
 Out_of_sample(Initial_Date_Testing,'')
