@@ -40,7 +40,7 @@
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Download Download data bases: 'Yes' or 'No'
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
-#'
+#' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @examples
 #' Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #' Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
@@ -100,14 +100,14 @@
 #' @export
 Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training,
                                 Final_Date, Frequency, Periodicity, Hidden,
-                                Stepmax, Asymmetry='Negative',Type_ANNt, N_Assets,Base='yahoo', Fun='S_Out',
+                                Stepmax, Asymmetry='Negative',Type_ANNt='T4', N_Assets,Base='yahoo', Fun='S_Out',
                                 Specific_Dates=Sys.Date(),
                                 Import='Yes',Exclude_ticket='',
                                 AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                 GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                 Plot_CF='Cash Dividends Paid',
                                 Plot_BS='Total Liabilities', Download='Yes',
-                                Type_ANN='ANNt'){
+                                Type_ANN='ANNt', Order='Yes'){
   ydev=dev.list()
   Break = N_Assets
   save(AQ, file='~/AQ.rda')
@@ -367,13 +367,16 @@ for (i in (1:Frequency)){
 load('~/Tickers_1.rda')
 if(Fun=='S_Out'){
   ANNt_Oliveira_Ceretta_S_Out_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                              Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
+                              Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry,
+                              Type_ANNt=Type_ANNt,
                               N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                               AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                               GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
                               Plot_IS=Plot_IS,
                               Plot_CF=Plot_CF,
-                              Plot_BS=Plot_BS)
+                              Plot_BS=Plot_BS,
+                              Type_ANN=Type_ANN,
+                              Order=Order)
   {
     load('~/Initial_Date_Out.rda')
     load('~/Final_Date_Out.rda')
@@ -415,13 +418,16 @@ if(Fun=='S_Out'){
 }
 if(Fun=='Out'){
   ANNt_Oliveira_Ceretta_Out_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                            Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
+                            Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry,
+                            Type_ANNt=Type_ANNt,
                             N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                             AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                             GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
                             Plot_IS=Plot_IS,
                             Plot_CF=Plot_CF,
-                            Plot_BS=Plot_BS)
+                            Plot_BS=Plot_BS,
+                            Type_ANN=Type_ANN,
+                            Order=Order)
   {
     load('~/Initial_Date_Out.rda')
     load('~/Final_Date_Out.rda')
@@ -460,13 +466,16 @@ if(Fun=='Out'){
 }
 if(Fun=='S'){
   ANNt_Oliveira_Ceretta_S_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                          Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
+                          Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry,
+                          Type_ANNt=Type_ANNt,
                           N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                           AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                           GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
                           Plot_IS=Plot_IS,
                           Plot_CF=Plot_CF,
-                          Plot_BS=Plot_BS)
+                          Plot_BS=Plot_BS,
+                          Type_ANN=Type_ANN,
+                          Order=Order)
   load('~/Initial_Date_Testing.rda')
   load('~/Final_Date_Testing.rda')
   data3 = as.Date.character(Initial_Date_Testing)
@@ -475,13 +484,16 @@ if(Fun=='S'){
 }
 if(Fun=='Original'){
   ANNt_Oliveira_Ceretta_Inv(Tickers=Tickers_1, RM, Rf, Initial_Date=Inicio, Fim_Train,
-                        Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry, Type_ANNt,
+                        Final_Date, Periodicity, Hidden, Stepmax, Asymmetry=Asymmetry,
+                        Type_ANNt=Type_ANNt,
                         N_Assets, Base=BS, Import=Horizon, Exclude_ticket=Exclude,
                         AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                         GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS,
                         Plot_IS=Plot_IS,
                         Plot_CF=Plot_CF,
-                        Plot_BS=Plot_BS)
+                        Plot_BS=Plot_BS,
+                        Type_ANN=Type_ANN,
+                        Order=Order)
   load('~/Initial_Date_Testing.rda')
   load('~/Final_Date_Testing.rda')
   data3 = as.Date.character(Initial_Date_Testing)

@@ -16,7 +16,7 @@ Investment_Horizon_Int(
   Hidden,
   Stepmax,
   Asymmetry = "Negative",
-  Type_ANNt,
+  Type_ANNt = "T4",
   N_Assets,
   Base = "yahoo",
   Fun = "S_Out",
@@ -35,7 +35,8 @@ Investment_Horizon_Int(
   Plot_CF = "Cash Dividends Paid",
   Plot_BS = "Total Liabilities",
   Download = "Yes",
-  Type_ANN = "ANNt"
+  Type_ANN = "ANNt",
+  Order = "Yes"
 )
 }
 \arguments{
@@ -99,6 +100,8 @@ or "No". "Yes" is the standard.}
 \item{Download}{Download data bases: 'Yes' or 'No'}
 
 \item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
+
+\item{Order}{If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database}
 
 \item{Initial_Date_Training}{Training series start Date.}
 

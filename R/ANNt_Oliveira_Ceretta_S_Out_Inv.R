@@ -31,6 +31,7 @@
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
+#' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -60,13 +61,13 @@
 #'  CR=1, EPS=0, Plot_IS='', Plot_CF='', Plot_BS='')
 #'@export
 ANNt_Oliveira_Ceretta_S_Out_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training,
-                                        Final_Date, Periodicity, Hidden, Stepmax, Asymmetry='Negative',Type_ANNt,
+                                        Final_Date, Periodicity, Hidden, Stepmax, Asymmetry='Negative',Type_ANNt='T4',
                                         N_Assets,Base='yahoo', Import='Yes', Exclude_ticket='',
                                         AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                         GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                         Plot_CF='Cash Dividends Paid',
                                         Plot_BS='Total Liabilities',
-                                        Type_ANN='ANNt'){
+                                        Type_ANN='ANNt', Order='Yes'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
 
@@ -444,12 +445,13 @@ Final_Date_Training <- Final_Date_Training
 X10 = Initial_Date_Training
 X11 = Asymmetry
 save(X11,file='~/X11.rda')
+if(Order=='Yes'){
 if(Type_ANN=='ANNt'){
   ANNt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', 'hidden', 'stepmax', Asymmetry=Asymmetry,Plot='No')
-  }}
+  }}}
 
 
 #Signal_Sharpe=0
