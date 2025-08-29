@@ -122,6 +122,7 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
   save(Plot_IS, file='~/Plot_IS.rda')
   save(Plot_BS, file='~/Plot_BS.rda')
   save(Plot_CF, file='~/Plot_CF.rda')
+  save(Type_ANN, file='~/Type_ANN.rda')
   if(class(ydev)!="NULL"){
     dev.off()
   }else{print('Starting Investment_Horizon Command')}
