@@ -16,6 +16,10 @@ load('~/Comparativo.rda')
   load('~/N_Assets.rda')
   load('~/Final_Date_Testing.rda')
   load('~/RM.rda')
+  load('~/Type_ANN.rda')
+  ANN_EQ = paste(Type_ANN,'_EQ', sep='')
+  ANN_MKW = paste(Type_ANN,'_MKW', sep='')
+  ANN_SHARPE = paste(Type_ANN,'_SHARPE', sep='')
 attach(as.data.frame(Comparativo))
 
   ydev=dev.list()
@@ -158,7 +162,7 @@ Contador_MF_DFA = matrix(nrow=149)
 legend("topleft",
        #"bottomright",
        legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
-                  "ANNt_EQ", "ANNt_MKW", "ANNt_SHARPE",
+                  ANN_EQ, ANN_MKW, ANN_SHARPE,
                   "Magic_EQ", "Magic_MKW", "Magic_SHARPE",
                   "Graham_EQ", "Graham_MKW", "Graham_SHARPE"),
        cex = 0.8,
@@ -275,7 +279,7 @@ Contador_MF_DFA = matrix(nrow=149)
 legend("topleft",
        #"bottomright",
        legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
-                  "ANNt_EQ", "ANNt_MKW", "ANNt_SHARPE",
+                  ANN_EQ, ANN_MKW, ANN_SHARPE,
                   "Magic_EQ", "Magic_MKW", "Magic_SHARPE",
                   "Graham_EQ", "Graham_MKW", "Graham_SHARPE"),
        cex = 0.8,
