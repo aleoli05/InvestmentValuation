@@ -105,6 +105,8 @@ Final_Analysis_Date <- c('')
 
 #load('~/Horizon.rda')
 if (Import =='Yes'){
+
+  if(Order=='Yes'){
   if (Base=='yahoo'){
     Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily', Exclude_ticket=Exclude)
   }
@@ -113,7 +115,7 @@ if (Import =='Yes'){
   }
   if(Base=='Rus_2'){
     Assets_series_Rus_2 (Tickers,RM, Initial_Date, Final_Date,'daily', Exclude_ticket=Exclude)
-  }
+  }}
 
   Intelligent_Investor(Tickers=Tickers, AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                        GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS, Break=Break,
