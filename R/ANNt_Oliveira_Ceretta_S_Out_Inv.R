@@ -470,10 +470,12 @@ InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intellige
 Out_of_Sample_Inv(Initial_Date_Testing,'')
 Portfolio_Backtesting_Inv('','')
 Plot_Cumulative_Returns_Inv('')
+if(Order=='Yes'){
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()
 Sys.sleep((15))
 Plot_New_efficient_frontier()
+}
 Sys.sleep((15))
 Plot_CUSUM('','')
 save(Final_Date, file='~/Final_Date.rda')

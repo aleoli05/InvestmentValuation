@@ -467,10 +467,12 @@ Rf=Rf*100
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date_Testing,'','x5', Type_ANNt)
 Portfolio_Backtesting_Inv('','')
 Plot_Cumulative_Returns_Inv('')
+if(Order=='Yes'){
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()
 Sys.sleep((15))
 Plot_New_efficient_frontier()
+}
 Sys.sleep((15))
 Plot_CUSUM('','')
 save(Final_Date, file='~/Final_Date.rda')
