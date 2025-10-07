@@ -133,7 +133,8 @@ if(Type_ANN=='ANNt'){
   ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry)
 } else {
   if(Type_ANN=='LSTMt'){
-    LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry, View_Metrics=FALSE, Verbose=0)
+    LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,
+                 View_Metrics=FALSE, Verbose=0, Plot='No')
   }}}
 print(paste('Initial_Date: ', Initial_Date, sep=''))
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date,Final_Date_Training,Rf, Type_ANNt, Out='Yes')
