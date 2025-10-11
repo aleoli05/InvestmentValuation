@@ -41,6 +41,7 @@
 #' @param Download Download data bases: 'Yes' or 'No'
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
+#' @param Continue_from Determine if continue from a Specific_Date in the data
 #' @examples
 #' Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #' Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
@@ -107,7 +108,7 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
                                 GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                 Plot_CF='Cash Dividends Paid',
                                 Plot_BS='Total Liabilities', Download='Yes',
-                                Type_ANN='ANNt', Order='Yes'){
+                                Type_ANN='ANNt', Order='Yes', Continue_from='1900-01-01'){
   ydev=dev.list()
   Break = N_Assets
   save(AQ, file='~/AQ.rda')
@@ -196,7 +197,8 @@ data2 = as.Date.character(Final_Date)
 diferenca_dias = as.numeric(data2-data1)
 Interval = round(diferenca_dias/Frequency,0)
 
-
+if (Continue_from=='1900-01-01'){
+  C_from=1
 # Geração da Matriz de comparação dos Retornos
 Comparativo_Rm_Horizon_Anual = matrix(nrow=Frequency, ncol=15)
 Comparativo_RETORNOS_Horizon_Anual = matrix(nrow=Frequency, ncol=15)
@@ -324,8 +326,33 @@ Weights_Graham_Sharpe_Horizon [1,2] <- 'ASSETS'
 Weights_Graham_Sharpe_Horizon [2,1] <- 'Initial_Date_Testing'
 Weights_Graham_Sharpe_Horizon [2,2] <- 'Final_Date_Testing'
 Weights_Graham_Sharpe_Horizon [3,2] <- 'Days'
+
+}else{
+  C_from=which(Specific_Dates==Continue_from)
+  load('~/Weights_MF_EQ_Horizon.rda')
+  load('~/Weights_MF_MKW_Horizon.rda')
+  load('~/Weights_MKW_Horizon.rda')
+  load('~/Weights_ANNt_EQ_Horizon.rda')
+  load('~/Weights_ANNt_MKW_Horizon.rda')
+  load('~/Weights_Sharpe_Horizon.rda')
+  load('~/Weights_MF_Sharpe_Horizon.rda')
+  load('~/Weights_ANNt_Sharpe_Horizon.rda')
+  load('~/Comparativo_Rm_Horizon_Anual.rda')
+  load('~/Comparativo_RETORNOS_Horizon_Anual.rda')
+  load('~/Comparativo_RCum_Horizon_Anual.rda')
+  load('~/Comparativo_Volatility_Horizon_Anual.rda')
+  load('~/Comparativo_Var_Horizon_Anual.rda')
+  load('~/Comparativo_CVar_Horizon_Anual.rda')
+  load('~/Comparativo_Sharpe_Horizon_Anual.rda')
+  load('~/Comparativo_Sortino_Horizon_Anual.rda')
+  load('~/Comparativo_Beta_Horizon_Anual.rda')
+  load('~/Comparativo_Alpha_Horizon_Anual.rda')
+  load('~/Comparativo_Treynor_Horizon_Anual.rda')
+
+}
+
 ######################################
-for (i in (1:Frequency)){
+for (i in (C_from:Frequency)){
   if (length(Specific_Dates)!=1){
     Fim_Train= as.Date.character(Specific_Dates[i])
     Inicio = as.character(Fim_Train-treino)
@@ -764,6 +791,10 @@ save(Comparativo_Alpha_Horizon_Anual, file='~/Comparativo_Alpha_Horizon_Anual.rd
 write_xlsx(as.data.frame(Comparativo_Alpha_Horizon_Anual), "~/Comparativo_Alpha_Horizon_Anual.xlsx")
 save(Comparativo_Treynor_Horizon_Anual, file='~/Comparativo_Treynor_Horizon_Anual.rda')
 write_xlsx(as.data.frame(Comparativo_Treynor_Horizon_Anual), "~/Comparativo_Treynor_Horizon_Anual.xlsx")
+save(i,file='~/i.rda')
+Continue_from=Specific_Dates[i]
+save(Continue_from,file='~/Continue_from.rda')
+
 }
 View(Comparativo_RETORNOS_Horizon_Anual)
 ################################################################################
