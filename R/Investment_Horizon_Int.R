@@ -21,7 +21,7 @@
 #' 'Out' uses the ANNt_Oliveira_Cereta_Out function;
 #' 'S' uses the ANNt_Oliveira_Cereta_S function;
 #' 'Original' uses the ANNt_Oliveira_Ceretta function.
-#'@param Specifies_Date Specific dates for the end of training. Used to define
+#'@param Specific_Date Specific dates for the end of training. Used to define
 #'the investment horizon of portfolios from specific dates.
 #'@param Import Import dates from external data base after first import. "Yes"
 #'or "No". "Yes" is the standard.
@@ -37,8 +37,8 @@
 #' @param Exclude_ticket Deletes any ticket from the ticket list that you want to remove for some reason
 #' @param Plot_IS Chart of Income Sheet account selected
 #' @param Plot_CF Chart of Cash Flow account selected
-#' @param Plot_BS Char of Balance Sheet accoun selected
-#' @param Download Download data bases: 'Yes' or 'No'
+#' @param Plot_BS Char of Balance Sheet account selected
+#' @param Download Download financial statements from external data bases: 'Yes' or 'No'
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @param Continue_from Determine if continue from a Specific_Date in the data

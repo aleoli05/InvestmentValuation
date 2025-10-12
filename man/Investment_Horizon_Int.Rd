@@ -96,9 +96,9 @@ or "No". "Yes" is the standard.}
 
 \item{Plot_CF}{Chart of Cash Flow account selected}
 
-\item{Plot_BS}{Char of Balance Sheet accoun selected}
+\item{Plot_BS}{Char of Balance Sheet account selected}
 
-\item{Download}{Download data bases: 'Yes' or 'No'}
+\item{Download}{Download financial statements from external data bases: 'Yes' or 'No'}
 
 \item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
 
@@ -110,7 +110,7 @@ or "No". "Yes" is the standard.}
 
 \item{Asymmetric}{"Negative" or "Positive". Shifts the probability of the return being greater than the proxy to the right or left, "Negative" or "Positive". Default is to the right, "Negative".}
 
-\item{Specifies_Date}{Specific dates for the end of training. Used to define
+\item{Specific_Date}{Specific dates for the end of training. Used to define
 the investment horizon of portfolios from specific dates.}
 }
 \description{
