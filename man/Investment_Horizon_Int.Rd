@@ -71,8 +71,8 @@ Investment_Horizon_Int(
 'S' uses the ANNt_Oliveira_Cereta_S function;
 'Original' uses the ANNt_Oliveira_Ceretta function.}
 
-\item{Import}{Import dates from external data base after first import. "Yes"
-or "No". "Yes" is the standard.}
+\item{Import}{Import dates from external data base after first import in each re balance. "Yes"
+or "No". "No" is the standard.}
 
 \item{Exclude_ticket}{Deletes any ticket from the ticket list that you want to remove for some reason}
 
@@ -98,7 +98,7 @@ or "No". "Yes" is the standard.}
 
 \item{Plot_BS}{Char of Balance Sheet account selected}
 
-\item{Download}{Download financial statements from external data bases: 'Yes' or 'No'}
+\item{Download}{Download asset prices for external data set or local data set. "Yes" or "No". "Yes" is the standard.}
 
 \item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
 

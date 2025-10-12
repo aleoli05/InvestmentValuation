@@ -23,8 +23,8 @@
 #' 'Original' uses the ANNt_Oliveira_Ceretta function.
 #'@param Specific_Date Specific dates for the end of training. Used to define
 #'the investment horizon of portfolios from specific dates.
-#'@param Import Import dates from external data base after first import. "Yes"
-#'or "No". "Yes" is the standard.
+#'@param Import Import dates from external data base after first import in each re balance. "Yes"
+#'or "No". "No" is the standard.
 #' @param Exclude_ticket Deletes any ticket from the ticket list that you want to remove for some reason
 #' @param AQ Annual Statements (A) or Quarterly Statements (Q)
 #' @param Size Minimum Total Assets in Millions
@@ -38,7 +38,7 @@
 #' @param Plot_IS Chart of Income Sheet account selected
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet account selected
-#' @param Download Download financial statements from external data bases: 'Yes' or 'No'
+#' @param Download Download asset prices for external data set or local data set. "Yes" or "No". "Yes" is the standard.
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @param Continue_from Determine if continue from a Specific_Date in the data
