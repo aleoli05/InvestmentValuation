@@ -129,7 +129,7 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
   }else{print('Starting Investment_Horizon Command')}
   dev.capabilities()
 
-Horizon='Yes'
+Horizon=Import
 Exclude = Exclude_ticket
 RM_Nome_Backup=RM
 save(RM_Nome_Backup,file='~/RM_Nome_Backup.rda')
