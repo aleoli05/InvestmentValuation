@@ -792,7 +792,7 @@ write_xlsx(as.data.frame(Comparativo_Alpha_Horizon_Anual), "~/Comparativo_Alpha_
 save(Comparativo_Treynor_Horizon_Anual, file='~/Comparativo_Treynor_Horizon_Anual.rda')
 write_xlsx(as.data.frame(Comparativo_Treynor_Horizon_Anual), "~/Comparativo_Treynor_Horizon_Anual.xlsx")
 save(i,file='~/i.rda')
-Continue_from=Specific_Dates[i]
+Continue_from=Specific_Dates[i+1]
 save(Continue_from,file='~/Continue_from.rda')
 
 }
