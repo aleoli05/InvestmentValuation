@@ -1,5 +1,5 @@
 # InvestmentValuation
-Investment Valuation technics 
+Investment Valuation techniques
 
 SINGLE COMMAND FOR THE ENTIRE PACKAGE AFTER INSTALLING THE REQUIRED PACKAGES#
     install.packages('remotes')
