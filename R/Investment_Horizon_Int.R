@@ -354,7 +354,9 @@ Weights_Graham_Sharpe_Horizon [3,2] <- 'Days'
   load('~/Comparativo_Beta_Horizon_Anual.rda')
   load('~/Comparativo_Alpha_Horizon_Anual.rda')
   load('~/Comparativo_Treynor_Horizon_Anual.rda')
-
+  y=which(Specific_Dates==Continue_from)
+  x=y+1
+  Tempo=rownames(Comparativo_RETORNOS_Horizon_Anual)
 }
 
 ######################################
