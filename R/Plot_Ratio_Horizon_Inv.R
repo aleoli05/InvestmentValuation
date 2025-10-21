@@ -684,7 +684,7 @@ Plot_Annualized_Sharpe_Horizon <-function(){
 
 
   #########################
-  Until_Date=rownames(Comparativo_Sharpe_Horizon_Anual)[nrow(Comparativo_Sharpe_Horizon_Anual)]
+  #Until_Date=rownames(Comparativo_Sharpe_Horizon_Anual)[nrow(Comparativo_Sharpe_Horizon_Anual)]
   #Comparativo_Sharpe_Horizon_Anual=Comparativo_Sharpe_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Sharpe_Horizon_Anual)))
   Comparativo_Sharpe_Horizon_Anual=as.data.frame(Comparativo_Sharpe_Horizon_Anual)
