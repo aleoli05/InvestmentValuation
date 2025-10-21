@@ -848,6 +848,7 @@ Plot_Ratio_Horizon_Inv(Ratio="Treynor")
 
 
 #########################
+
 Until_Date=rownames(Comparativo_RETORNOS_Horizon_Anual)[nrow(Comparativo_RETORNOS_Horizon_Anual)]
 #Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual
 #  Corte=as.numeric(nrow(as.data.frame(Comparativo_RETORNOS_Horizon_Anual)))
