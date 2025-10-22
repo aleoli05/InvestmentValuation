@@ -1892,7 +1892,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
   ##Until_Date=rownames(Comparativo_Treynor_Horizon_Anual)[nrow(Comparativo_Treynor_Horizon_Anual)]
   #Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Treynor_Horizon_Anual)))
-  Comparativo_Treynor_Horizon_Anual=as.data.frame(Comparativo_Treynor_Horizon_Anual)
+
   if(Until_Date ==('')){
     #Until_Date = Final_Date_Testing
     Until_Date = rownames(Comparativo_Treynor_Horizon_Anual[nrow(Comparativo_Treynor_Horizon_Anual),])
@@ -1910,7 +1910,7 @@ Plot_Annualized_Treynor_Horizon <-function(){
 
   Corte= which(rownames(as.data.frame(Comparativo_Treynor_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Treynor_Horizon_Anual
-  Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[Corte:Comparativo_Treynor_Horizon_Anual,]
+  Comparativo_Treynor_Horizon_Anual=Comparativo_Treynor_Horizon_Anual[Corte:nrow(Comparativo_Treynor_Horizon_Anual),]
 
 View(Comparativo_Treynor_Horizon_Anual)
 
