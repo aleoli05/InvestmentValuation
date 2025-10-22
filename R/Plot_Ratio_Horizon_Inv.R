@@ -66,7 +66,7 @@ Plot_Annualized_Returns_Horizon <-function(){
   load('~/Comparativo_RETORNOS_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_RETORNOS_Horizon_Anual=as.data.frame(Comparativo_RETORNOS_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_RETORNOS_Horizon_Anual[,1])
   nline = nrow(Comparativo_RETORNOS_Horizon_Anual)
@@ -79,7 +79,7 @@ Plot_Annualized_Returns_Horizon <-function(){
   #Until_Date=rownames(Comparativo_RETORNOS_Horizon_Anual)[nrow(Comparativo_RETORNOS_Horizon_Anual)]
   #Comparativo_RETORNOS_Horizon_Anual=Comparativo_RETORNOS_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_RETORNOS_Horizon_Anual)))
-  Comparativo_RETORNOS_Horizon_Anual=as.data.frame(Comparativo_RETORNOS_Horizon_Anual)
+
   if(Until_Date ==('')){
     #Until_Date = Final_Date_Testing
     Until_Date = rownames(Comparativo_RETORNOS_Horizon_Anual[nrow(Comparativo_RETORNOS_Horizon_Anual),])
@@ -374,9 +374,6 @@ Plot_Annualized_Volatility_Horizon <-function(){
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Volatility_Horizon_Anual[,1])
   nline = nrow(Comparativo_Volatility_Horizon_Anual)
-  Comparativo_Volatility_Horizon_Anual = Comparativo_Volatility_Horizon_Anual[rev(seq_len(nrow(Comparativo_Volatility_Horizon_Anual))),]
-  Comparativo_Volatility_Horizon_Anual = as.data.frame(Comparativo_Volatility_Horizon_Anual)
-  nline = nrow(Comparativo_Volatility_Horizon_Anual)
 
 
 
@@ -397,6 +394,8 @@ Plot_Annualized_Volatility_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Volatility_Horizon_Anual = Comparativo_Volatility_Horizon_Anual[rev(seq_len(nrow(Comparativo_Volatility_Horizon_Anual))),]
+  Comparativo_Volatility_Horizon_Anual = as.data.frame(Comparativo_Volatility_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Volatility_Horizon_Anual))==Until_Date)
   Comparativo_Backup = Comparativo_Volatility_Horizon_Anual
@@ -677,9 +676,6 @@ Plot_Annualized_Sharpe_Horizon <-function(){
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Sharpe_Horizon_Anual[,1])
   nline = nrow(Comparativo_Sharpe_Horizon_Anual)
-  Comparativo_Sharpe_Horizon_Anual = Comparativo_Sharpe_Horizon_Anual[rev(seq_len(nrow(Comparativo_Sharpe_Horizon_Anual))),]
-  Comparativo_Sharpe_Horizon_Anual = as.data.frame(Comparativo_Sharpe_Horizon_Anual)
-  nline = nrow(Comparativo_Sharpe_Horizon_Anual)
 
 
 
@@ -700,6 +696,8 @@ Plot_Annualized_Sharpe_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Sharpe_Horizon_Anual = Comparativo_Sharpe_Horizon_Anual[rev(seq_len(nrow(Comparativo_Sharpe_Horizon_Anual))),]
+  Comparativo_Sharpe_Horizon_Anual = as.data.frame(Comparativo_Sharpe_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Sharpe_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Sharpe_Horizon_Anual
@@ -863,9 +861,10 @@ print(Analyzis)
   windowsFonts(A=windowsFont("Times New Roman"))
   par(family="A", cex=0.8)
 
+  Comparativo_Sharpe_Horizon_Anual2 = as.data.frame(Comparativo_Sharpe_Horizon_Anual)
   Eixo = c(1:nrow(Comparativo_Sharpe_Horizon_Anual))
   Eixo_X = rownames(as.data.frame(Comparativo_Sharpe_Horizon_Anual))
-  Comparativo_Sharpe_Horizon_Anual2 = as.data.frame(Comparativo_Sharpe_Horizon_Anual)
+
   #Eixo_X2 = c(1,
   #            round(nrow(Comparativo_Sharpe_Horizon_Anual)/4,0),
   #            round(nrow(Comparativo_Sharpe_Horizon_Anual)/2,0),
@@ -976,13 +975,10 @@ Plot_Annualized_Alpha_Horizon <-function(){
   load('~/N_Assets.rda')
   load('~/RM.rda')
 
+  Comparativo_Alpha_Horizon_Anual = as.data.frame(Comparativo_Alpha_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Alpha_Horizon_Anual[,1])
   nline = nrow(Comparativo_Alpha_Horizon_Anual)
-  Comparativo_Alpha_Horizon_Anual = Comparativo_Alpha_Horizon_Anual[rev(seq_len(nrow(Comparativo_Alpha_Horizon_Anual))),]
-  Comparativo_Alpha_Horizon_Anual = as.data.frame(Comparativo_Alpha_Horizon_Anual)
-  nline = nrow(Comparativo_Alpha_Horizon_Anual)
-
 
 
   #########################
@@ -1002,6 +998,8 @@ Plot_Annualized_Alpha_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Alpha_Horizon_Anual = Comparativo_Alpha_Horizon_Anual[rev(seq_len(nrow(Comparativo_Alpha_Horizon_Anual))),]
+  Comparativo_Alpha_Horizon_Anual = as.data.frame(Comparativo_Alpha_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Alpha_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Alpha_Horizon_Anual
@@ -1278,12 +1276,11 @@ Plot_Annualized_Beta_Horizon <-function(){
   load('~/N_Assets.rda')
   load('~/RM.rda')
 
+  Comparativo_Beta_Horizon_Anual = as.data.frame(Comparativo_Beta_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Beta_Horizon_Anual[,1])
   nline = nrow(Comparativo_Beta_Horizon_Anual)
-  Comparativo_Beta_Horizon_Anual = Comparativo_Beta_Horizon_Anual[rev(seq_len(nrow(Comparativo_Beta_Horizon_Anual))),]
-  Comparativo_Beta_Horizon_Anual = as.data.frame(Comparativo_Beta_Horizon_Anual)
-  nline = nrow(Comparativo_Beta_Horizon_Anual)
+
 
 
 
@@ -1304,6 +1301,9 @@ Plot_Annualized_Beta_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+
+  Comparativo_Beta_Horizon_Anual = Comparativo_Beta_Horizon_Anual[rev(seq_len(nrow(Comparativo_Beta_Horizon_Anual))),]
+  Comparativo_Beta_Horizon_Anual = as.data.frame(Comparativo_Beta_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Beta_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Beta_Horizon_Anual
@@ -1579,13 +1579,11 @@ Plot_Annualized_Sortino_Horizon <-function(){
   load('~/Comparativo_Sortino_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_Sortino_Horizon_Anual = as.data.frame(Comparativo_Sortino_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Sortino_Horizon_Anual[,1])
   nline = nrow(Comparativo_Sortino_Horizon_Anual)
-  Comparativo_Sortino_Horizon_Anual = Comparativo_Sortino_Horizon_Anual[rev(seq_len(nrow(Comparativo_Sortino_Horizon_Anual))),]
-  Comparativo_Sortino_Horizon_Anual = as.data.frame(Comparativo_Sortino_Horizon_Anual)
-  nline = nrow(Comparativo_Sortino_Horizon_Anual)
+
 
 
 
@@ -1606,6 +1604,8 @@ Plot_Annualized_Sortino_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Sortino_Horizon_Anual = Comparativo_Sortino_Horizon_Anual[rev(seq_len(nrow(Comparativo_Sortino_Horizon_Anual))),]
+  Comparativo_Sortino_Horizon_Anual = as.data.frame(Comparativo_Sortino_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Sortino_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Sortino_Horizon_Anual
@@ -1882,14 +1882,10 @@ Plot_Annualized_Treynor_Horizon <-function(){
   load('~/Comparativo_Treynor_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_Treynor_Horizon_Anual = as.data.frame(Comparativo_Treynor_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Treynor_Horizon_Anual[,1])
   nline = nrow(Comparativo_Treynor_Horizon_Anual)
-  Comparativo_Treynor_Horizon_Anual = Comparativo_Treynor_Horizon_Anual[rev(seq_len(nrow(Comparativo_Treynor_Horizon_Anual))),]
-  Comparativo_Treynor_Horizon_Anual = as.data.frame(Comparativo_Treynor_Horizon_Anual)
-  nline = nrow(Comparativo_Treynor_Horizon_Anual)
-
 
 
   #########################
@@ -1909,6 +1905,8 @@ Plot_Annualized_Treynor_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Treynor_Horizon_Anual = Comparativo_Treynor_Horizon_Anual[rev(seq_len(nrow(Comparativo_Treynor_Horizon_Anual))),]
+  Comparativo_Treynor_Horizon_Anual = as.data.frame(Comparativo_Treynor_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Treynor_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Treynor_Horizon_Anual
@@ -2185,21 +2183,17 @@ Plot_Annualized_Var_Horizon <-function(){
   load('~/Comparativo_Var_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_Var_Horizon_Anual=as.data.frame(Comparativo_Var_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Var_Horizon_Anual[,1])
   nline = nrow(Comparativo_Var_Horizon_Anual)
-  Comparativo_Var_Horizon_Anual = Comparativo_Var_Horizon_Anual[rev(seq_len(nrow(Comparativo_Var_Horizon_Anual))),]
-  Comparativo_Var_Horizon_Anual = as.data.frame(Comparativo_Var_Horizon_Anual)
-  nline = nrow(Comparativo_Var_Horizon_Anual)
-
 
 
   #########################
   #Until_Date=rownames(Comparativo_Var_Horizon_Anual)[nrow(Comparativo_Var_Horizon_Anual)]
   #Comparativo_Var_Horizon_Anual=Comparativo_Var_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_Var_Horizon_Anual)))
-  Comparativo_Var_Horizon_Anual=as.data.frame(Comparativo_Var_Horizon_Anual)
+
   if(Until_Date ==('')){
     #Until_Date = Final_Date_Testing
     Until_Date = rownames(Comparativo_Var_Horizon_Anual[nrow(Comparativo_Var_Horizon_Anual),])
@@ -2212,6 +2206,8 @@ Plot_Annualized_Var_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Var_Horizon_Anual = Comparativo_Var_Horizon_Anual[rev(seq_len(nrow(Comparativo_Var_Horizon_Anual))),]
+  Comparativo_Var_Horizon_Anual = as.data.frame(Comparativo_Var_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Var_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Var_Horizon_Anual
@@ -2487,13 +2483,13 @@ Plot_Annualized_CVar_Horizon <-function(){
   load('~/Comparativo_CVar_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_CVar_Horizon_Anual = as.data.frame(Comparativo_CVar_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_CVar_Horizon_Anual[,1])
   nline = nrow(Comparativo_CVar_Horizon_Anual)
-  Comparativo_CVar_Horizon_Anual = Comparativo_CVar_Horizon_Anual[rev(seq_len(nrow(Comparativo_CVar_Horizon_Anual))),]
-  Comparativo_CVar_Horizon_Anual = as.data.frame(Comparativo_CVar_Horizon_Anual)
-  nline = nrow(Comparativo_CVar_Horizon_Anual)
+
+
+
 
 
 
@@ -2501,7 +2497,7 @@ Plot_Annualized_CVar_Horizon <-function(){
   #Until_Date=rownames(Comparativo_CVar_Horizon_Anual)[nrow(Comparativo_CVar_Horizon_Anual)]
   #Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual
   #  Corte=as.numeric(nrow(as.data.frame(Comparativo_CVar_Horizon_Anual)))
-  Comparativo_Cvar_Horizon_Anual=as.data.frame(Comparativo_Cvar_Horizon_Anual)
+
   if(Until_Date ==('')){
     #Until_Date = Final_Date_Testing
     Until_Date = rownames(Comparativo_CVar_Horizon_Anual[nrow(Comparativo_CVar_Horizon_Anual),])
@@ -2515,7 +2511,9 @@ Plot_Annualized_CVar_Horizon <-function(){
     }
   }
 
+  Comparativo_CVar_Horizon_Anual = Comparativo_CVar_Horizon_Anual[rev(seq_len(nrow(Comparativo_CVar_Horizon_Anual))),]
   Corte= which(rownames(as.data.frame(Comparativo_CVar_Horizon_Anual))==Until_Date)
+
   Coparativo_Backup = Comparativo_CVar_Horizon_Anual
   Comparativo_CVar_Horizon_Anual=Comparativo_CVar_Horizon_Anual[Corte:nrow(Comparativo_CVar_Horizon_Anual),]
 
@@ -2789,12 +2787,9 @@ Plot_Annualized_RCum_Horizon <-function(){
   load('~/Comparativo_RCum_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_RCum_Horizon_Anual = as.data.frame(Comparativo_RCum_Horizon_Anual)
   options(warn=-1)
   Eixo_X = rownames(Comparativo_RCum_Horizon_Anual[,1])
-  nline = nrow(Comparativo_RCum_Horizon_Anual)
-  Comparativo_RCum_Horizon_Anual = Comparativo_RCum_Horizon_Anual[rev(seq_len(nrow(Comparativo_RCum_Horizon_Anual))),]
-  Comparativo_RCum_Horizon_Anual = as.data.frame(Comparativo_RCum_Horizon_Anual)
   nline = nrow(Comparativo_RCum_Horizon_Anual)
 
 
@@ -2816,6 +2811,8 @@ Plot_Annualized_RCum_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_RCum_Horizon_Anual = Comparativo_RCum_Horizon_Anual[rev(seq_len(nrow(Comparativo_RCum_Horizon_Anual))),]
+  Comparativo_RCum_Horizon_Anual = as.data.frame(Comparativo_RCum_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_RCum_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_RCum_Horizon_Anual
@@ -3091,7 +3088,7 @@ Plot_Annualized_Rm_Horizon <-function(){
   load('~/Comparativo_Rm_Horizon_Anual.rda')
   load('~/N_Assets.rda')
   load('~/RM.rda')
-
+  Comparativo_Rm_Horizon_Anual = as.data.frame(Comparativo_Rm_Horizon_Anual)
   ydev=dev.list()
   if(class(ydev)!="NULL"){
     dev.off()
@@ -3100,9 +3097,6 @@ Plot_Annualized_Rm_Horizon <-function(){
 
   options(warn=-1)
   Eixo_X = rownames(Comparativo_Rm_Horizon_Anual[,1])
-  nline = nrow(Comparativo_Rm_Horizon_Anual)
-  Comparativo_Rm_Horizon_Anual = Comparativo_Rm_Horizon_Anual[rev(seq_len(nrow(Comparativo_Rm_Horizon_Anual))),]
-  Comparativo_Rm_Horizon_Anual = as.data.frame(Comparativo_Rm_Horizon_Anual)
   nline = nrow(Comparativo_Rm_Horizon_Anual)
 
 
@@ -3125,6 +3119,8 @@ Plot_Annualized_Rm_Horizon <-function(){
       Until_Date = as.character(new_day)
     }
   }
+  Comparativo_Rm_Horizon_Anual = Comparativo_Rm_Horizon_Anual[rev(seq_len(nrow(Comparativo_Rm_Horizon_Anual))),]
+  Comparativo_Rm_Horizon_Anual = as.data.frame(Comparativo_Rm_Horizon_Anual)
 
   Corte= which(rownames(as.data.frame(Comparativo_Rm_Horizon_Anual))==Until_Date)
   Coparativo_Backup = Comparativo_Rm_Horizon_Anual
