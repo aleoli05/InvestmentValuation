@@ -131,6 +131,8 @@ Ibov_=Ibovesp[1:ncol(Ibovesp)]
 #View(Ibov_)
 Index_Bovespa = Ibov
 Index_Bovespa[,6:13]=Ibov_
+Index_Bovespa[,4]=as.numeric(str_remove_all(Index_Bovespa[,4],'[^0-9]'))
+Index_Bovespa[,5]=as.numeric(gsub(',','.', Index_Bovespa[,5]))
 View(Index_Bovespa)
 print(Index_Bovespa)
 
@@ -141,17 +143,18 @@ Mes = substr(nome_data, start=4, stop=5)
 Dia = substr(nome_data, start=1, stop=2)
 nome_date=paste(Ano,'-',Mes,'-',Dia, sep='')
 
+
 if(file.exists("~/Ibov_Composition")==TRUE){
-  nome_readme=paste('~/Ibov_Composition/Ibov_', nome_date,'.rda', sep='')
+  nome_readme=paste('~/Ibov_Composition/Ibov_', Data,'.rda', sep='')
   save(Index_Bovespa, file=nome_readme)
-  Readme_Inv_wrt = paste('~/Ibov_Composition/Ibov_', nome_date,'.xlsx', sep='')
+  Readme_Inv_wrt = paste('~/Ibov_Composition/Ibov_', Data,'.xlsx', sep='')
   write_xlsx(Index_Bovespa, Readme_Inv_wrt)
 }else{
   nome_dir_backup=paste("~/Ibov_Composition", sep="")
   dir.create(nome_dir_backup)
-  nome_readme=paste('~/Ibov_Composition/Ibov_', nome_date,'.rda', sep='')
+  nome_readme=paste('~/Ibov_Composition/Ibov_', Data, '.rda', sep='')
   save(Index_Bovespa, file=nome_readme)
-  Readme_Inv_wrt = paste('~/Ibov_Composition/Ibov_', nome_date,'.xlsx', sep='')
+  Readme_Inv_wrt = paste('~/Ibov_Composition/Ibov_', Data,'.xlsx', sep='')
   write_xlsx(Index_Bovespa, Readme_Inv_wrt)
 }
 
