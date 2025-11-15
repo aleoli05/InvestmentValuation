@@ -178,15 +178,21 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
                                        (is[which(rownames(is)=='Shares Outstanding'),Col_Correct])*Dividends, 2)
 
       # Filter 5: P/E ratio < 15
+      if  (length(which(rownames(as.data.frame(is))=='Price To Earnings Ratio'))==0){
+        lista_matrizes[[j]][5,i]=0
+      }else{
       lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]
-
+      }
       # Filter 6: Price to Book < 2.5
       lista_matrizes[[j]][6,i] = bs[which(rownames(bs)== 'Price to Book Ratio'),j]
 
       # Filter 7: Graham Indicator = (P/E) x (Price to Book) < 21.5
+      if  (length(which(rownames(as.data.frame(is))=='Price To Earnings Ratio'))==0){
+        lista_matrizes[[j]][7,i]=0
+      }else{
       lista_matrizes[[j]][7,i] = round(is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]/
                                          bs[which(rownames(bs)== 'Price to Book Ratio'),j], 2)
-
+      }
       # Filter 8: Cut 15 stocks
 
 
@@ -239,15 +245,21 @@ Intelligent_Investor <- function(Tickers, AQ='A', Size=2000, PE_Ratio=15, PB_Rat
                                            (is[which(rownames(is)=='Shares Outstanding'),Col_Correct])*Dividends, 2)
 
           # Filter 5: P/E ratio < 15
+          if  (length(which(rownames(as.data.frame(is))=='Price To Earnings Ratio'))==0){
+            lista_matrizes[[j]][5,i]=0
+          }else{
           lista_matrizes[[j]][5,i]= is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]
-
+          }
           # Filter 6: Price to Book < 2.5
           lista_matrizes[[j]][6,i] = bs[which(rownames(bs)== 'Price to Book Ratio'),j+1]
 
           # Filter 7: Graham Indicator = (P/E) x (Price to Book) < 21.5
+          if  (length(which(rownames(as.data.frame(is))=='Price To Earnings Ratio'))==0){
+            lista_matrizes[[j]][7,i]=0
+          }else{
           lista_matrizes[[j]][7,i] = round(is[which(rownames(is)== 'Price To Earnings Ratio'),Col_Correct]/
                                              bs[which(rownames(bs)== 'Price to Book Ratio'),j+1], 2)
-
+          }
           # Filter 8: Cut 15 stocks
 
 
