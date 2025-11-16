@@ -155,6 +155,7 @@ if (Import =='No'){
 
   Exclude_Tickers(Tickers=Tickers, AQ=AQ, FS='C')
   load('~/Exclude_Tickers_Missing.rda')
+  Exclude_Tickers_Missing=c(Exclude_Tickers_Missing,Exclude_ticket)
 
   Intelligent_Investor(Tickers=Tickers, AQ=AQ, Size=Size, PE_Ratio=PE_Ratio, PB_Ratio=PB_Ratio,
                        GI_min=GI_min, GI_max=GI_max, CR=CR, EPS=EPS, Break=Break,
