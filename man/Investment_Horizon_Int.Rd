@@ -20,6 +20,7 @@ Investment_Horizon_Int(
   N_Assets,
   Base = "yahoo",
   Fun = "S_Out",
+  Skew_t = "No",
   Specific_Dates = Sys.Date(),
   Import = "Yes",
   Exclude_ticket = "",
@@ -70,6 +71,8 @@ Investment_Horizon_Int(
 'Out' uses the ANNt_Oliveira_Cereta_Out function;
 'S' uses the ANNt_Oliveira_Cereta_S function;
 'Original' uses the ANNt_Oliveira_Ceretta function.}
+
+\item{Skew_t}{Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".}
 
 \item{Import}{Import dates from external data base after first import in each re balance. "Yes"
 or "No". "No" is the standard.}

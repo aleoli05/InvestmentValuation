@@ -32,6 +32,7 @@
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
+#' @param Skew_t Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -67,7 +68,7 @@ ANNt_Oliveira_Ceretta_S_Out_Inv <- function(Tickers, RM, Rf, Initial_Date, Final
                                         GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                         Plot_CF='Cash Dividends Paid',
                                         Plot_BS='Total Liabilities',
-                                        Type_ANN='ANNt', Order='Yes'){
+                                        Type_ANN='ANNt', Order='Yes', Skew_t='No'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
 
@@ -449,11 +450,11 @@ X11 = Asymmetry
 save(X11,file='~/X11.rda')
 if(Order=='Yes'){
 if(Type_ANN=='ANNt'){
-  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry)
+  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry, Skew_t=Skew_t)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,
-                 View_Metrics=FALSE, Verbose=0, Plot='No')
+                 View_Metrics=FALSE, Verbose=0, Plot='No', Skew_t=Skew_t)
   }}}
 
 

@@ -30,6 +30,7 @@
 #' @param Plot_BS Char of Balance Sheet accoun selected
 #' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
+#' @param Skew_t Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -66,7 +67,7 @@ ANNt_Oliveira_Ceretta_Out_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_D
                                       Plot_CF='Cash Dividends Paid',
                                       Plot_BS='Total Liabilities',
                                       Type_ANN='ANNt',
-                                      Order='Yes'){
+                                      Order='Yes', Skew_t='No'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
   Break= N_Assets
@@ -130,11 +131,11 @@ if (Import =='Yes'){
 Final_Date_Training <- Final_Date_Training
 if(Order=='Yes'){
 if(Type_ANN=='ANNt'){
-  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry)
+  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry, Skew_t=Skew_t)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,
-                 View_Metrics=FALSE, Verbose=0, Plot='No')
+                 View_Metrics=FALSE, Verbose=0, Plot='No', Skew_t=Skew_t)
   }}}
 print(paste('Initial_Date: ', Initial_Date, sep=''))
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date,Final_Date_Training,Rf, Type_ANNt, Out='Yes')
