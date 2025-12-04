@@ -5,9 +5,7 @@
 #' Magic_EQ','Magic_MKW', 'Magic_Sharpe', 'Graham_EQ', 'Graham_MKW', 'Graham_Sharpe'
 #' @examples
 #' Turnover('Alls')
-
 #' @export
-
 Turnover<-function(Portfolio){
 
 library(dplyr)
