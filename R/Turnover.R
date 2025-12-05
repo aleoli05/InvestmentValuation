@@ -148,7 +148,7 @@ if (length(Portfolio)==1){
     Media=1
   }
   Turnovers=dados[,1:2]
-  posicao_=seq(from=1, to=length(Turn), by=2)
+  posicao_=seq(from=1, to=(2*length(Turn)-1), by=2)
   elemento=0
   Lista=Turn
   for(i in 1:length(posicao_)){
@@ -163,9 +163,9 @@ if (length(Portfolio)==1){
     posicao=posicao[i]
     Lista= append(Lista, elemento3)
   }
-  Lista[Posicao3-1]=0
-  Lista[Posicao3]='Mean'
-  Lista[Posicao3+1]=Media
+  #Lista[Posicao3-1]=0
+  Lista[Posicao3-1]='Mean'
+  Lista[Posicao3]=Media
   Turnovers[,3]=Lista
   Turnovers=na.omit(Turnovers)
   View(Turnovers)
@@ -317,7 +317,7 @@ for (m in 1:length(Port)){
     Media=1
   }
   Turnovers=dados[,1:2]
-  posicao_=seq(from=1, to=length(Turn), by=2)
+  posicao_=seq(from=1, to=(2*length(Turn)-1), by=2)
   elemento=0
   Lista=Turn
   for(i in 1:length(posicao_)){
@@ -332,9 +332,9 @@ for (m in 1:length(Port)){
     posicao=posicao[i]
     Lista= append(Lista, elemento3)
   }
-  Lista[Posicao3-1]=0
-  Lista[Posicao3]='Mean'
-  Lista[Posicao3+1]=Media
+  #Lista[Posicao3-1]=0
+  Lista[Posicao3-1]='Mean'
+  Lista[Posicao3]=Media
   Turnovers[,3]=Lista
   Turnovers=na.omit(Turnovers)
   View(Turnovers)
