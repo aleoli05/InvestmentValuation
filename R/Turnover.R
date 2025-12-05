@@ -177,7 +177,7 @@ if (length(Portfolio)>1){
 
 dados=(Weights_MF_EQ_Horizon)
 Turnovers_Alls=dados[,1:2]
-Turnover_Alls[1,1]='Portfolios'
+Turnovers_Alls[1,1]='Portfolios'
 Turnovers_Alls=na.omit(Turnovers_Alls)
 
 
