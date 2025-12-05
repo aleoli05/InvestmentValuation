@@ -174,8 +174,8 @@ if (length(Portfolio)==1){
 
 if (length(Portfolio)>1){
    Port=Portfolio
-
-dados=(Weights_MF_EQ_Horizon)
+   load('~/Weights_MF_EQ_Horizon.rda')
+dados=Weights_MF_EQ_Horizon
 Turnovers_Alls=dados[,1:2]
 Turnovers_Alls[1,1]='Portfolios'
 Turnovers_Alls=na.omit(Turnovers_Alls)
