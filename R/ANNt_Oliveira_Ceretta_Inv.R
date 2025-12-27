@@ -28,7 +28,7 @@
 #' @param Plot_IS Chart of Income Sheet account selected
 #' @param Plot_CF Chart of Cash Flow account selected
 #' @param Plot_BS Char of Balance Sheet accoun selected
-#' @param Type_ANN Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt
+#' @param Type_ANN Select the network type: 'ANNt', 'LSTMt' in RNN from ANNt, or 'SKEWt' to raw excess return data
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @param Skew_t Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".
 #'@examples
@@ -134,7 +134,11 @@ if(Type_ANN=='ANNt'){
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,
                  View_Metrics=FALSE, Verbose=0, Plot='No', Skew_t=Skew_t)
-  }}}
+  } else {
+    if(Type_ANN=='SKEWt'){
+      SKEWt_order ('', '', '', Asymmetry=Asymmetry,
+                   Plot='No', Skew_t=Skew_t)
+    }}}}
 InvestmentValuation::Gen_Portfolios_Inv(Portfolios=c('Magic_Formula', 'Intelligent_Investor'),'n_Assets',Initial_Date_Testing,'',Rf, Type_ANNt)
 Portfolio_Backtesting_Inv('','')
 Plot_Cumulative_Returns_Inv('')

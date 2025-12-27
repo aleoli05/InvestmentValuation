@@ -87,7 +87,7 @@ or "No". "Yes" is the standard.}
 
 \item{Plot_BS}{Char of Balance Sheet accoun selected}
 
-\item{Type_ANN}{Select the network type: 'ANNt' or 'LSTMt' in RNN from ANNt}
+\item{Type_ANN}{Select the network type: 'ANNt', 'LSTMt' in RNN from ANNt, or 'SKEWt' to raw excess return data}
 
 \item{Order}{If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database}
 
