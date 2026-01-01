@@ -9,6 +9,12 @@
 #'@param Periodicity should be one of “daily”, “weekly”, “monthly”
 #'@param Hidden Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons
 #'@param Stepmax Number of replications per asset to train the ANN. For a good performance, use 7500
+#' @param Loss Function: "MSE" for Mean Square Error, "MAE" for Mean Absolute Error,
+#' "MADL" for Mean Absolute Directional Loss, and "GMADL" for Generalized Mean Absolute Directional Loss
+#' @param Early_Stopping = 'No' or 'Yes'. Default is 'No'. If 'Yes' is necessary inform the value
+#' @param Learning_Rate is the Artificial Neural Network learning rate
+#' @param Decay L2 regularization or weight decay, add a penalty term to the loss function. "Yes" or "No.
+#' No" is default. If  "Yes" is necessary inform the lambda or rate of regularization
 #'@param Asymmetric "Negative" or "Positive". Shifts the probability of the return being greater than the proxy to the right or left, "Negative" or "Positive". Default is to the right, "Negative".
 #'@param Type_ANNt Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test
 #'@param N_Assets Limit of asset numbers in the portfolio
@@ -60,7 +66,10 @@
 #'   CR=1, EPS=0, Plot_IS='', Plot_CF='', Plot_BS='')
 #'@export
 ANNt_Oliveira_Ceretta_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training,
-                                  Final_Date, Periodicity, Hidden, Stepmax, Asymmetry='Negative', Type_ANNt,
+                                  Final_Date, Periodicity, Hidden, Stepmax,
+                                  Loss="MSE", Learning_Rate=0.3, Decay='No',
+                                  Early_Stopping = 'No',
+                                  Asymmetry='Negative', Type_ANNt,
                                   N_Assets, Base='yahoo', Import='Yes', Exclude_ticket='',
                                   AQ='A', Size=2000, PE_Ratio=15, PB_Ratio=1.5,
                                   GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
@@ -129,7 +138,10 @@ if (Import =='Yes'){
 Final_Date_Training <- Final_Date_Training
 if(Order=='Yes'){
 if(Type_ANN=='ANNt'){
-  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry, Skew_t=Skew_t)
+  ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax,
+              Loss=Loss, Learning_Rate=Learning_Rate, Decay=Decay,
+              Early_Stopping = Early_Stopping,
+              Asymmetry=Asymmetry, Skew_t=Skew_t)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,

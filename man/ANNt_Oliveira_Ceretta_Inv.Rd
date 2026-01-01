@@ -15,6 +15,10 @@ ANNt_Oliveira_Ceretta_Inv(
   Periodicity,
   Hidden,
   Stepmax,
+  Loss = "MSE",
+  Learning_Rate = 0.3,
+  Decay = "No",
+  Early_Stopping = "No",
   Asymmetry = "Negative",
   Type_ANNt,
   N_Assets,
@@ -53,6 +57,16 @@ ANNt_Oliveira_Ceretta_Inv(
 \item{Hidden}{Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons}
 
 \item{Stepmax}{Number of replications per asset to train the ANN. For a good performance, use 7500}
+
+\item{Loss}{Function: "MSE" for Mean Square Error, "MAE" for Mean Absolute Error,
+"MADL" for Mean Absolute Directional Loss, and "GMADL" for Generalized Mean Absolute Directional Loss}
+
+\item{Learning_Rate}{is the Artificial Neural Network learning rate}
+
+\item{Decay}{L2 regularization or weight decay, add a penalty term to the loss function. "Yes" or "No.
+No" is default. If  "Yes" is necessary inform the lambda or rate of regularization}
+
+\item{Early_Stopping}{= 'No' or 'Yes'. Default is 'No'. If 'Yes' is necessary inform the value}
 
 \item{Type_ANNt}{Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test}
 
