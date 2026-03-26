@@ -42,7 +42,8 @@ Investment_Horizon_Int(
   Download = "Yes",
   Type_ANN = "ANNt",
   Order = "Yes",
-  Continue_from = "1900-01-01"
+  Continue_from = "1900-01-01",
+  Bias = "No"
 )
 }
 \arguments{
@@ -120,6 +121,8 @@ or "No". "No" is the standard.}
 \item{Order}{If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database}
 
 \item{Continue_from}{Determine if continue from a Specific_Date in the data}
+
+\item{Bias}{include Bias, Yes or No, with auto learning}
 
 \item{Initial_Date_Training}{Training series start Date.}
 

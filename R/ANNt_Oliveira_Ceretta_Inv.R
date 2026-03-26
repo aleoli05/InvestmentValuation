@@ -37,6 +37,7 @@
 #' @param Type_ANN Select the network type: 'ANNt', 'LSTMt' in RNN from ANNt, or 'SKEWt' to raw excess return data
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @param Skew_t Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".
+#' @param Bias include Bias, Yes or No, with auto learning
 #'@examples
 #'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #'RM <-c('^GSPC') #RM the S&P500
@@ -75,7 +76,7 @@ ANNt_Oliveira_Ceretta_Inv <- function(Tickers, RM, Rf, Initial_Date, Final_Date_
                                   GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                   Plot_CF='Cash Dividends Paid',
                                   Plot_BS='Total Liabilities',
-                                  Type_ANN='ANNt', Order='Yes', Skew_t='No'){
+                                  Type_ANN='ANNt', Order='Yes', Skew_t='No', Bias='No'){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
   Exclude=Exclude_ticket
@@ -141,7 +142,7 @@ if(Type_ANN=='ANNt'){
   ANNt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax,
               Loss=Loss, Learning_Rate=Learning_Rate, Decay=Decay,
               Early_Stopping = Early_Stopping,
-              Asymmetry=Asymmetry, Skew_t=Skew_t)
+              Asymmetry=Asymmetry, Skew_t=Skew_t, Bias=Bias)
 } else {
   if(Type_ANN=='LSTMt'){
     LSTMt_order ('', '', '', Hidden=Hidden, Stepmax=Stepmax, Asymmetry=Asymmetry,

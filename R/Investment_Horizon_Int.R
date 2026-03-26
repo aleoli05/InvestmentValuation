@@ -49,6 +49,7 @@
 #' @param Order If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database
 #' @param Continue_from Determine if continue from a Specific_Date in the data
 #' @param Skew_t Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".
+#' @param Bias include Bias, Yes or No, with auto learning
 #' @examples
 #' Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #' Specific_Dates=c(
@@ -110,7 +111,8 @@ Investment_Horizon_Int <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tra
                                 GI_min=0, GI_max=21.5, CR=2, EPS=0, Plot_IS='Total Revenue',
                                 Plot_CF='Cash Dividends Paid',
                                 Plot_BS='Total Liabilities', Download='Yes',
-                                Type_ANN='ANNt', Order='Yes', Continue_from='1900-01-01'){
+                                Type_ANN='ANNt', Order='Yes', Continue_from='1900-01-01',
+                                Bias='No'){
   ydev=dev.list()
   Break = N_Assets
   save(AQ, file='~/AQ.rda')
@@ -421,7 +423,7 @@ if(Fun=='S_Out'){
                               Plot_CF=Plot_CF,
                               Plot_BS=Plot_BS,
                               Type_ANN=Type_ANN,
-                              Order=Order, Skew_t=Skew_t)
+                              Order=Order, Skew_t=Skew_t, Bias=Bias)
   {
     load('~/Initial_Date_Out.rda')
     load('~/Final_Date_Out.rda')
@@ -475,7 +477,7 @@ if(Fun=='Out'){
                             Plot_CF=Plot_CF,
                             Plot_BS=Plot_BS,
                             Type_ANN=Type_ANN,
-                            Order=Order, Skew_t=Skew_t)
+                            Order=Order, Skew_t=Skew_t, Bias=Bias)
   {
     load('~/Initial_Date_Out.rda')
     load('~/Final_Date_Out.rda')
@@ -526,7 +528,7 @@ if(Fun=='S'){
                           Plot_CF=Plot_CF,
                           Plot_BS=Plot_BS,
                           Type_ANN=Type_ANN,
-                          Order=Order, Skew_t=Skew_t)
+                          Order=Order, Skew_t=Skew_t, Bias=Bias)
   load('~/Initial_Date_Testing.rda')
   load('~/Final_Date_Testing.rda')
   data3 = as.Date.character(Initial_Date_Testing)
@@ -547,7 +549,7 @@ if(Fun=='Original'){
                         Plot_CF=Plot_CF,
                         Plot_BS=Plot_BS,
                         Type_ANN=Type_ANN,
-                        Order=Order, Skew_t=Skew_t)
+                        Order=Order, Skew_t=Skew_t, Bias=Bias)
   load('~/Initial_Date_Testing.rda')
   load('~/Final_Date_Testing.rda')
   data3 = as.Date.character(Initial_Date_Testing)

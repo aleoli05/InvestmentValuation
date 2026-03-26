@@ -38,7 +38,8 @@ ANNt_Oliveira_Ceretta_Out_Inv(
   Plot_BS = "Total Liabilities",
   Type_ANN = "ANNt",
   Order = "Yes",
-  Skew_t = "No"
+  Skew_t = "No",
+  Bias = "No"
 )
 }
 \arguments{
@@ -106,6 +107,8 @@ or "No". "Yes" is the standard.}
 \item{Order}{If "Yes" processes the asset selection, if "No" uses the already processed assets available in the database}
 
 \item{Skew_t}{Incorporate skew parameter in the probability: "Yes" or "No". Default is "No".}
+
+\item{Bias}{include Bias, Yes or No, with auto learning}
 
 \item{Initial_Date_Training}{Training series start Date}
 
